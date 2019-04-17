@@ -1,0 +1,21 @@
+/* pages/Jointrelease/Jointrelease.wxss */
+.incrace{
+  
+}
+.ex{
+  display: flex;
+  justify-content: flex-end;
+}
+.Joint-picker{
+  display: none;
+}
+.barre{
+  margin-left: 4%;
+}
+.time{
+  width: 100rpx;
+}
+
+.mask_data{
+
+}

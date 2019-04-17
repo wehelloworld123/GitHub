@@ -1,0 +1,58 @@
+<!--pages/activeroll/activeroll.wxml-->
+<view class="app">
+              <view class="ele-container">
+                  <view class="element picture" data-event-params="undefined"   style='opacity:1;background-color:transparent;border-color:rgb(34, 34, 34);border-style:none;height:400rpx;width:100%;margin-left:auto;margin-right:auto;'>
+                        <image mode="scaleToFill" src="{{src}}" style='height:100%;width:100%'></image>
+                  </view>
+              </view>
+              <view class="ele-container">
+                  <view class="element free-vessel" data-event-params="undefined" style='  width:748.8rpx;height:444.6rpx;background-color:rgb(255, 255, 255);margin-bottom:auto;margin-right:auto;margin-top:16.38rpx;opacity:1;margin-left:auto;'>
+                     <view class="ele-container">
+                       <text class="element text"  style='  background-color:rgba(0, 0, 0, 0);border-color:rgb(34, 34, 34);border-style:none;border-width:4.68rpx;color:rgb(53, 53, 53);font-size:37.44rpx;height:44.46rpx;line-height:44.46rpx;margin-left:auto;margin-top:0;opacity:1;text-align:left;position:absolute;left:32.76rpx;margin-right:0;'>{{iteminput}}</text>
+                     </view>
+                     <view class="ele-container">
+                       <text class="element text" data-event-params="undefined" style='  background-color:rgba(0, 0, 0, 0);border-color:rgb(34, 34, 34);border-style:none;border-width:4.68rpx;color:rgb(153, 153, 153);font-size:32.76rpx;min-height:44.46rpx;line-height:19px;margin-left:auto;margin-top:0;opacity:1;text-align:left;position:absolute;left:32.76rpx;top:70.2rpx;margin-right:0;'>活动规则：</text>
+                     </view>
+                     <view class="ele-container">
+                         <text class="element text" data-event-params="undefined" style='  background-color:rgba(0, 0, 0, 0);border-color:rgb(34, 34, 34);border-style:none;border-width:2px;color:rgb(153, 153, 153);font-size:32.76rpx;height:133.38rpx;width:507.78rpx;line-height:44.46rpx;margin-left:auto;margin-top:0;opacity:1;text-align:left;position:absolute;left:203.58rpx;top:65.52rpx;margin-right:0;'>{{rule}}</text>
+                     </view>
+                     <view class="ele-container">
+                        <text class="element text" data-event-params="undefined" style="background-color:rgba(0, 0, 0, 0);border-color:rgb(34, 34, 34);border-style:none;border-width:2px;color:rgb(153, 153, 153);font-size:32.76rpx;min-height:44.46rpx;line-height:44.46rpx;margin-left:auto;margin-top:0;opacity:1;text-align:left;position:absolute;left:32.76rpx;top:224.96rpx;margin-right:0;">奖项设置：</text>
+                     </view>
+                     <view class="ele-container">
+                       <text class="element text" data-event-params="undefined" style="background-color:rgba(0, 0, 0, 0);border-color:rgb(34, 34, 34);border-style:none;border-width:2px;color:rgb(153, 153, 153);font-size:32.76rpx;height:133.38rpx;width:507.78rpx;line-height:44.46rpx;margin-left:auto;margin-top:0;opacity:1;text-align:left;position:absolute;left:201.24rpx;top:224.64rpx;margin-right:0;">{{reward}}</text>
+                     </view>
+              <block wx:if="{{showRhoto==true}}">
+                     <view class="ele-container">
+                         <text class="element text" data-event-params="undefined" style="background-color:rgba(0, 0, 0, 0);border-color:rgb(34, 34, 34);border-style:none;border-width:4.68rpx;color:rgb(53, 53, 53);font-size:39.78rpx;height:44.46rpx;line-height:44.46rpx;margin-left:auto;margin-top:0;opacity:1;text-align:left;position:absolute;left:294.84rpx;top:395.46rpx;margin-right:0;right:auto;">报名参赛</text>
+                     </view> 
+              </block>
+               <block wx:if="{{showRhoto==false}}"></block>
+                  </view>
+              </view>
+      <block wx:if="{{showRhoto==true}}">
+            <view class="ele-container event-position">
+                  <form class="element form-vessel" data-compid="form_vessel3" data-fieldinfo="" data-form="" style="background-color:rgba(0, 0, 0, 0);opacity:1;">
+                     <view class="ele-container">
+                          <view class="element input-ele js-form-ele" style="margin-top:0;width:585rpx;height:82rpx;opacity:1;">
+                            <input bindinput='InforInput1' data-datakey="form_vessel3.form_data." data-segment="undefined" placeholder="姓名" type="text" value="">姓名</input>
+                          </view>
+                     </view>
+                     <view class="ele-container">
+                          <view class="element input-ele js-form-ele" style="margin-top:23.4px;width:585rpx;height:82rpx;opacity:1;">
+                            <input bindinput='InforInput2' data-datakey="form_vessel3.form_data." data-segment="undefined" placeholder="电话" type="number" value="">电话</input>
+                          </view>
+                     </view>
+                     <view class="ele-container">
+                         <button catchtap='onsuceessroll' class="button background-ele" form-type="submit" style="background-color:rgb(68, 68, 68);border-color:rgb(34, 34, 34);border-style:none;color:rgb(255, 255, 255);font-size:32.76rpx;height:82rpx;line-height:82rpx;margin-top:50rpx;opacity:1;text-align:center;width:585rpx;"> 报名                               </button>
+                     </view>
+                 </form>
+              </view>
+        </block>
+         <block wx:if="{{showRhoto==false}}">
+         <view class="ele-container event-position a" >活动已结束</view>
+         </block>
+              <view class="ele-container">
+                    <view class="element free-vessel" data-event-params="undefined" style="width:320px;height:40rpx;background-color:rgb(255, 255, 255);margin-bottom:auto;margin-top:50rpx;"></view>
+            </view>
+</view>

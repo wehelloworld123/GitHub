@@ -1,0 +1,41 @@
+
+<template name="zcList">
+  <view class="element list" style="{{data.style}}">
+      <view class="list-container {{data.customFeature.sec_mode}}">
+        <block wx:for="{{data.content}}" wx:key="" wx:for-index='itemIndex'>
+          <view id='{{itemIndex}}' class="list-item background-ele" style="{{item.listStyle}}" bindtap='_pagenavigatedetail'
+ data-event-params="{{item.eventParams}}">
+            <image class="list-img" src="{{item.img}}" style="{{item.imgStyle}}"></image>
+            <view class="title-container" style="{{item.titleWidth}}">
+              <view class="title">{{item.iteminput}}</view>
+              <view class="sec-title" style="{{item.secTitleStyle}}">{{item.eventwords}}</view>
+              <view class='bright789_view_hide'>
+                <text>{{item.maininput}}</text>
+                <text>{{item.placeinput}}</text>
+                <text>{{item.timeinputone}}</text>
+                <text>{{item.timeinputtwo}}</text>
+                <text>{{item.setinput}}</text>
+                <text>{{item.address}}</text>
+                <text>{{item.eventdetail}}</text>
+                <text>{{item.eventwards}}</text>    
+              </view>
+            </view>
+          </view>
+        </block>
+      </view>
+  </view>
+</template>
+
+
+
+<view class="ele-container">
+    <scroll-view scroll-y="true" lower-threshold="" bindscrolltolower="activelower">
+      <template is="zcList" data="{{data:list1}}"></template>
+    </scroll-view>
+    <block wx:if="">
+    <view  class='icon_shuaxin' style="height: {{refreshHeight}}px;" wx:if="{{refreshing}}"> 
+      <view animation="{{refreshAnimation}}" class='iconfont icon-shuaxin' style='font-size:60rpx'></view> 
+    </view> 
+    </block>
+</view>
+

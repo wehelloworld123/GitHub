@@ -1,0 +1,28 @@
+/* pages/Yan_code/Yan_code.wxss */
+page{
+  background: url(http://pic.caigoubao.cc/594013/backgroundroll.jpg);
+  background-size: cover;
+  margin-left: auto;
+}
+.input-class{
+  border-radius: 15rpx;
+  border: solid 2rpx #DDDDDD;
+  background-color: white;
+  margin: 0 4% 0 4%;
+  font-size: 36rpx;
+  padding-left: 5%;
+}
+.input-view{
+  height: 100rpx;
+  margin-top: 40rpx;
+}
+.button-roll{
+  color: white;
+  margin-left: 55%;
+
+}
+.button-roll-b{
+  color: white;
+  border-radius: 20rpx;
+  margin: 0 4% 0 4%;
+}

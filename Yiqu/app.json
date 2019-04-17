@@ -1,0 +1,70 @@
+{
+  "pages": [
+    "pages/shouye12/shouye12",
+    "pages/Realsesheme/Sheme_detial/Sheme_detial",
+    "pages/eventpage/neighbouring/neighbouring",
+    "pages/eventannce/eventannce",
+    "pages/bar/bar",
+    "pages/Realsesheme/Realsesheme",
+    "pages/Realsesheme_b/Realseshenme_b",
+    "pages/advertiser/advertiser",
+    "pages/Jointrelease/Jointrelease",
+    "pages/eventcontenttwo/eventcontenttwo",
+    "pages/barrelease/barrelease", 
+    "pages/Realsesheme_a/Realsesheme_a",  
+    "pages/eventpage/eventpage",
+    "pages/adctive_Sheme/adctive_Sheme",
+    "pages/R_roll/R_roll",
+    "pages/personcenter/personcenter",
+    "pages/a/a",
+    "pages/eventpage/search/search",
+    "pages/E_roll/E_roll",
+    "pages/advertiserdetil/advertiserdetil",
+    "pages/Jointdetail/Jointdetail",
+    "pages/Yan_code/Yan_code",
+    "pages/bardetil/bardetil",
+    "pages/eventdetails/eventdetails",
+    "pages/eventsuggest/eventsuggest",
+    "pages/eventdet/eventdet",
+    "pages/arcticle/arcticle",
+    "pages/activeroll/activeroll",
+    "pages/Jointsuccess/Jointsuccess",
+    "pages/realsesuccess/realsesuccess"
+  ],
+  "window": {
+    "enablePullDownRefresh": false
+  },
+  "tabBar": {
+    "borderStyle": "white",
+    "color": "#8A8A8A",
+    "selectedColor": "#2C2C2C",
+    "backgroundColor": "#FFFFFF",
+    "list": [
+      {
+        "iconPath": "images/59f04ae45254d.png",
+        "selectedIconPath": "images/59f04ae452599.png",
+        "text": "首页",
+        "pagePath": "pages/shouye12/shouye12"
+      },
+      {
+        "iconPath": "images/59f04ae485c01.png",
+        "selectedIconPath": "images/59f04ae485c49.png",
+        "text": "活动",
+        "pagePath": "pages/eventpage/eventpage"
+      },
+      {
+        "iconPath": "images/59f04ae49cccd.png",
+        "selectedIconPath": "images/59f04ae49cd16.png",
+        "text": "我的",
+        "pagePath": "pages/personcenter/personcenter"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "connectSocket": 10000,
+    "uploadFile": 10000,
+    "downloadFile": 10000
+  },
+  "debug": false
+}

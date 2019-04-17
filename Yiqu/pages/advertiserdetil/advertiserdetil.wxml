@@ -1,0 +1,30 @@
+<!--pages/bardetil/bardetil.wxml-->
+
+<view class="picture event-position"> <image src="{{pic}}" style='height:100%;width:100%'></image></view>
+  <view class="title" style="font-size:40rpx; " >{{title}}</view>
+<view class="cent bardetail-margin">
+  <view class="body">
+    <view class="iconfont icon-main" style='color:#FF9900' size="17"></view>
+   <view class='icon-left' style="font-size:35rpx;">主办方：{{sponsor}}</view>
+  </view>
+  <view class="body">
+     <view class="iconfont icon-type" style='color:blue' size="17"></view>
+   <view class='icon-left' style="font-size:35rpx;">类型：{{setup}}</view>
+  </view>
+  <view class="body">
+   <view class="iconfont icon-money" style='color:red' size="17" ></view>
+   <view class='icon-left'  style="font-size:35rpx;">预计费用：{{money}}</view>
+  </view>
+  <view class="body">
+   <view class="iconfont icon-time" style='color:blue' size="17"></view>
+   <view class='icon-left' style="font-size:35rpx;">{{time1}}时    ——    {{time2}}时</view>
+  </view>
+    <view catchtap='Call_phone' class="body">
+   <text class='iconfont icon-weibiaoti-1' size="17"></text>
+   <view catchtap='Call_phone' class='icon-left'  style="font-size:35rpx;">{{phone}}</view>
+    <image catchtap='Call_phone' src='/images/gengduo.png' style='width:40rpx;height:40rpx;margin-left:47%'></image>
+  </view>
+  <view class="detil">
+   <view class='icon-left' style="font-size:35rpx;">{{detil}}</view>
+  </view>
+  </view>

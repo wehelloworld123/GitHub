@@ -1,0 +1,34 @@
+<!--pages/scheme/scheme.wxml-->
+<template name='CM'>
+<block wx:for="{{content}}">
+  <view class='mess'>
+    <view style='width:50%'>
+    <image src='{{src}}'></image>
+    </view>
+    <view>
+       <view>{{item.title}}</view>
+       <view>时间:{{item.timestart}}</view>
+       <view>地点：{{item.place}}</view>
+    </view>
+  </view>
+
+</block>
+</template>
+<block wx:if="{{Hidden==true}}">
+  <view class='event-position line-wards'>暂无活动</view>
+</block>
+<block wx:else>
+  <block wx:for="{{content}}">
+  <view class='mess'>
+    <view style='width:50%'>
+    <image src='{{src}}' style='width:90%;height:90%'></image>
+    </view>
+    <view class=''>
+       <view class='line-weight' style='font-size:38rpx;'>{{item.title}}</view>
+       <view class='line-weight'><text>时间 : {{item.timestart}}</text></view>
+       <view class='line-weight'><text>地点 : {{item.place}}</text></view>
+    </view>
+      </view>
+    </block>
+</block>
+

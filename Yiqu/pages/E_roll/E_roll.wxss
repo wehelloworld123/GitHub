@@ -1,0 +1,23 @@
+/* pages/E_roll/E_roll.wxss */
+page{
+  background-color: rgb(243,243,243);
+  margin-left: auto;
+  /*min-height: 800rpx;*/
+}
+.input-class{
+  border-radius: 15rpx;
+  border: solid 2rpx #DDDDDD;
+  background-color: white;
+  margin: 0 4% 0 4%;
+  font-size: 36rpx;
+  padding-left: 5%;
+}
+.input-view{
+  height: 100rpx;
+  margin-top: 40rpx;
+}
+.button-roll{
+  color: white;
+  border-radius: 20rpx;
+  margin: 0 4% 0 4%;
+}

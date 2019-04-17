@@ -1,0 +1,66 @@
+<!--pages/mokuaibar/mokuaibar.wxml-->
+<template name="bar">
+<block wx:for="{{data.content}}" wx:key="{{item.index}}">
+<view class='bar-cen'>
+<view id="{{index}}" class="all" catchtap='_pagenavigateer'>
+    <view class='bar-cen'>
+       <image src="{{item.pic}}" style='overflow:hidden' class="picture"></image>
+    </view>
+<view class="body">
+  <view>
+     <text  style="font-weight:800">{{item.title}}</text>
+  </view>
+  <view class="address fuj">
+   <view  style="font-size:32rpx;">地址：{{item.address}}</view>
+  </view>
+
+  <view class="time fuj">
+   <view  style="font-size:32rpx;">类型：{{item.type}}</view>
+  </view>
+
+  <view class="time fuj">
+   <view  style="font-size:32rpx;">时间：{{item.time1}}时    ——    {{item.time2}}时</view>
+  </view>
+ 
+
+  <view class="time hid">
+   <view  style="font-size:30rpx;">{{item.number}}</view>
+  </view>
+  <view class="time hid">
+   <view  style="font-size:30rpx;">{{item.phone}}</view>
+  </view>
+    <view class="time hid">
+   <view  style="font-size:30rpx;">{{item.detil}}</view>
+  </view>
+</view>
+</view>
+</view>
+</block>
+</template>
+
+
+<scroll-view scroll-y="true"  style="height: {{windowHeight}}px;" bindscroll="scroll"   bindtouchstart="scollStart" catchtouchend="scollEnd" bindscrolltolower="scollLower">
+<view style='width:100%;height:5rpx;background-color:#FFCCCC'></view>
+<view class='minarea_a'>
+  <template is="bar" data="{{data:list1}}"></template>
+  <!--<block wx:if="{{hidden==false}}">
+  <view class='minarea'>我是有底线的</view>  
+  <view class='minarea' style='border-top:solid #B0B0B0 1rpx;margin:10rpx 40rpx 30rpx 40rpx;'></view>  
+  </block>-->
+  <block wx:if="{{isInfoclick==true}}">
+    <view class='huodong' style='height:900rpx;flex-direction: column;'>
+      <label class='iconfont icon-wxbsousuotuiguang' style='font-size:200rpx;color:#C0C0C0'></label>
+      <view style='color:#C0C0C0;margin-top:50rpx;font-size:40rpx'>暂无场地信息</view>
+    </view>
+  </block>
+
+
+</view>
+ <view  class='icon_shuaxin' style="height: {{refreshHeight}}px;" wx:if="{{refreshing}}"> 
+   <view animation="{{refreshAnimation}}" class='iconfont icon-shuaxin' style='font-size:40rpx;margin-top:20rpx;' ></view> 
+ </view> 
+</scroll-view>
+<view id='bn2' animation="{{refreshAnimation_button}}"  catchtouchend='_pagenavigateer' catchtouchstart='flash_tishi' class='add iconfont icon-add' ></view>
+
+
+

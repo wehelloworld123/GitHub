@@ -1,0 +1,16 @@
+<!--pages/Yan_code/Yan_code.wxml-->
+
+
+<view class='input-view'>
+   <input style='height:100%' bindinput='PhoneNumber' type='number' maxlength='20' class='input-class' placeholder='请输入手机号' placeholder-style='color:#D3D3D3'></input>
+</view>
+<view class='input-view'>
+   <input style='height:100%' bindinput='Passcode' maxlength='20' password='true' class='input-class' placeholder='请输入验证码' placeholder-style='color:#D3D3D3'></input>
+</view>
+
+
+<button class='button-roll' size='mini' style="margin-top: 40rpx;background-color:#FF0088;" disabled="{{disabled}}" data-id="2" bindtap="getVerificationCode">{{time}}</button>
+
+
+ <button class='button-roll-b' catchtap='denglu_E' style='margin-top:100rpx;   background-color: #00BFFF;' form-type="submit" bindtap='bindevent2'> 登录 </button>
+

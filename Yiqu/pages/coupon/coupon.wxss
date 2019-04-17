@@ -1,0 +1,15 @@
+/* pages/scheme/scheme.wxss */
+.line-wards{
+  width: 98%;
+  height: 30rpx;
+  border-top: solid 1rpx #989898;
+  font-size: 30rpx;
+  color:#909090;
+}
+.line-ward{
+
+
+  height: 200rpx;
+  border: solid 1rpx  #D9FFFF;
+  margin:2% 4% 0 4%;
+}

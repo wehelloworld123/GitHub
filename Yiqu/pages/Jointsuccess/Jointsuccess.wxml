@@ -1,0 +1,12 @@
+<!--pages/Jointsuccess/Jointsuccess.wxml-->
+
+
+<view class='text-font-style-b'>
+    <icon type="success" size="80" color="green"/>
+</view>
+<view class='success-view'></view>
+     <view class='text-page'>
+        <text class='text-page-content'>活动已经发布</text>
+     </view>
+<button bindtap='_navigateback2' class='button-graph success-button' form-type="submit" value="确定"> 确定</button>
+

@@ -1,0 +1,24 @@
+<!--pages/eventsuggest/eventsuggest.wxml-->
+<view class='app'>
+     <view class='ele-container'>
+
+
+         <form class='element form-vessel' data-compid="form_vesse11" data-fieldinfo='' data-form='' 
+                                 style='background-color:rgba(0,0,0,0);opacity:1;'>
+               <view class='ele-container'>
+                       <view class='element textarea-ele js-form-ele'
+                                 style='margin-top:0;opacity:1;border-radius:0;width:585rpx;height:234rpx;line-height:35rpx;'>
+                       <textarea bindinput='Commicate' data-datakey="form_vessel1.form_data." 
+                                 data-segment='undefined' maxlength='-1' placeholder='请提出您的宝贵意见？'>
+                       </textarea>
+                       </view>
+               </view>
+               <view class='ele-container'>
+                   <button bindtap='_successsubmit'  class='button background-ele' form-type="submit"
+                      style='background-color:rgb(65,67,69);border-color:rgb(34,34,34);border-style:none;color:rgb(255,255,255);font-size:33rpx;height:82rpx;line-height:82rpx;margin-top:35rpx;opacity:1;text-align:center;width:585rpx;'>提交
+                   </button>
+                </view>
+       </form>
+
+     </view>
+</view>

@@ -1,0 +1,42 @@
+/* pages/eventpage/search/search.wxss */
+page{background-color: rgb(243,243,243)}
+
+.page_code{
+  height:100%;
+  display: flex;
+  align-items: center;
+}
+.page_input_class{
+  width:100%;
+  height:100%;
+  display: flex;
+  align-items: center;
+
+}
+.scanhistory{
+  margin:50rpx 2% 20rpx 2%;
+  display: flex;
+  justify-content: space-between; 
+}
+
+.blockword{
+  display: flex;
+  min-width:60rpx;
+  height:50rpx;
+  background-color: white;
+  border-radius: 10rpx;
+  justify-content: center;
+  line-height: 50rpx;
+  font-size:26rpx;
+  color: #C0C0C0;
+  margin:0  20rpx 20rpx 0;
+  padding: 0 30rpx 0 30rpx;
+}
+.searchword{
+  width:100%;
+  height:100rpx;
+  margin:20rpx 0 20rpx 0;
+  display:flex; 
+  align-items: center;
+  border-bottom:1rpx solid rgb(243,243,243);
+}

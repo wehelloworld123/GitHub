@@ -1,0 +1,366 @@
+<!--pages/eventpage/eventpage.wxml-->
+<view class="app">
+<template name="zcList">
+  <view class="element list" style="{{data.style}}">
+      <view class="list-container {{data.customFeature.sec_mode}}">
+        <block wx:for="{{data.content}}" wx:key="{{item.itemIndex}}">
+          <view id='{{item.itemIndex}}' class="list-item background-ele" bindtap='_pagenavigatedetail'>
+            <view class="title-container" style="{{item.titleWidth}} background-color:#F0F8FF;margin-bottom:1%; display: flex;flex-direction: row;">
+            <view style='width:10%;margin:10rpx 0 0 10rpx;'>
+            <label  class='iconfont icon-huo' style='color:red;font-size:50rpx;'></label>
+            </view>
+            <view style='display: flex;flex-direction: column;'>
+              <view style='font-size:34rpx;'>{{item.iteminput}}</view>
+              <view class="" style="{{item.secTitleStyle}}">{{item.eventwords}}</view>
+              <view class='bright789_view_hide'>
+                <text>{{item.maininput}}</text>
+                <text>{{item.placeinput}}</text>
+                <text>{{item.timeinputone}}</text>
+                <text>{{item.timeinputtwo}}</text>
+                <text>{{item.setinput}}</text>
+                <text>{{item.address}}</text>
+                <text>{{item.eventdetail}}</text>
+                <text>{{item.eventwards}}</text>    
+              </view>
+            </view>
+            </view>
+          </view>
+        </block>
+      </view>
+  </view>
+</template>
+
+
+<view class='page_navi'>
+ <view class='page_code' style='width:18%;  justify-content: center;'>
+     <label class='iconfont icon-saoyisao' data-opacity="a" bindtouchstart="{{show ? '':'changeOpacity'}}" catchtouchmove='CancelOpacity' catchtap="{{show ? '':'scanCode'}}" style="color:white;font-size:60rpx;opacity:{{opacity_a?'0.5':'1'}}"></label>
+ </view>
+
+  <view class='page_input_class' catchtap="{{show ? '':'navigateSearch'}}">
+     <view style='height:60%;width:100%;background-color:	#0066FF;border-radius:8rpx;display:flex'>
+        <view class='page_code' style='width:18%;  justify-content: center;'>
+           <label class='iconfont icon-sousuo' style='color:white;font-size:35rpx'></label>
+        </view>
+        <view class='page_code' style='width:80%;justify-content: center;'>
+           <input placeholder='搜索' disabled='true' placeholder-style='color:white;font-size:30rpx;'></input>
+        </view>
+     </view>
+  </view>
+
+
+
+  <view  class='page_address' bindtouchstart='changeOpacity' data-opacity="b" catchtouchmove='CancelOpacity' catchtap='translate' style="opacity:{{opacity_b?'0.5':'1'}}">
+      <text style='  font-size: 30rpx;color:white; '>{{city}}</text>
+      <label class='iconfont icon-unfold' style='color:white;font-size:40rpx'></label>
+  </view>
+</view>
+
+<view style="visibility:{{show ?'hidden':'visible'}}">
+
+<view style='height:200rpx;width:100%;display:flex;justify-content:center;align-items:center;'>
+ 
+     <image class='page_advertise' src="/images/heada.jpg" mode='aspectFill' ></image>
+  
+</view>
+  
+        <view class="ele-container">
+            <view class="element album sec-mode event-page-b" >
+                   <view class="album-container background-ele clearfix event-page-a" >
+                   <!-- 功能标题  -->
+                          <view catchtap='_pagenavigatere' bindtouchstart='changeOpacity' catchtouchmove='CancelOpacity' class="album-pic router" data-event-params="1" data-opacity="1" style="width:94rpx;margin-right:22%;margin-bottom:7rpx;margin-left:auto;opacity:{{opacity_1?'0.5':'1'}}">
+                                 <image mode="aspectFit" src="/images/filelist.png" style="height:94rpx;margin-left:auto;"></image>
+                                 <text class="title">信息</text>
+                          </view>
+
+                          <view class="album-pic router"  data-event-params="2" data-opacity="2" style="width:94rpx;margin-right:22%;margin-bottom:7rpx;margin-left:auto;opacity:{{opacity_2?'0.5':'1'}}" bindtouchstart='changeOpacity' catchtouchmove='CancelOpacity' bindtap='_pagenavigatere'>
+                                 <image mode="aspectFit" src="/images/list.png" style="height:94rpx;margin-left:auto;"></image>
+                                 <text class="title">场地</text>
+                          </view>
+
+                          <view class="album-pic router"data-event-params="3" data-opacity="3" style="width:94rpx;margin-bottom:7rpx;margin-left:auto;opacity:{{opacity_3?'0.5':'1'}}" bindtouchstart='changeOpacity' catchtouchmove='CancelOpacity' bindtap='_pagenavigatere'>
+                                 <image  mode="aspectFit" src="/images/active.png" style="height:94rpx;margin-left:auto;" bindtap=''></image>
+                                 <text class="title">活动</text>
+                          </view>
+
+                          <view catchtap='_bindnavi' bindtouchstart='changeOpacity' catchtouchmove='CancelOpacity' class="album-pic router" data-event-params="4" data-opacity="4" style="width:94rpx;margin-right:22%;margin-bottom:7rpx;margin-left:auto;opacity:{{opacity_4?'0.5':'1'}}">
+                                 <image mode="aspectFit" src="/images/technology.png" style="height:94rpx;margin-left:auto;"></image>
+                                 <text class="title">赞助</text>
+                          </view>
+
+                          <view class="album-pic router" data-event-params="5" data-opacity="5" bindtouchstart='changeOpacity' catchtouchmove='CancelOpacity'style="width:94rpx;margin-right:22%;margin-bottom:7rpx;margin-left:auto;opacity:{{opacity_5?'0.5':'1'}}" bindtap='_pagenavigatere'>
+                                 <image mode="aspectFit" src="/images/edit.png" style="height:94rpx;margin-left:auto;"></image>
+                                 <text class="title">发布</text>
+                          </view>
+
+                          <view class="album-pic router"data-event-params="6" data-opacity="6" style="width:94rpx;margin-bottom:7rpx;margin-left:auto;opacity:{{opacity_6?'0.5':'1'}}" bindtouchstart='changeOpacity' catchtouchmove='CancelOpacity' bindtap='neighbournavi'>
+                                 <image  mode="aspectFit" src="/images/position.png" style="height:94rpx;margin-left:auto;"></image>
+                                 <text class="title">附近</text>
+                          </view>
+
+                   </view>
+           </view>
+
+
+  
+
+                          
+            
+        </view>
+        <view class="ele-container">
+           <view class="freevessel" data-event-params="undefined event-page-c">
+                <view class="ele-container" style='padding:0 0 4% 0;  border-bottom: solid 1rpx #D8D8D8'>
+                    <text class="element text event-page-d" data-event-params="undefined">热门推荐</text>
+                </view>
+               <view class="ele-container" style='margin-top:4%;'><template is="zcList" data="{{data:list1}}"></template></view>
+   
+           </view>
+        </view>
+</view>
+
+</view>
+
+<view class="animation-element-wrapper"  style="visibility:{{show ? 'visible':'hidden'}}" bindtap="hiddenFloatView" data-id="444">
+     <view class="animation-element">
+        <text class="left-bt" catchtap="hiddenFloatView" data-id="555">取消</text>
+        <text class="right-bt" catchtap="hiddenFloatView_T" data-id="666">确定</text>
+       <!--<view class="line"></view>-->
+      </view>
+        <picker-view style='height:930rpx;'  indicator-style = "height: 50rpx;" value="{{value}}" bindchange="bindChange">
+        <!--国家-->
+        <picker-view-column>
+           <view wx:for="{{country}}" wx:key="*this" >
+             {{item}}
+          </view>
+        </picker-view-column>
+        <!--省区-->
+        <picker-view-column>
+          <view wx:for="{{pro}}" wx:key="424" >
+             {{item}}
+          </view>
+        </picker-view-column>
+        <!--市区-->
+ 
+        <picker-view-column>
+        <block wx:if="{{Index==0}}">
+          <view wx:for="{{pro_ah}}" wx:key="" >
+            {{item}}
+          </view>
+        </block>
+ 
+ 
+
+        <block wx:elif="{{Index==1}}">
+        
+          <view wx:for="{{pro_bj}}" wx:key="" >
+            {{item}}
+          </view>
+        
+        </block>
+
+        <block wx:elif="{{Index==2}}">
+        
+          <view wx:for="{{pro_cq}}" wx:key="" >
+            {{item}}
+          </view>
+        
+        </block>
+        
+        <block wx:elif="{{Index==3}}">
+        
+          <view wx:for="{{pro_fj}}" wx:key="" >
+            {{item}}
+          </view>
+        
+        </block>
+
+        <block wx:elif="{{Index==4}}">
+        
+          <view wx:for="{{pro_gs}}" wx:key="" >
+            {{item}}
+          </view>
+        
+        </block>
+
+        <block wx:elif="{{Index==5}}">
+        
+          <view wx:for="{{pro_gd}}" wx:key="" >
+            {{item}}
+          </view>
+        
+        </block>
+
+        <block wx:elif="{{Index==6}}">
+        
+          <view wx:for="{{pro_gx}}" wx:key="" >
+            {{item}}
+          </view>
+        
+        </block>
+
+        <block wx:elif="{{Index==7}}">
+        
+          <view wx:for="{{pro_gz}}" wx:key="" >
+            {{item}}
+          </view>
+        
+        </block>
+
+        <block wx:elif="{{Index==8}}">
+        
+          <view wx:for="{{pro_hn}}" wx:key="" >
+            {{item}}
+          </view>
+        
+        </block>
+
+
+        <block wx:elif="{{Index==9}}">
+        
+          <view wx:for="{{pro_hb}}" wx:key="" >
+            {{item}}
+          </view>
+        
+        </block>
+
+        <block wx:elif="{{Index==10}}">
+        
+          <view wx:for="{{pro_hen}}" wx:key="" >
+            {{item}}
+          </view>
+        
+        </block>
+
+        <block wx:elif="{{Index==11}}">
+        
+          <view wx:for="{{pro_hlj}}" wx:key="" >
+            {{item}}
+          </view>
+        
+        </block>
+
+        <block wx:elif="{{Index==12}}">
+        
+          <view wx:for="{{pro_hub}}" wx:key="" >
+            {{item}}
+          </view>
+        
+        </block>
+
+        <block wx:elif="{{Index==13}}">
+        
+          <view wx:for="{{pro_hun}}" wx:key="" >
+            {{item}}
+          </view>
+        
+        </block>
+
+        <block wx:elif="{{Index==14}}">
+        
+          <view wx:for="{{pro_jl}}" wx:key="" >
+            {{item}}
+          </view>
+        
+        </block>
+
+        <block wx:elif="{{Index==15}}">
+        
+          <view wx:for="{{pro_js}}" wx:key="" >
+            {{item}}
+          </view>
+        
+        </block>
+
+        <block wx:elif="{{Index==16}}">
+        
+          <view wx:for="{{pro_jx}}" wx:key="" >
+            {{item}}
+          </view>
+        
+        </block>
+
+        <block wx:elif="{{Index==17}}">
+        
+          <view wx:for="{{pro_ln}}" wx:key="" >
+            {{item}}
+          </view>
+        
+        </block>
+
+        <block wx:elif="{{Index==18}}">
+   
+          <view wx:for="{{pro_nmg}}" wx:key="" >
+            {{item}}
+          </view>   
+        </block>
+        <block wx:elif="{{Index==19}}">      
+          <view wx:for="{{pro_nx}}" wx:key="" >
+            {{item}}
+          </view>      
+        </block>
+        <block wx:elif="{{Index==20}}">     
+          <view wx:for="{{pro_qh}}" wx:key="" >
+            {{item}}
+          </view>     
+        </block>
+        <block wx:elif="{{Index==21}}">      
+          <view wx:for="{{pro_sd}}" wx:key="" >
+            {{item}}
+          </view>       
+        </block>
+        <block wx:elif="{{Index==22}}">       
+          <view wx:for="{{pro_sx}}" wx:key="" >
+            {{item}}
+          </view>      
+        </block>
+        <block wx:elif="{{Index==23}}">      
+          <view wx:for="{{pro_shx}}" wx:key="" >
+            {{item}}
+          </view>     
+        </block>
+        <block wx:elif="{{Index==24}}">     
+          <view wx:for="{{pro_sh}}" wx:key="" >
+            {{item}}
+          </view>      
+        </block>
+        <block wx:elif="{{Index==25}}">       
+          <view wx:for="{{pro_sc}}" wx:key="" >
+            {{item}}
+          </view>       
+        </block>
+        <block wx:elif="{{Index==26}}">       
+          <view wx:for="{{pro_tj}}" wx:key="" >
+            {{item}}
+          </view>       
+        </block>
+        <block wx:elif="{{Index==27}}">    
+          <view wx:for="{{pro_xz}}" wx:key="" >
+            {{item}}
+          </view>       
+        </block>
+
+        <block wx:elif="{{Index==28}}">      
+          <view wx:for="{{pro_xj}}" wx:key="" >
+            {{item}}
+          </view>        
+        </block>
+        <block wx:elif="{{Index==29}}">    
+          <view wx:for="{{pro_yn}}" wx:key="" >
+            {{item}}
+          </view>     
+        </block>
+        <block wx:elif="{{Index==30}}">      
+          <view wx:for="{{pro_zj}}" wx:key="" >
+            {{item}}
+          </view>       
+        </block>
+        <block wx:elif="{{Index==31}}">
+          <view wx:for="{{pro_gat}}" wx:key="" >
+            {{item}}
+          </view>
+        </block>
+  
+       </picker-view-column>
+         
+        </picker-view>
+  
+  </view>

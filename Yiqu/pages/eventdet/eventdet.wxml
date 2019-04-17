@@ -1,0 +1,86 @@
+<view class="app asidery" hidden="{{page_hidden}}">
+
+
+<template name="zcBreakline">
+  <view class="element breakline" style="{{data.style}}"></view>
+</template>
+
+<view class="ele-container">
+  <template is="zcBreakline" data="{{data:breakline1}}"/>
+  
+</view>
+
+
+  <template name="zcCarousel">
+
+  <swiper indicator-dots="true" circular="true" autoplay="{{data.customFeature.autoplay}}" vertical="{{data.customFeature.vertical}}" interval="{{data.customFeature.interval*1000}}" duration="750" style="{{data.style}}">
+    <block wx:for="{{data.content}}" wx:key="">
+      <swiper-item data-event-params="{{item.eventParams}}" catchtap="{{item.eventHandler}}">
+        <image class="swiper-item" src="{{item.pic}}"/>
+      </swiper-item>
+    </block>
+  </swiper>
+
+</template>
+
+
+<view class="ele-container">
+  <view style='width:100%;height:400rpx;'>      <image class="swiper-item" style='width:100%;height:100%' src="{{img}}"/></view>
+</view>
+
+<view class='event-rule'>
+  <view class='detai-decline conta-dis'>
+   <view class='navi'></view>
+   <text style='font-size:44rpx;'>{{iteminput}}</text>
+  </view>
+  <view class='eventtitle-intro conta-dis'>
+     <icon type="waiting" size="18" color="'green'"/>
+      <view class='icon-left'>{{timeinputone}} -- 至 -- {{timeinputtwo}}</view>
+  </view>
+  <view class='eventtitle-intro conta-dis'>
+      <icon type="search" size="20" color="'green'"/>
+      <view class='icon-left'>{{address}}</view>
+  </view>
+  <view class='event-detail'>
+      <view class='event-number'>
+          <text>预计人数：\n</text>
+          <text>{{number}}\n</text>
+      </view>
+      <view class='event-number'>
+          <text>报名人数：\n</text>
+          <text>{{number2}}</text>
+      </view>
+  </view>
+</view>
+
+<view style='height:10rpx;width:100%;background-color:  #F5F5F5   '></view>
+<view>
+  <view style=''>
+       <view class='eventtitle-line' style='display:flex'><view class='navi'></view>活动详情</view>
+       <view class='event-rule'>
+             <view>活动内容:</view>
+             <view class='event-content flex-a text-s'>{{eventdetail}}</view>
+             <view>活动奖励:</view>
+             <view class='event-content flex-a text-s'>{{eventwards}}</view>
+       </view>      
+  </view>
+</view>
+<view style='height:10rpx;width:100%;background-color:  #F5F5F5 '></view>
+<view style=''>
+       <view class='eventtitle-line' style='display:flex'> <view class='navi'></view>发起人信息</view>
+       <view class='event-rule'>
+             <view>主办方:</view>
+             <view class='initiator' >{{maininput}}</view>
+             <view>承办方:</view>
+             <view class='initiator'>{{placeinput}}</view>
+             <view>策划支持:</view>
+             <view class='initiator'>新梦想娱乐服务有限责任公司</view>
+             <view>联系方式:</view>
+             <view class='initiator'>{{setinput}}</view>
+       </view> 
+         
+</view>
+
+<button bindtap='_pagenavigateroll' class='button-graph'>报名</button> 
+
+</view>

@@ -1,0 +1,23 @@
+<!--pages/a/a.wxml-->
+<view style="white-space: nowrap;" class="box" bindtouchstart="touchstart" bindtouchmove="touchmove" bindtouchend="touchend">
+    <view class="club" animation="{{animation1}}" bindtap="scrollLeft">
+      <image src="{{clubs[0].image}}"/>
+      <text>{{clubs[0].name}}</text>
+    </view>
+    <view class="club" animation="{{animation2}}" bindtap="scrollLeft">
+      <image src="{{clubs[1].image}}"/>
+      <text>{{clubs[1].name}}</text>
+    </view>
+    <view class="club" animation="{{animation3}}">
+      <image src="{{clubs[2].image}}"/>
+      <text>{{clubs[2].name}}</text>
+    </view>
+    <view class="club" animation="{{animation4}}" bindtap="scrollRight">
+      <image src="{{clubs[3].image}}"/>
+      <text>{{clubs[3].name}}</text>
+    </view>
+    <view class="club" animation="{{animation5}}" bindtap="scrollRight">
+      <image src="{{clubs[4].image}}"/>
+      <text>{{clubs[4].name}}</text>
+    </view>
+  </view>

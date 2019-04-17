@@ -1,0 +1,59 @@
+<!--pages/bar/bar.wxml-->
+<template name="advertiser">
+  <block wx:for="{{data.content}}" wx:key="{{index}}">
+    <view class='bar-cen'>
+      <view class="all" id="{{index}}" catchtap='_pagenavigateer'>
+        <view class='bar-cen'>
+          <image src="{{item.pic}}" class="picture"></image>
+        </view>
+        <view class="body">
+          <view>
+            <text class="text" style="font-weight:800">{{item.title}}</text>
+          </view>
+
+          <view class="text1 fuj" style="font-size:32rpx;">主办方：{{item.sponsor}}</view>
+
+
+
+          <view class="text1 fuj" style="font-size:32rpx;">时间：{{item.timeinputone}}时 —— {{item.timeinputone}}时</view>
+
+
+
+
+          <view class="text1" style="font-size:32rpx;  padding:0 0 3% 4%;margin: 2% 0 0 0;">预计费用：{{item.money}}</view>
+
+
+          <view class="time hid">
+            <icon type="waiting" size="17" />
+            <view class="text1 fuj" style="font-size:32rpx;">{{item.setup}}</view>
+          </view>
+
+          <view class="time hid">
+            <icon type="waiting" size="17" />
+            <view class="text1" style="font-size:30rpx;">{{item.detil}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+</template>
+<view style='width:100%;height:5rpx;background-color:#FFCCCC'></view>
+<view class=''>
+
+
+  <template is="advertiser" data="{{data:list1}}"></template>
+  <!--<block wx:if="{{hidden==false}}">
+    <view class='minarea'>我是有底线的</view>
+    <view class='minarea' style='border-top:solid #B0B0B0 1rpx;margin:10rpx 40rpx 30rpx 40rpx;'></view>
+  </block>-->
+  <block wx:if="{{isInfoclick==true}}">
+    <view class='huodong' style='height:900rpx;flex-direction: column;'>
+      <label class='iconfont icon-wxbsousuotuiguang' style='font-size:200rpx;color:#C0C0C0'></label>
+      <view style='color:#C0C0C0;margin-top:50rpx;font-size:40rpx'>暂无活动信息</view>
+    </view>
+  </block>
+
+</view>
+<view id='bn2' bindtap='_pagenavigateer' class='add iconfont icon-add'></view>
+<!--<button id='bn2' bindtap='_pagenavigateer' class='button-ab' form-type="submit"> 我要发布 </button>-->
+<!--<canvas style="width: 300px; height: 200px;top:0;" canvas-id="firstCanvas"></canvas>-->

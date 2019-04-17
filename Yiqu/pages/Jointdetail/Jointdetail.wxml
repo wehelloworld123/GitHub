@@ -1,0 +1,99 @@
+<!--pages/Jointdetail/Jointdetail.wxml-->
+<view class='style-flex' style='color:#FFFFFF'>
+
+     <view class='joint-navigate  joint-navigate-margin'>
+        <text class='text-font-style'>1.基本信息</text>
+     </view>
+
+     <view class='joint-navigate joint-navigate-margin joint-navigate-color'>
+         <text text class='text-font-style'>2.活动详情</text>
+     </view>
+
+     <view class='joint-navigate joint-navigate-color-b '>
+         <text text class='text-font-style'>3.发布成功</text>
+     </view>
+</view>
+
+
+
+<view class='input-margi'>
+
+
+ 
+
+
+
+
+</view>
+
+
+<view  class='style-flex topic-bottom input-margi'>
+   <picker class='' bindchange="bindPickerChange" value="{{areaIndex}}" range="{{area}}">  
+       <view class="picker" style='font-size:34rpx;'>  
+       报名设置：{{area[areaIndex]}}  
+       </view>  
+   </picker>
+ </view> 
+ 
+
+  
+
+ <view class='deback page-color'></view>
+
+<view class='page-color page-tranit'></view>
+
+<view style=''>
+    <view class='incease-line background-title'>
+       <view class='navi'></view>
+       <view>活动详情</view>
+    </view>
+
+    <view class='event-rule'>
+
+
+
+       <view class='style-flex'>
+         <view class='style-dot style-margin-top1'></view>
+         <view>宣传语:</view>
+       </view>
+       <view class='event-content1' style='padding-left:2%'>
+            <input style='height:80rpx;width:100%;' maxlength='-1' auto-focus='true' bindblur="bindTextAreaBlur" bindinput='EventWords' placeholder-style=''  placeholder="请填写宣传语..."  />
+        </view>
+
+      <view class='style-flex'>
+         <view class='style-dot style-margin-top1'></view>
+         <view>活动内容:</view>
+      </view>
+         <view class='event-content'>
+            <textarea style='height:100%;width:100%;' maxlength='-1' auto-focus='true' bindblur="bindTextAreaBlur" bindinput='EventDetail' auto-height placeholder="请输入详细描述..." />
+         </view>
+
+      <view class='style-flex'>
+         <view class='style-dot style-margin-top1'></view>
+         <view>活动奖励:</view>
+      </view>
+         <view class='event-content'>
+             <textarea style='height:100%;width:100%;' maxlength='-1' bindblur="bindTextAreaBlur" bindinput='EventWards' auto-height placeholder="请填写活动奖励..." />
+         </view>
+
+
+      <view class='style-flex'>
+         <view class='style-dot style-margin-top1'></view>
+         <view>活动规则:</view>
+      </view>
+      <view class='event-content' style='min-height:200rpx'>
+             <textarea style='height:100%;width:100%;' maxlength='-1' bindblur="bindTextAreaBlur" bindinput='Costre' auto-height placeholder="请填写活动规则..." />
+      </view>
+      
+    </view>      
+</view>
+
+<view class="section">
+
+  
+  </view>
+  
+
+   
+
+ <button class='button-graph' disabled="{{buttonState?'':'true'}}" form-type="submit" bindtap='_pageeventnavigate'> 发布 </button>

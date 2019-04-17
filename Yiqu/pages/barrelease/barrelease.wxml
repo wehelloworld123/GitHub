@@ -1,0 +1,105 @@
+<!--pages/barrelease/barrelease.wxml-->
+
+<view class='joint-photo page-color event-position'>
+  <block wx:if="{{showHello==false}}">
+      <view class=" event-photo event-position ">
+        <view class="iconfont icon-pic" catchtap='_photochoose' style='font-size:40px;'></view>
+      </view>
+  </block>
+  <block wx:elif="{{showHello==true}}">
+      <image catchtap='_photochoose' src='{{img}}' style='width:100%;height:100%'></image>
+  </block>
+</view>
+
+
+<view class='input-margi'>
+   <view  class='style-flex topic-bottom'>
+       <view style='width:145rpx;'>场地标题</view>
+       <input  bindinput='Title'  style='margin-left:10%;' placeholder="标题"  value='{{title}}' />
+   </view> 
+
+
+   <view  class='style-flex topic-bottom'>
+       <view style='width:145rpx;'>商家名称</view>
+       <input  bindinput='Com_name'  style='margin-left:10%;' placeholder="名称"  value='{{Undertaker}}' />
+   </view> 
+
+
+   <view class='style-flex topic-bottom'>
+       <view style='width:145rpx;'>活动类型</view>
+           <picker class='' bindchange="bindPickerChange" value="{{areaIndex}}" range="{{area}}">  
+                <view  class="picker padd" style='font-size:34rpx;margin-left:5%;'>  
+                    <text> {{area[areaIndex]}}</text>
+                </view>  
+           </picker>
+   </view>
+
+   <view  class='style-flex topic-bottom'>
+       <view style='width:145rpx;'>场地位置</view>
+       <input bindinput='Address' catchtap='_getLocatewie' style='margin-left:10%;' placeholder="请选择" disabled='true' value='{{address}}' />
+   </view> 
+
+ 
+   <view class='style-flex topic-bottom'>
+       <view style='width:145rpx;'>容纳人数</view>
+            <picker class='' bindchange="bindPickerChange1" value="{{areaIndex1}}" range="{{area1}}">  
+                <view class="picker padd" style='font-size:34rpx;color:#6C6C6C'>  
+                   <input bindinput='Number'  style='margin-left:7%;' placeholder="请选择" disabled='true' value='{{area1[areaIndex1]}}' />
+                </view>  
+            </picker>
+  
+ </view>
+   <view class='style-flex topic-bottom'>
+        <view class='time'>时间</view>
+       <input id='in3' bindinput='Bartime' value='{{year}}-{{month}}-{{day}} {{hour}}时' class='barre' catchtap='onChangeShowState' placeholder-style='' placeholder="开始时间" disabled="true" />/
+       <input id='in4' bindinput='Bartime2' value='{{year2}}-{{month2}}-{{day2}} {{hour2}}时' class='barre' catchtap='onChangeShowState'  bindinput='' placeholder="结束时间" disabled="true" />
+   </view>
+
+</view>
+
+
+
+<view class='page-color page-tranit'></view>
+
+<view  class='style-flex topic-bottom input-margi'>
+   <view style='width:145rpx;'>联系方式</view>
+   <input  class='input-margi'  placeholder="手机号码"  />
+ </view> 
+
+ <view style='margin-left:6%;'>
+
+    <textarea bindinput='IntroDuce' disabled="{{showView?'true':''}}" maxlength='-1' placeholder='场地介绍'></textarea>
+
+ </view>
+ <view class='deback page-color'></view>
+ <view class='page-color page-tranit'></view>
+
+ <button bindtap='_pagenavigatehr' disabled="{{buttonState?'':'true'}}" class='button-graph' form-type="submit"> 发布 </button>
+ 
+ 
+ 
+<modal hidden="{{!showView}}"  bindcancel="onChangeShowStatem" bindconfirm="onChangeShowStatel" no-cancel="{{nocancel}}">
+   
+
+
+  <picker-view indicator-style="height: 50px;" style="width: 100%; height: 300px;" value="{{value}}" bindchange="{{showValue? 'bindChange':'bindChange2'}}">
+
+    <picker-view-column>
+      <view wx:for="{{years}}" style="line-height: 50px">{{item}}年</view>
+    </picker-view-column>
+
+    <picker-view-column>
+      <view wx:for="{{months}}" style="line-height: 50px">{{item}}月</view>
+    </picker-view-column>
+
+    <picker-view-column>
+      <view wx:for="{{days}}" style="line-height: 50px">{{item}}日</view>
+    </picker-view-column>
+
+    <picker-view-column>
+      <view wx:for="{{hours}}" style="line-height: 50px">{{item}}时</view>
+    </picker-view-column>
+    
+  </picker-view>
+
+</modal>

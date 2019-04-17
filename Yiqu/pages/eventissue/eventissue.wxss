@@ -1,0 +1,29 @@
+/* pages/eventissue/eventissue.wxss */
+.view-back{
+  width: 96%;
+  height: 140rpx;
+  background-color:#ffff66;
+  border-radius: 10rpx;
+  margin: 20rpx 0 0 18rpx;
+  display: flex;
+  flex-direction:row;
+  
+}
+.view-width{
+  width: 80%;
+  padding-top:10rpx;
+  display: flex;
+  flex-direction:row;
+  align-content: center;
+  padding-left: 50rpx;
+}
+.text-direction{
+  padding-top:34rpx;
+}
+.view-right{
+  align-items: flex-end;
+  padding-top:34rpx;
+}
+.navigator-hover {
+    color:blue;
+}

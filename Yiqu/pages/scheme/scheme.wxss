@@ -1,0 +1,24 @@
+/* pages/scheme/scheme.wxss */
+.line-wards{
+  width: 100%;
+  height: 30rpx;
+  border-top: solid 1rpx #989898;
+  font-size: 30rpx;
+  color:#909090;
+}
+.mess{
+  display: flex;
+  height: 200rpx;
+  margin:2% 2% 0 2%;
+  border: solid 8rpx blanchedalmond;
+  padding: 2% 0 0 1%;
+  font-size: 32rpx;
+  background: url(http://img.suiyiyun.cn/595095/4b90f603738da9777ae60900ba51f8198718e3d4.jpg)
+}
+.infor-scheme{
+    margin:2% 2% 0 2%;
+    padding: 5% 0 0 1%;
+}
+.line-weight{
+  padding-top: 2%;
+}

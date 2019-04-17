@@ -1,0 +1,21 @@
+<!--pages/eventissue/eventissue.wxml-->
+<template name='cN'>
+<block wx:for="{{data.content}}" wx:key="">
+<view class='view-back' style='{{item.backcolor}}'>
+   <view id='{{index}}' class='view-width' bindtap='_pagenavigatere'>
+       <view>
+           <image id='{{item.Lineindex}}' bindtap='' style="{{item.style}} " src="{{item.src}}"></image>
+       </view>
+       <view class='text-direction'>
+           <text id='{{item.Itemindex}}' bindtap=''>{{item.atext}}</text>
+       </view>
+   </view>
+   <view class='view-right'>       
+           <image style="{{item.style1}}" src="{{item.src1}}"></image>     
+   </view>
+</view>
+</block>
+</template>
+
+
+<template is="cN" data="{{data:list}}"></template>  

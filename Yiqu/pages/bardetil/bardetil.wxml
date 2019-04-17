@@ -1,0 +1,34 @@
+<!--pages/bardetil/bardetil.wxml-->
+
+<view class="picture event-position"> <image src="{{pic}}" style='height:100%;width:100%'></image></view>
+  <view class="title" style="font-size:40rpx; " >{{title}}</view>
+<view class="cent bardetail-margin">
+  <view class="body">
+   <view class="iconfont icon-type" style='font-size:18px;color:blue'></view>
+   <view  class='icon-left' style="font-size:35rpx;">类型：{{type}}</view>
+  </view>
+  <view class="body">
+      <view class="iconfont icon-time" style='font-size:18px;color:blue'></view>
+   <view class='icon-left' style="font-size:35rpx;">{{time1}}时    ——    {{time2}}时</view>
+  </view>
+
+  <view class="body" catchtap='Get_locate'>
+       <view class="iconfont icon-yijianmap" style='font-size:18px;color:#FFCC00'></view>
+   <view class='icon-left' style="font-size:35rpx;">{{address}}</view>
+   
+  </view>
+  <view class="body">
+   <view class="iconfont icon-house" style='font-size:18px;color:#3399FF'></view>
+   <view class='icon-left' style="font-size:35rpx;">可容纳{{number}}</view>
+  </view>
+  <view class="body" catchtap='Call_Phone'>
+      <view class="iconfont icon-weibiaoti-1" style='font-size:18px;' ></view>
+     <view class='icon-left' style="font-size:35rpx;">联系方式：{{phone}}</view>
+  <image catchtap='Call_phone' src='/images/gengduo.png' style='width:40rpx;height:40rpx;margin-left:22%'></image>
+  </view>
+  <view class="detil">
+   <view  style="font-size:35rpx;">{{detil}}</view>
+  </view>
+  </view>
+
+

@@ -1,0 +1,98 @@
+<!--pages/personcenter/personcenter.wxml-->
+
+<view class="app" style="visibility:{{show ? 'hidden':'visible'}}">
+    <view class="ele-container">
+         <view class="user-center usercenter-mode1 background-ele with-horizontal-view"                     style="height:auto; opacity:1; color:rgb(255, 255, 255); margin-top:0; font-size:16px;margin-left:auto;">
+               <view class="show-view" data-router="userCenter" style="background-image:url(http://cdn.jisuapp.cn/zhichi_frontend/static/webapp/images/top_bg.jpg); display:flex;flex-direction: row;">
+
+         
+          <view style='width:500rpx;;height:100%'>
+           <block wx:if="{{hasUserInfo==false&&canIUse}}" open-type="getUserInfo">
+                   <label class="empty-span"></label>
+                   <image catchtap=""  class="cover-thumb" src="{{src}}"></image>
+                   <label class="nickname">{{uername}}</label>
+              </block>
+              <block wx:elif="{{hasUserInfo==true}}" open-type="getUserInfo">
+                   <label class="empty-span"></label>
+                   <image catchtap="" class="cover-thumb" src="{{avatarUrl}}"></image>
+                   <label class="nickname">{{nickName}}</label>
+
+              </block>
+          </view>
+            <!-- 
+          <view class='cityclass'>
+             <view wx:if="{{hasUserInfo==false&&canIUse}}" open-type="getUserInfo">
+                <text>{{city}}</text><text style="color:black" catchtap="translate">[切换城市]</text>
+             </view>
+             <view wx:elif="{{hasUserInfo==true}}" open-type="getUserInfo">
+              <text>{{city}}</text><text style="color:black" catchtap='translate'>[切换城市]</text>
+             </view>
+          </view>-->
+       
+</view>
+ 
+
+         <view class="horizontal-view">
+               <view class="horizontal-router-container1">
+                  <view id='1' bindtouchstart='touchflash' catchtouchmove='touchend' catchtap='_pagenavigatereal' data-dataid="0" data-router="myOrder" style="margin-top: -1px;background-color:{{backcolor?'#E0E0E0':'#FFF'}}" >
+                    <label class="ico-moon icon-notebook" data-dataid="0"></label>
+                    <text data-dataid="0">信息管理</text>
+                    <label class="ico-moon icon-rightarrow" data-dataid="0"></label>
+                  </view>
+
+                  <view  bindtouchstart='touchflash' catchtouchmove='touchend' catchtap='_pagenavigatereal3' data-dataid="1" data-router="shoppingCart" style="margin-top: -1px;background-color:{{backcolor_a?'#E0E0E0':'#FFF'}}">
+                    <label class="ico-moon icon-shoppingcart" data-dataid="1"></label>
+                    <text  data-dataid="1">我的预约</text>
+                     <label class="ico-moon icon-rightarrow"  data-dataid="1"></label>
+                  </view>
+ 
+                  <view  bindtouchstart='touchflash' catchtouchmove='touchend' catchtap='_bindnavi' data-dataid="2" data-router="vipCard" style="margin-top: -1px;background-color:{{backcolor_b?'#E0E0E0':'#FFF'}}">
+                     <label class="ico-moon icon-vip-card" data-dataid="2" ></label>
+                     <text data-dataid="2" >会员卡</text>
+                     <label class="ico-moon icon-rightarrow" data-dataid="2" ></label>
+                  </view>
+                  <view  bindtouchstart='touchflash'  catchtouchmove='touchend' catchtap='_pagenavigatereal4' data-dataid="3" data-router="couponList" style="margin-top: -1px;background-color:{{backcolor_c?'#E0E0E0':'#FFF'}}">
+                     <label class="ico-moon icon-coupon"  data-dataid="3"></label>
+                     <text data-dataid="3">优惠券</text>
+                     <label class="ico-moon icon-rightarrow" data-dataid="3"></label>
+                  </view>
+
+
+               <!--   <view  bindtouchstart='touchflash' catchtouchmove='touchend' catchtap='_pagenavigatereal5' data-dataid="5" data-router="couponList" style="margin-top: -1px;background-color:{{backcolor_e?'#E0E0E0':'#FFF'}}">
+                     <label class="iconfont icon-delete"  data-dataid="5"></label>
+                     <text data-dataid="5">更新日志</text>
+                     <label class="ico-moon icon-rightarrow" data-dataid="3"></label>
+                  </view>-->
+
+                  <view  bindtouchstart='touchflash' catchtouchmove='touchend' catchtap='_pagenavigatereal5' data-dataid="4" data-router="couponList" style="margin-top: -1px;background-color:{{backcolor_d?'#E0E0E0':'#FFF'}};color:#FF3333">
+                     <label class="iconfont icon-delete"  data-dataid="4"></label>
+                     <text style='' data-dataid="4">清理缓存</text>
+                     <label style='margin-left:50%;float:right;font-size:16px;' data-dataid="3">{{data_stroage}}</label>
+                  </view>
+
+
+               </view>
+         </view>
+        </view>
+    </view>
+
+   <view style='width:100%;height:40rpx;'>
+
+   </view>
+
+ <view bindtouchstart='touchflash' catchtouchmove='touchend' catchtap='_pagenavigatereal2' style="width:100%;height:120rpx;background-color:{{backcolor_e?'#E0E0E0':'#FFF'}}" data-dataid="5">
+
+   <view id='2' class='position-padd'  data-dataid="5">
+      <image style='margin-left' data-dataid="5"  mode="scaleToFill" src="http://img.weiye.me/zcimgdir/album/file_57bbc698e156e.png" style='width:47rpx;height:47rpx;'></image>
+      <text class="element text"  data-dataid="5" style='padding-left:3%;color:  #6C6C6C  ;'>意见反馈</text>
+ 
+ 
+   </view>
+
+ </view>
+</view>
+
+
+
+
+    <view class="infoText"></view> 

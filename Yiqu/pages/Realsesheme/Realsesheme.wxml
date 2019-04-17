@@ -1,0 +1,91 @@
+<!--pages/scheme/scheme.wxml-->
+<block wx:if="{{Hidden==true}}">
+  <view class='huodong' style='height:900rpx;flex-direction: column;'>
+      <label class='iconfont icon-listjiao' style='font-size:200rpx;color:#C0C0C0'></label>
+      <view style='color:#C0C0C0;margin-top:50rpx;font-size:40rpx'>您还没有发布信息</view>
+  </view>
+</block>
+<block wx:else>
+  <block wx:for="{{content}}">
+
+    <block wx:if='{{item.eventstate!="1"&&item.eventstate!="-1"}}'>
+      <view class='mess' id="{{index}}" data-abc="{{index}}" bindlongtap='touchset'>
+        <view  catchtap='navigateDetail' data-abc="{{index}}" style='width:100%;height:100%;background-color:white'>
+
+          <view data-abc="{{index}}" style='width:45%;height:200rpx;position:absolute;left:10rpx;top:35rpx;'>
+            <image data-abc="{{index}}" mode='aspectFill' src="{{item.img}}" catchlongtap='touchset' style='width:85%;height:90%;background-color:black'></image>
+          </view>
+
+          <block wx:if='{{item.eventstate=="1"}}'>
+            <view data-abc="{{index}}" style='width:45%;height:80%;position:absolute;left:120rpx;'>
+              <image data-abc="{{index}}" id="{{Index}}" src='/images/complete.png' style='width:90%;height:90%'></image>
+            </view>
+          </block>
+
+          <block wx:elif='{{item.eventstate=="-1"}}'>
+            <view data-abc="{{index}}" style='width:45%;height:80%;position:absolute;left:120rpx;'>
+              <image data-abc="{{index}}" id="{{Index}}" src='/images/delete.png' style='width:90%;height:90%'></image>
+            </view>
+          </block>
+
+          <view data-abc="{{index}}" style='position:absolute;right:0;width:392rpx;height:199rpx;overflow: hidden'>
+            <view data-abc="{{index}}" catchlongtap='touchset' class='line-weight' style='font-size:38rpx;'>{{item.title}}</view>
+            <view data-abc="{{index}}" catchlongtap='touchset' class='line-weight' style='color:#A8A8A8;margin-top:10rpx'>
+              <text data-abc="{{index}}">时间 : {{item.timestart}}时</text>
+            </view>
+            <view data-abc="{{index}}" catchlongtap='touchset' class='line-weight' style='color:#A8A8A8;overflow: hidden'>       
+              <view data-abc="{{index}}" style='width:392rpx;height:40rpx;overflow:hidden'>发布方: {{item.undertaker}}</view>
+            </view>
+          </view>
+
+          <view class='D_button_view'></view>
+          <view style='margin:12rpx 0 0 80rpx'>
+              <button size='mini'   catchtap='button_compl' style='width:160rpx;height:65rpx;font-size:30rpx;margin:0 40rpx 0 200rpx'  hover-class='' type='primary' plain='true'>完成</button>
+              <button size='mini'  catchtap='button_del' style='width:160rpx;height:65rpx;font-size:30rpx' hover-class='' type='primary' plain='true'>删除</button>
+          </view>
+        </view>
+      </view>
+    </block>
+    <block wx:else>
+
+      <view class='mess'  id="{{index}}">
+        <view  catchtap='navigateDetail' data-abc="{{index}}" style='width:100%;height:100%;background-color:white'>
+          <view data-abc="{{index}}" style='width:45%;height:80%;position:absolute;left:10rpx;top:35rpx;'>
+            <image data-abc="{{index}}"  mode='aspectFill' src="{{item.img}}" style='width:85%;height:90%'></image>
+          </view>
+
+
+
+          <block wx:if='{{item.eventstate=="1"}}'>
+            <view data-abc="{{index}}" style='width:45%;height:80%;position:absolute;left:120rpx;'>
+              <image data-abc="{{index}}" src='/images/complete.png' style='width:90%;height:90%'></image>
+            </view>
+          </block>
+          <block wx:elif='{{item.eventstate=="-1"}}'>
+            <view data-abc="{{index}}" style='width:45%;height:80%;position:absolute;left:120rpx;'>
+              <image data-abc="{{index}}" src='/images/delete.png' style='width:90%;height:90%'></image>
+            </view>
+          </block>
+
+          <view data-abc="{{index}}" style='position:absolute;right:0;width:392rpx;height:199rpx;'>
+            <view data-abc="{{index}}" class='line-weight' style='font-size:38rpx;'>{{item.title}}</view>
+            <view data-abc="{{index}}" class='line-weight'style='color:#A8A8A8;margin-top:10rpx'>
+              <text data-abc="{{index}}">时间 : {{item.timestart}}时</text>
+            </view>
+            <view data-abc="{{index}}" class='line-weight'style='color:#A8A8A8'>
+              <view data-abc="{{index}}" style='width:392rpx;height:40rpx;overflow:hidden'>发布方: {{item.undertaker}}</view>
+            </view>
+ 
+          </view>
+
+          <view class='D_button_view'></view>
+          <view style='margin:12rpx 0 0 80rpx'>
+              <button size='mini' disabled='true'   catchtap='button_compl' style='width:160rpx;height:65rpx;font-size:30rpx;margin:0 40rpx 0 200rpx'  hover-class='' type='primary' plain='true'>完成</button>
+              <button size='mini' disabled='true'  catchtap='button_del' style='width:160rpx;height:65rpx;font-size:30rpx' hover-class='' type='primary' plain='true'>删除</button>
+          </view>
+        </view>
+      </view>
+    </block>
+  </block>
+</block>
+

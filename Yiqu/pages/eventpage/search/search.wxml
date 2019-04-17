@@ -1,0 +1,67 @@
+<!--pages/eventpage/search/search.wxml-->
+<view style='width:100%;height:100rpx;background-color:white'>
+
+  <view class='page_input_class'>
+     <view style='height:60%;width:80%;background-color:	rgb(235,235,235);border-radius:8rpx;display:flex;margin-left:2%'>
+        <view class='page_code' style='width:18%;  justify-content: center;'>
+           <label class='iconfont icon-sousuo' style='color:white;font-size:35rpx'></label>
+        </view>
+        <view class='page_code' style='width:100%;'>
+           <input bindinput='searchinput' placeholder='搜一搜，热门活动等你来' focus='true' placeholder-style='color:white;font-size:30rpx;'></input>
+        </view>
+     </view>
+
+     <view catchtap='searchCancel' style='width:20%;display:flex;justify-content: center;color:#3366FF;font-size:36rpx'>
+     取消
+     </view>
+  </view>
+
+</view>
+<template name="laber">
+
+<block wx:if="{{data.isHistory==true}}">
+<view class='scanhistory'>
+  <view style='color:#888888'>历史搜索</view>
+  <view class='iconfont icon-delete'   bindtouchstart='touchflash' catchtouchmove='touchend' catchtap='_pagenavigatereal' data-dataid="a" style="font-size:34rpx;color:{{data.iconcolor ?'black':'#888888'}}" ></view>
+</view>
+
+<view class='conta-dis' style='flex-wrap: wrap;margin:0 2% 20rpx 2%;'>
+  <block wx:for="{{data.searchHistory}}">
+     <view class='blockword' data-type='HS' id='{{index}}' catchtap='navigate_soso'>{{item.keyword}}</view>
+  </block>
+</view>
+</block>
+
+
+<view class='scanhistory'>
+  <view style='color:#888888'>搜索发现</view>
+</view>
+
+<view class='conta-dis' style='flex-wrap: wrap;margin:0 2% 20rpx 2%;'>
+<block wx:for="{{data.hotkey}}">
+  <view class='blockword' data-type='SF' id='{{index}}' catchtap='navigate_soso'>{{item.keywords}}</view>
+</block>
+</view>
+
+</template>
+
+
+<template name="soso">
+<view style="width:100%;">
+  <block wx:for="{{data.msgList}}">
+     <view class='searchword' style="background-color:{{data.backcolor?'#E0E0E0':'#FFF'}}" bindtouchstart='touchflash'  id="{{index}}" data-dataid="b" catchtouchmove='touchend' catchtap='_pagenavigatereal_detail'>
+       <label class='iconfont icon-sousuo' style='color:rgb(100,100,100);font-size:35rpx;padding-left:2%'></label>
+       <view style='margin-left:30rpx;font-size:28rpx'>{{item.word}}</view> 
+     </view>
+  </block>
+</view>
+</template>
+
+
+<block wx:if="{{searchinput==''}}">
+  <template is="laber"  data="{{data:carousel1}}"></template>
+</block>
+
+<block wx:elif="{{searchinput!=''}}">
+  <template is="soso"  data="{{data:carousel2}}"></template>
+</block>

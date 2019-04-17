@@ -1,0 +1,35 @@
+<!--pages/arcticle/arcticle.wxml-->
+<template name="arct">
+<view class='arcy'>
+ <block wx:for="{{data.content}}" wx:key="">
+ <view wx:if="{{item.arcticle==''}}">
+      <view class='arcticle-a  text-y adfgP'>
+         <text>{{item.arcticle}}</text>
+     </view>
+ </view>
+  <block wx:else>
+     <view class='arcticle-a text-y'>
+         <text>{{item.arcticle}}</text>
+     </view>
+ </block>
+  <view wx:if="{{item.src==''}}">
+       <view class='adfgP'>
+         <image src='{{item.src}}' style='width:98%; margin-top:40rpx;'></image>
+     </view>
+  </view>
+ <block wx:else>
+     <view>
+         <image src='{{item.src}}' style='width:98%; margin-top:40rpx;'></image>
+     </view>
+  </block>
+   </block>
+</view>
+</template>
+
+<view class='tall'>
+<view class='title-arcticle'>{{summary}}
+    <view class='date-arcticle'>{{time}}</view>
+</view>
+
+ <template is="arct" data="{{data:list}}"></template>
+</view>

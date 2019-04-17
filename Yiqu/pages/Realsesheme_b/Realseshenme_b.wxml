@@ -1,0 +1,112 @@
+<!--pages/Realsesheme_b/Realseshenme_b.wxml-->
+<block wx:if="{{Hidden==true}}">
+  <view class='huodong' style='height:900rpx;flex-direction: column;'>
+    <label class='iconfont icon-listjiao' style='font-size:205rpx;color:#C0C0C0'></label>
+    <view style='color:#C0C0C0;margin-top:50rpx;font-size:40rpx'>您还没有发布活动</view>
+</view>
+</block>
+
+
+<block wx:else>
+<block wx:for="{{content}}">
+<!-- block  event_state=="1||item.event_state!="-1""  -->
+  <block wx:if='{{item.event_state!="1"&&item.event_state!="-1"}}'>
+
+    <view  class='mess_a'   catchlongtap='touchset'>
+      <view class='conta-dis conta-dis-r' style='width:100%;height:60rpx;'>
+      <label class='iconfont icon-zizhutuiguang' style='margin:5rpx 0 0 30rpx;color:#FF6347'></label>
+            <view data-abc="{{index}}" catchlongtap='touchset'  style='font-size:34rpx;margin-left:20rpx'>{{item.iteminput}}</view>
+      </view>
+      <view  catchtap='navigateDetail' data-abc="{{index}}" style='display: flex;flex-direction: row;width:100%;height:200rpx;background-color:#F8F8F8'>
+
+        <view data-abc="{{index}}" style='width:45%;height:190rpx;position:absolute;left:10rpx;top:80rpx;'>
+          <image data-abc="{{index}}"  mode='aspectFill' src='{{item.img}}' catchlongtap='touchset' style='width:85%;height:90%;'></image>
+        </view>
+
+<!-- block  event_state=="1"  -->
+
+        <block  wx:if='{{item.event_state=="1"}}'>
+          <view data-abc="{{index}}" style='width:45%;height:80%;position:absolute;left:140rpx;'>
+            <image data-abc="{{index}}"  src='/images/complete.png' style='width:300rpx;height:200rpx'></image>
+          </view>
+        </block>
+<!-- block  event_state=="1"  -->   
+<!-- block event_state=="-1" -->  
+        <block wx:elif='{{item.event_state=="-1"}}'>
+          <view data-abc="{{index}}" style='width:45%;height:80%;position:absolute;left:140rpx;'>
+            <image data-abc="{{index}}"  src='/images/delete.png' style='width:300rpx;height:200rpx'></image>
+          </view>
+        </block>
+<!-- block event_state=="-1" -->  
+        <view data-abc="{{index}}" style='position:absolute;right:0;width:392rpx;height:199rpx;overflow: hidden;margin-top:20rpx'>
+
+          <view data-abc="{{index}}" catchlongtap='touchset' class='line-weight' style='color:#A8A8A8'>
+            <text data-abc="{{index}}">时间 : {{item.timeinputone}}时</text>
+          </view>
+          <view data-abc="{{index}}" catchlongtap='touchset' class='line-weight' style='color:#A8A8A8;overflow: hidden'>
+          
+            <view data-abc="{{index}}" style='width:392rpx;height:40rpx;overflow:hidden'>地点 : {{item.address}}</view>
+          </view>
+
+        </view>
+      </view>
+      <view style='margin-top:20rpx;width:100%;border-bottom:5rpx solid #F8F8F8'></view>
+      <view style='display: flex;justify-content: flex-end;padding-right:30rpx'>
+        <view style='margin-top:10rpx'>
+        <button size='mini'  catchtap='button_del' style='width:210rpx;height:65rpx;font-size:30rpx' hover-class='' type='primary' plain='true'>取消订单</button>
+        </view>
+      </view>
+    </view>
+  </block>
+<!-- block  event_state=="1||item.event_state!="-1""  -->
+  <block wx:else>
+
+    <view  class='mess_a'   catchlongtap='touchset'>
+      <view class='conta-dis conta-dis-r' style='width:100%;height:60rpx;'>
+      <label class='iconfont icon-zizhutuiguang' style='margin:5rpx 0 0 30rpx;color:#FF6347'></label>
+            <view data-abc="{{index}}" catchlongtap='touchset'  style='font-size:34rpx;margin-left:20rpx'>{{item.iteminput}}</view>
+      </view>
+      <view  catchtap='navigateDetail' data-abc="{{index}}" style='display: flex;flex-direction: row;width:100%;height:200rpx;background-color:#F8F8F8'>
+
+        <view data-abc="{{index}}" style='width:45%;height:190rpx;position:absolute;left:10rpx;top:80rpx;'>
+          <image data-abc="{{index}}"  mode='aspectFill' src='{{item.img}}' catchlongtap='touchset' style='width:85%;height:90%;'></image>
+        </view>
+
+<!-- block  event_state=="1"  -->
+
+        <block  wx:if='{{item.event_state=="1"}}'>
+          <view data-abc="{{index}}" style='width:45%;height:80%;position:absolute;left:140rpx;'>
+            <image data-abc="{{index}}"  src='/images/complete.png' style='width:300rpx;height:200rpx'></image>
+          </view>
+        </block>
+<!-- block  event_state=="1"  -->   
+<!-- block event_state=="-1" -->  
+        <block wx:elif='{{item.event_state=="-1"}}'>
+          <view data-abc="{{index}}" style='width:45%;height:80%;position:absolute;left:140rpx;'>
+            <image data-abc="{{index}}"  src='/images/delete.png' style='width:300rpx;height:200rpx'></image>
+          </view>
+        </block>
+<!-- block event_state=="-1" -->  
+        <view data-abc="{{index}}" style='position:absolute;right:0;width:392rpx;height:199rpx;overflow: hidden;margin-top:10rpx'>
+
+          <view data-abc="{{index}}" catchlongtap='touchset' class='line-weight' style='color:#A8A8A8'>
+            <text data-abc="{{index}}">时间 : {{item.timeinputone}}时</text>
+          </view>
+          <view data-abc="{{index}}" catchlongtap='touchset' class='line-weight' style='color:#A8A8A8;overflow: hidden'>
+          
+            <view data-abc="{{index}}" style='width:392rpx;height:40rpx;overflow:hidden'>地点 : {{item.address}}</view>
+          </view>
+
+        </view>
+      </view>
+      <view style='margin-top:20rpx;width:100%;border-bottom:5rpx solid #F8F8F8'></view>
+      <view style='display: flex;justify-content: flex-end;padding-right:30rpx'>
+        <view style='margin-top:10rpx'>
+        <button size='mini' disabled='true'  catchtap='button_del' style='width:160rpx;height:65rpx;font-size:30rpx' hover-class='' type='primary' plain='true'>取消订单</button>
+        </view>
+      </view>
+    </view>
+
+  </block>
+</block>
+</block>

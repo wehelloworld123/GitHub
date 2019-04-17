@@ -1,0 +1,94 @@
+/* pages/shouye12/shouye12.wxss */
+page{
+  background-color:rgb(243, 243, 243);
+  width: 100%;
+  }
+.annce{
+  width: 100%;
+  height: 100rpx;
+  background-color: #FFFFFF;
+  margin-top: 20rpx;
+  color:#FF3333;
+  font-size: 36rpx;
+  background: url(http://594013.freep.cn/594013/hesad.jpg);
+  font-weight: bold;
+}
+
+.youquan{
+  width: 100%;
+  height: 200rpx;
+  margin-top: 1%;
+
+}
+
+.youquan1{
+  width: 50%;
+  height: 100%;
+}
+.title-shou{
+  padding-left: 3%;
+  width: 97%;
+  min-height: 100rpx;
+  background-color: #FFFFFF;
+}
+.font-w{
+  font-weight: bold;
+  font-size: 34rpx;
+}
+.style-dot-purplr{
+  height: 20rpx;
+  width: 20rpx;
+  background-color: purple;
+  border-radius: 50%;
+  margin-right:10rpx;
+}
+.taotal{
+  max-width: 100%;
+  padding:0 0 0 -20%;
+}
+.event-position2{
+  display: flex;
+  flex-direction: column;
+ justify-content: center;
+ align-content: space-between;
+}
+.arcticle-style{
+  width:100%;
+  height:100rpx;
+  background-color: white;
+  padding-left: 5%;
+  border-bottom: solid 1rpx gainsboro;
+  color: #8E8E8E;
+}
+.discuss_sy{
+  margin-top: 3%;
+  padding-bottom: 2%;
+  min-height: 300rpx;
+  background-color: white;
+}
+.discuss_sy_a{
+  display: flex;
+  height: 120rpx;
+  border-bottom: solid 1rpx #ddd;
+}
+.discuss_sy_b{
+
+  width: 110rpx;
+  margin: 1% 0 0% 4%;
+  height: 110rpx;
+  background-color: pink;
+  border-radius: 50%;
+}
+.discuss_sy_c{
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: 2% 0 2% 4%;
+  height: 100%;
+
+}
+.text-sugg{
+  line-height: 20rpx;
+  font-size: 36rpx;
+
+}

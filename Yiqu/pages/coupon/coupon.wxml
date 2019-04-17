@@ -1,0 +1,16 @@
+<!--pages/scheme/scheme.wxml-->
+<template name="heo">
+  <block wx:for="{{data.content}}">
+   <view class='line-ward'>
+     <image src='{{item.src}}' style='width:100%;height:100%;'></image>
+   </view>
+  </block>
+</template>
+
+<block wx:if="{{i==1}}">
+  <view class='event-position line-wards'>暂无优惠券</view>
+</block>
+
+<block wx:elif="{{k==0}}">
+  <template is="heo" data="{{data:list}}"></template>
+</block>

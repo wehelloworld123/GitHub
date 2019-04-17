@@ -1,0 +1,132 @@
+<!--pages/Jointrelease/Jointrelease.wxml-->
+<template name="lb">
+  <swiper indicator-dots="true" circular="true" autoplay="{{data.customFeature.autoplay}}" vertical="{{data.customFeature.vertical}}" interval="{{data.customFeature.interval*1000}}" duration="750" style="{{data.style}}">
+    <block wx:for="{{data.content}}" wx:key="">
+      <swiper-item data-event-params="{{item.eventParams}}" catchtap="{{item.eventHandler}}">
+        <image class="swiper-item" src="{{item.pic}}"/>
+      </swiper-item>
+    </block>
+  </swiper>
+</template>
+
+
+<view class='style-flex'>
+
+     <view class='joint-navigate joint-navigate-color joint-navigate-margin'>
+        <text class='text-font-style'>1.基本信息</text>
+     </view>
+
+     <view class='joint-navigate joint-navigate-margin joint-navigate-color-b'>
+         <text text class='text-font-style'>2.活动详情</text>
+     </view>
+
+     <view class='joint-navigate joint-navigate-color-b '>
+         <text text class='text-font-style'>3.发布成功</text>
+     </view>
+
+</view>
+
+
+<view class='joint-photo page-color  event-position'>
+
+
+    <block wx:if="{{showPhoto==false}}">
+       <view class=" event-photo event-position ">
+          <view class="iconfont icon-pic" catchtap='_photochoose' style='font-size:30px;'></view>
+       </view>
+    </block>
+    <block wx:elif="{{showPhoto==true}}">
+     <image catchtap='_photochoose' src='{{tempFilePath}}' mode="aspecFill" style='width:100%;height:100%'></image>
+    </block>
+</view>
+
+
+
+<view class='input-margi'>
+   <view class='style-flex topic-bottom'>
+       <view style='width:145rpx;'>活动主题</view>
+       <input class='input-margi' disabled="{{disablestate ? '':'true'}}" placeholder="不超过20个字" maxlength='40' bindinput='ItemInput' />
+   </view>
+
+   <view  class='style-flex topic-bottom'>
+       <view style='width:145rpx;'>主办方</view>
+       <input class='input-margi' disabled="{{disablestate ? '':'true'}}"  placeholder="主办方" bindinput='MainInput' />
+   </view> 
+
+   <view  class='style-flex topic-bottom'>
+       <view style='width:145rpx;'>承办方</view>
+       <input class='input-margi' placeholder="承办方" disabled="{{disablestate ? '':'true'}}" bindinput='ChengInput' />
+   </view> 
+
+   <view  class='style-flex topic-bottom'>
+       <view style='width:145rpx;'>活动类型</view>
+         <picker class='' bindchange="bindPickerChange1" value="{{areaIndex1}}" range="{{area1}}">  
+         <view class="picker" style='font-size:34rpx;'>  
+             <input  style='margin-left:10%;' bindinput='MainInput' value='{{area1[areaIndex1]}}' placeholder="请选择>"  disabled="true" />
+         </view>  
+      </picker>
+   </view> 
+
+   <view class='style-flex topic-bottom'>
+       <view style='width:145rpx;'>活动地点</view>
+       <input style='margin-left:5%;' bindinput=''  bindtap='_getmaplocate' placeholder="请选择" disabled="true"  value='{{address}}' />
+   </view>
+
+   <view class='style-flex topic-bottom'>
+        <view class='time'>时间</view>
+       <input id='in1'  class='input-margi' bindtap='onChangeShowState' placeholder-style='' placeholder="请选择" disabled="true" value='{{year}}-{{month}}-{{day}} {{hour}}时' class='barre' bindinput='TimeInputone' /> /
+       <input id='in2' class='input-margi' bindtap='onChangeShowState' placeholder="请选择" disabled="true" value='{{year2}}-{{month2}}-{{day2}} {{hour2}}时' class='barre' bindinput='TimeInputtwo' />
+   </view>
+
+   <view>
+    <modal hidden="{{!showView}}"  bindcancel="onChangeShowStatem" bindconfirm="onChangeShowStatel" no-cancel="{{nocancel}}">
+  <picker-view bindtouchmove='preventD'  mask-class="mask_data" indicator-style="height: 50px;" style="width: 100%; height: 300px;" value="{{value}}" bindchange="{{showValue? 'bindChange':'bindChange2'}}">
+
+    <picker-view-column>
+      <view wx:for="{{years}}" style="line-height: 50px">{{item}}年</view>
+    </picker-view-column>
+
+    <picker-view-column>
+      <view wx:for="{{months}}" style="line-height: 50px">{{item}}月</view>
+    </picker-view-column>
+
+    <picker-view-column>
+      <view wx:for="{{days}}" style="line-height: 50px">{{item}}日</view>
+    </picker-view-column>
+
+    <picker-view-column>
+      <view wx:for="{{hours}}" style="line-height: 50px">{{item}}时</view>
+    </picker-view-column>
+
+  </picker-view>
+</modal>
+   </view>
+</view>
+
+<view class='page-color page-tranit'></view>
+
+<view  class='style-flex topic-bottom input-margi'>
+    <view style='width:145rpx;'>联系方式</view>
+    <input class='input-margi' type='number' placeholder="手机号"  bindinput='SetInput' />
+ </view> 
+ <view class='deback page-color'></view>
+
+    <view  class='style-flex topic-bottom' style='margin-left:6%'>
+       <view style='width:145rpx;'>容纳人数</view>
+         <picker class='' bindchange="bindPickerChange2" value="{{areaIndex2}}" range="{{area2}}">  
+         <view class="picker" style='font-size:34rpx;'>  
+             <input  style='margin-left:10%;' bindinput='bindPickerChange2' value='{{area2[areaIndex2]}}' placeholder="请选择>"  disabled="true" />
+         </view>  
+      </picker>
+   </view> 
+
+       <view  class='style-flex topic-bottom' style='margin-left:6%'>
+       <view style='width:145rpx;'>活动花费</view>
+         <picker class='' bindchange="bindPickerChange3" value="{{areaIndex3}}" range="{{area3}}">  
+         <view class="picker" style='font-size:34rpx;'>  
+             <input  style='margin-left:10%;' bindinput='bindPickerChange3' value='{{area3[areaIndex3]}}' placeholder="请选择>"  disabled="true" />
+         </view>  
+      </picker>
+   </view> 
+ <button class='button-graph' form-type="submit" bindtap='bindevent2'> 下一步 </button>
+

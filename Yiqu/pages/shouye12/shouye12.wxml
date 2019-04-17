@@ -1,0 +1,84 @@
+<!--pages/shouye12/shouye12.wxml-->
+
+  <template name="zcCarousel">
+  <swiper indicator-dots="true" circular="true" autoplay="{{data.customFeature.autoplay}}" vertical="{{data.customFeature.vertical}}" interval="{{data.customFeature.interval*1000}}" duration="750" style="{{data.style}}">
+    <block wx:for="{{data.content}}" wx:key="">
+      <swiper-item data-event-params="{{item.eventParams}}" catchtap="{{item.eventHandler}}">
+        <image class="swiper-item" src="{{item.pic}}"/>
+      </swiper-item>
+    </block>
+  </swiper>
+</template>
+
+<template name="article">
+<view style='margin-top: 3%;'>
+  <block wx:for="{{data.content1}}" wx:key="">
+     <view id="{{index}}" catchtap='_Arctivlehe' class='event-position2 arcticle-style'>{{item.summary}}------{{item.time}}
+     </view>
+  </block>
+  </view>
+</template>
+
+
+
+<view class='clearfix'>
+<view class="ele-container">
+  <template is="zcCarousel" data="{{data:carousel2}}"></template>
+</view>
+
+<view class='annce event-position'>{{annce}}</view>
+<view class='youquan' style='display:flex;'>
+   <view class='youquan1' style='border-right:solid 1rpx white;'><image    src="{{src1}}" style='width:100%;height:100%' catchtap='_bindquan'></image></view>
+   <view class='youquan1'><image src='{{src2}}' style='width:100%;height:100%' catchtap='_bindquan'></image>
+</view>
+</view>
+
+<view style=' margin-top:20rpx;'>
+   <view class='title-shou event-position1'>
+     <view class='style-dot-purplr style-margin-top1'></view>
+     <view class='font-w'>推荐好文</view>
+   </view>
+
+   <view style='width:96%;'>
+   <template is="article" data="{{data:arcticle}}"></template>
+   </view>
+
+<view style=' margin-top:20rpx;'>
+   <view class='title-shou event-position1'>
+     <view class='style-dot-purplr style-margin-top1'></view>
+     <view class='font-w'>讨论中心</view>
+   </view>
+   <block wx:if="{{suggestion==false}}">
+        <view class='event-position' style='width:100%;height:150rpx;'>{{discuss}}</view>
+   </block>
+   <block wx:else>
+       <scroll-view scroll-y style="min-height:140px;max-height:500rpx"   bindscrolltolower="lower"  scroll-into-view="{{toView}}" scroll-top="50">
+            <template is='disscuss' data="{{data:Suggest_A}}" ></template>
+            <block wx:if="{{suggestion_a==true}}">
+  <view class='minarea'>我是有底线的</view>  
+  <view class='minarea' style='border-top:solid #B0B0B0 1rpx;margin:10rpx 40rpx 30rpx 40rpx;'></view>  
+  </block>
+       </scroll-view>
+
+   </block>
+
+</view>
+</view>
+</view>
+
+<template name='disscuss'>
+    <block wx:for="{{data.cuss}}">
+        <view class='discuss_sy'>
+            <view class='discuss_sy_a'>
+             <view class='discuss_sy_b'><image src='{{item.pic}}' style='height:100%;width:100%'></image></view>
+             <view class='discuss_sy_c'>
+                <label style='margin-left:5%;font-size:38rpx;'>{{item.username}}</label>
+                <label style='margin:1% 0 0 60%;font-size:34rpx;color:#DDDDDD'>{{item.suggestime}}</label>
+             </view>
+            </view>
+            <view style='margin:4% 5% 0 5%'>
+                <text class='text-sugg'>{{item.sugg_text}}</text>
+            </view>
+        </view>
+     </block>
+</template>

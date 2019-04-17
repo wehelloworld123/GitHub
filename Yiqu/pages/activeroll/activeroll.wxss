@@ -1,0 +1,5 @@
+/* pages/activeroll/activeroll.wxss */
+.a{
+  font-size: 40rpx;
+  color: red;
+}

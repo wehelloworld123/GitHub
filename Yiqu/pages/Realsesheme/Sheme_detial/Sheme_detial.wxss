@@ -1,0 +1,116 @@
+/* pages/Realsesheme/Sheme_detial/Sheme_detial.wxss */
+page{
+  background-color: #227700;
+  width: 100%;
+  overflow: auto;
+  height: 1%;
+}
+/** 一层结构 **/
+.shemeDetail_Toall{
+  display:flex;
+  width:100%;
+  height: 880rpx;
+  justify-content: center;
+
+}
+/** 一层结构 **/
+.shemeDetail{
+  margin-top: 10rpx;
+  background: white;
+  width: 90%;
+  height: 100%;
+  justify-content: center;
+
+}
+
+
+
+/** 三层结构 **/
+.sheme_title{
+  width: 100%;
+  height: 100rpx;
+  background: #F5F5F5;
+  display: flex;
+  justify-content: center;
+  line-height: 100rpx;
+
+}
+
+.SecondCode{
+  background: pink;
+  width: 300rpx;
+  height: 300rpx;
+}
+/** 三层结构 **/
+
+/** 额外结构 **/
+.iconinfo{
+  margin-top:30rpx;
+  display:flex;
+
+  width: 100%;
+  height: 200rpx;
+  justify-content: center;
+
+}
+
+.position_icon{
+  display:flex;
+  height:100%;
+ 
+  align-items: center;
+}
+
+
+
+/*用户订单样式*/
+
+.use_info{
+  width: 96%;
+  height: 400rpx;
+  margin:0 0 0 2%;
+  border-top: 4rpx solid #aaa;
+  border-bottom: 4rpx solid #aaa; 
+}
+
+.use_info_a{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 100rpx;
+  align-items: center;
+  border-bottom: 1rpx solid #F0F0F0;
+  padding-left: 10rpx;
+}
+
+.use_info_title{
+  display: flex;
+  width: 100%;
+  height: 100rpx;
+  align-items: center;
+  border-bottom: 1rpx solid #F0F0F0;
+  padding-left: 10rpx;
+  font-size: 36rpx;
+}
+.use_info_detail{
+  width: 96%;
+  min-height: 300rpx;
+  margin:0 0 0 2%;
+  overflow: hidden;
+}
+.use_info_detail_a{
+
+  width: 100%;
+  height: 100%;
+
+  border-bottom: 1rpx solid #F0F0F0;
+  padding: 20rpx 0 0 10rpx;
+  text-indent: 2em;
+}
+/*遮罩样式*/
+.madol_view{
+  width: 100%;
+  height: 600rpx;
+  background-color: white;
+
+}

@@ -1,0 +1,16 @@
+
+      <view class='photo_view'>
+        <view class='active_src'>
+        <image src='/images/titleicon.jpg'  style='width:100%;height:100%;border-radius: 50%;'></image>
+        </view>
+      </view>
+        <view style='display:flex;;margin:30rpx 0 100rpx 0;justify-content: center;color:#A9A9A9'><view>欢迎来到"Hello活动"</view></view>
+<view class='input-view'>
+  <input style='height:100%' bindinput='Username' maxlength='20' class='input-class' placeholder='请输入用户名/手机号' placeholder-style='color:#D3D3D3'></input>
+</view>
+<view class='input-view'>
+  <input style='height:100%' bindinput='Passwords' maxlength='20' password='true' class='input-class' placeholder='请输入密码' placeholder-style='color:#D3D3D3'></input>
+</view>
+<view class='laber_pass' catchtap='Yan_code'>忘记密码？</view>
+<button class='button-roll' catchtap='denglu_E' disabled="{{isBtnClicked?'':''}}" style='margin-top:100rpx;   background-color: #00BFFF;' form-type="submit"> 登录 </button>
+<button class='button-roll' catchtap='E_zhuce' style='margin-top: 40rpx;   background-color: #FF0088 ;' form-type="submit"> 没有账号？立即注册 </button>

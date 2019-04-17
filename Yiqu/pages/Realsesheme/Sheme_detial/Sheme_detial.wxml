@@ -1,0 +1,174 @@
+<!--pages/Realsesheme/Sheme_detial/Sheme_detial.wxml-->
+<template name="activecheck">
+ <view class='shemeDetail_Toall'>
+
+
+
+   <view class='shemeDetail'>
+
+      <view class='sheme_title'>
+          <text>这是一个标题{{data.title}}</text>
+      </view>
+
+      <view class='photo_view'>
+      <block wx:if="{{data.avarlurl!=''}}">
+        <view class='active_src'>
+           <image src='{{data.avarlurl}}' style='width:100%;height:100%;border-radius:50%;'></image>
+        </view>
+        </block>
+      <block wx:else>
+        <view class='active_src'>
+           <image src="http://bpic.588ku.com/element_origin_min_pic/01/47/03/35574339ab3c813.jpg!rw400" style='width:100%;height:100%;border-radius:50%;'></image>
+        </view>
+      </block>
+      </view>
+
+      <view class='code_view'>
+      <view class='sheme_title' style='background:white;'>
+          <text style='font-size:30rpx;color:#D3D3D3'>扫码参与活动</text>
+      </view>
+
+      <view style='display: flex;justify-content: center;'>
+          <view class='SecondCode'>
+          <image src='{{data.scancode}}' style='width:100%;height:100%'></image>
+          </view>
+      </view>
+      </view>
+
+
+   <view style='display:flex;justify-content: center;width:100%'>
+      <view style='width:16%;margin-left:4%'>
+         <label class='iconfont icon-huo' style='color:red;font-size:60rpx;'></label>
+      </view>
+      <view style='width:80%;margin-top:8rpx;'>
+        该活动已参与人数：{{data.peoNab}}
+      </view>
+      </view>
+   </view>
+
+
+
+
+ </view>
+
+   <view class='iconinfo'>
+      <view style='background:	#008800;width:90%;height:100%;color:white'>
+              <view style='width:100%;height:50%;border-bottom:1rpx solid #808080;display:flex;'>
+                  <view class='position_icon' style='width:20%; justify-content: center;'>
+                    <label class='iconfont icon-type' style='font-size:60rpx;'></label>
+                  </view>
+
+                  <view class='position_icon'  style='width:80%;'>
+                   类型：{{data.Etype}}
+                  </view>
+              </view>
+
+              <view style='width:100%;height:50%;display:flex;'>
+                  <view class='position_icon' style='width:20%; justify-content: center;'>
+                    <label class='iconfont icon-yijianmap' style='font-size:50rpx;'></label>
+                  </view>
+
+                  <view class='position_icon'  style='width:80%;'>
+                   地址：{{data.address}}
+                  </view>
+  
+              </view>
+      </view>
+   </view>
+</template>
+
+
+<template name="usercheck">
+
+
+ <view class='shemeDetail_Toall' style='height:850rpx'>
+
+
+
+  <view class='shemeDetail'>
+
+    <view class='photo_view'>
+    <block wx:if="{{data.avarlurl!=''}}">
+      <view class='active_src'>
+           <image src='{{data.avarlurl}}' style='width:100%;height:100%;border-radius:50%'></image>
+      </view>
+    </block>
+    <block wx:else>
+      <view class='active_src'>
+           <image src="http://bpic.588ku.com/element_origin_min_pic/01/47/03/35574339ab3c813.jpg!rw400" style='width:100%;height:100%;border-radius:50%;'></image>
+      </view>
+    </block>
+    </view>
+    
+    <view class='use_info_title'>义卖助学活动</view>
+    <view class='use_info'>
+      <view class='use_info_a'>
+          <view>{{data.view_Etype}}：公益型</view>
+      </view>
+      <view class='use_info_a'>
+          <view>{{data.view_time}}：2019-2-21</view>
+      </view> 
+      <view class='use_info_a'>
+         <view>{{data.view_address}}：武汉市长江大学</view>
+      </view>
+      <view class='use_info_a' style='border-bottom: 1rpx solid white'>
+          <view>{{data.view_sposor}}：湖北省长江大学</view>
+      </view>
+    </view>
+     <block wx:if="{{!data.hidden}}">
+     <view style='display:flex;align-items: center;height:100rpx;padding-left:260rpx'>{{data.view_contact}}：15856442921</view>
+     </block>  
+   </view>
+
+ </view>
+
+  <view style='height:10rpx;width:100%'></view><!--过渡-->
+
+ <view class='shemeDetail_Toall' style='height:400rpx'>
+   <view class='shemeDetail'>
+        <view class='use_info_title' style='font-size:34rpx;border-bottom: 4rpx solid #aaa; '>{{data.view_info}}</view>
+        <view class='use_info_detail'>
+            <view class='use_info_detail_a'>
+             <text>活动主题由儿童基金会提供，根据某小学关于校舍修缮的求助。于啡色酒吧开展公益消费助学活动，活动时间段内消费所得均捐助于该小学。声明活动期间的消费资金由基金会直接接收。</text>
+            </view>
+        </view>
+  <!--  <view class='use_info_detail'>
+            <view class='use_info_detail_a'>
+             <text>活动主题由儿童基金会提供，根据某小学关于校舍修缮的求助。于啡色酒吧开展公益消费助学活动，活动时间段内消费所得均捐助于该小学。声明活动期间的消费资金由基金会直接接收。</text>
+            </view>
+        </view>-->
+    </view>  
+</view>
+<block wx:if="{{!data.hidden}}">
+   <view style='width:100%;height:30rpx;'>
+     <button type='warn'  catchtap='modalhidden'> 领取优惠券</button>
+   </view>
+</block>
+
+
+</template>
+
+
+<template></template>
+
+
+
+<block wx:if="{{orderDetailType==1}}">
+   <template is="activecheck" data="{{data:carousel1}}"></template>
+</block>
+
+
+<block wx:elif="{{orderDetailType==2}}">
+  <template is="usercheck" data="{{data:carousel2}}"></template>
+</block>
+
+<block wx:elif="{{orderDetailType==3}}">
+  <template is="usercheck" data="{{data:carousel3}}"></template>
+</block>
+
+
+<modal hidden="{{hidden}}"  confirm-text="领取优惠券" cancel-text="取消" bindcancel="couponCancel" bindconfirm="couponConfirm" no-cancel="{{nocancel}}">
+   <view class='madol_view'>
+     
+   </view>
+</modal>
