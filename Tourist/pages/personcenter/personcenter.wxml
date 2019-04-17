@@ -1,0 +1,47 @@
+<!--pages/personcenter/personcenter.wxml-->
+
+<view class='avturlback'>
+  <view class='avturlelement'>
+    <block wx:if="{{isUserinfo1==true}}">
+      <image src='{{avatarUrl1}}' style='height:200rpx;width:200rpx;border-radius:50%;'></image>
+      <label style='margin-top:5%;font-size:40rpx;color:white'>{{username1}}</label>
+    </block>
+    <block wx:else>
+      <image src='http://img.zhichiwangluo.com/zc_app_default_photo.png' style='height:200rpx;width:200rpx;border-radius:50%;'></image>
+      <label style='margin-top:5%;font-size:40rpx;color:white'>用户名</label>
+    </block>
+  </view>
+</view>
+
+<view class='personcenter_info'>
+  <block wx:for="{{copun_info}}">
+    <view style='display:flex;font-size:38rpx;color:rgb(100,100,100)'>
+      <image style='width:60rpx;height:60rpx;' src="{{item.src}}"></image>
+      <view style='margin:4rpx 0 0 20rpx'>{{item.title}}:{{item.amount}}</view>
+    </view>
+  </block>
+</view>
+
+<view style='width:100%;'>
+  <block wx:for="{{optional}}">
+    <view class='selectinfo' style='{{item.selectinfostyle}}' catchtap='navigato' data-dataid="{{index}}">
+      <!--
+      <image src='{{item.src}}' style="width:80rpx;height:80rpx;margin:0 0 0 40rpx;{{item.style}}"></image>
+      -->
+      <label class="{{item.font1_class}}" style='font-size:50rpx;{{item.colorstyle}};margin:0 0 0 40rpx;'></label>
+      <text style='margin-right:360rpx'>{{item.content}}</text>
+      <label class="{{item.font2_class}}" style='font-size:50rpx;color:#aaa;margin-right:40rpx'></label>
+
+    </view>
+  </block>
+  <view class='selectinfo' style='margin-top:20rpx'  data-dataid="{{index}}">
+    <label class="tourist icon-kefu1" style='font-size:50rpx;{{item.colorstyle}};margin:0 0 0 40rpx;'></label>
+    <text style='margin-right:340rpx'>联系客服</text>
+    <view class='contact_view'>
+      <contact-button type='default-light' size='20' session-from='webapp'></contact-button>
+    </view>
+
+  </view>
+</view>
+
+<button bindgetuserinfo="_getUserInfo" open-type="getUserInfo" style="width:150px;height:40px;border-radius:18px;font-size:16px;margin-top:30rpx;margin-bottom:10rpx" type="warn"> 授权 </button>

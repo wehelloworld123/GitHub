@@ -1,0 +1,43 @@
+/**app.wxss**/
+
+@charset 'utf-8';
+
+@import "utils/font.wxss";
+
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+} 
+.selectinfo{
+  width:100%;
+  height:100rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+  background-color:white;
+
+}
+
+
+.contain_display_row{
+  display: flex;
+}
+
+.contain_display_col{
+  display: flex;
+  flex-direction: column;
+}
+
+.contain_display_justcenter{
+  justify-content: center;
+}
+
+.contain_display_alicenter{
+  align-items: center;
+}

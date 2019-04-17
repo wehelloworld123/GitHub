@@ -1,0 +1,37 @@
+{
+  "pages": [
+    "pages/shouye/shouye",
+    "pages/findfood/findfood",
+    "pages/personcenter/personcenter",
+    "pages/index/index",
+    "pages/logs/logs"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "iconPath": "images/59f04ae45254d.png",
+        "selectedIconPath": "images/59f04ae452599.png",
+        "text": "首页",
+        "pagePath": "pages/shouye/shouye"
+      },
+      {
+        "iconPath": "images/59f04ae485c01.png",
+        "selectedIconPath": "images/59f04ae485c49.png",
+        "text": "发现",
+        "pagePath": "pages/findfood/findfood"
+      },
+      {
+        "iconPath": "images/59f04ae49cccd.png",
+        "selectedIconPath": "images/59f04ae49cd16.png",
+        "text": "我的",
+        "pagePath": "pages/personcenter/personcenter"
+      }
+    ]
+  }
+}

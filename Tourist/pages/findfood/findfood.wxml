@@ -1,0 +1,26 @@
+<!--pages/findfood/findfood.wxml-->
+<view class='tagline'>来一场说走就走的旅行</view>
+
+<view class="tuijian" style='border-bottom: solid 1rpx #D8D8D8'>
+  <label class='tourist icon-difangtechan' style='color:red;font-size:50rpx;margin-left:30rpx'></label>
+  <text style='margin-left:10rpx;'>特产推荐</text>
+</view>
+
+<view class='special'>
+  <image style='width:100%;min-height:200rpx' src='https://i03picsos.sogoucdn.com/6e3cfc2745a044ed'>  <text style='color:rgb(120,120,120);margin:5rpx 0 10rpx 10rpx'>来自古徽州的传统面食</text></image>
+
+</view>
+<view class="tuijian" style='border-bottom: solid 1rpx #D8D8D8'>
+  <label class='tourist icon-meishi' style='color:red;font-size:50rpx;margin-left:30rpx'></label>
+  <text style='margin-left:30rpx;'>美食推荐</text>
+</view>
+
+<view class='foodclass'>
+
+  <block wx:for="{{contitem1}}">
+    <image src='{{item.src}}' style='{{item.viewitem}};margin:10rpx 5rpx 0 5rpx;' class='functionitem'></image>
+  </block>
+
+
+
+</view>

@@ -1,0 +1,46 @@
+<!--pages/shouye/shouye.wxml-->
+<template name="zcCarousel">
+  <swiper indicator-dots="true" circular="true" autoplay="{{data.customFeature.autoplay}}" vertical="{{data.customFeature.vertical}}" interval="{{data.customFeature.interval*1000}}" duration="750" style="{{data.style}}">
+    <block wx:for="{{data.content}}" wx:key="">
+      <swiper-item data-event-params="{{item.eventParams}}" catchtap="{{item.eventHandler}}">
+        <image style='width:100%;height:100%' src="{{item.pic}}" />
+      </swiper-item>
+    </block>
+  </swiper>
+</template>
+
+<view class="ele-container">
+  <template is="zcCarousel" data="{{data:carousel2}}"></template>
+</view>
+
+
+
+<block wx:for="{{functionitem}}">
+  <view class="selectfunction" style='color:white'>
+    <view style='{{item.viewitem1}}' class='functionitem'>
+      <label style='font-size:100rpx;{{item.font1style}}' class='{{item.font_class1}}'></label>
+      <text>{{item.text1}}</text>
+    </view>
+    <view style='{{item.viewitem2}}' class='functionitem'>
+      <label style='font-size:100rpx;{{item.font2style}}' class='{{item.font_class2}}'></label>
+      <text>{{item.text2}}</text>
+    </view>
+  </view>
+</block>
+
+<!--
+<view style='width:100%;min-height:1000rpx;margin-top:30rpx;' class='contain_display_row'>
+
+  <view style='width:50%' class='contain_display_col contain_display_alicenter'>
+    <block wx:for="{{contitem1}}">
+      <view style='{{item.viewitem}};margin-top:10rpx;' class='functionitem'></view>
+    </block>
+  </view>
+  <view style='width:50%;margin-top:60rpx;' class='contain_display_col contain_display_alicenter'>
+    <block wx:for="{{contitem2}}">
+      <view style='{{item.viewitem}};margin-top:10rpx;' class='functionitem'></view>
+    </block>
+  </view>
+
+</view>
+-->
