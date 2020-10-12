@@ -1,0 +1,633 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fc.test.mapper.auto.ProContentMapper">
+  <resultMap id="BaseResultMap" type="com.fc.test.model.auto.ProContent">
+    <result column="no" jdbcType="VARCHAR" property="no" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="summary" jdbcType="VARCHAR" property="summary" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="pic" jdbcType="VARCHAR" property="pic" />
+    <result column="charp_id" jdbcType="BIGINT" property="charpId" />
+    <result column="charp_name" jdbcType="VARCHAR" property="charpName" />
+    <result column="sec_name" jdbcType="VARCHAR" property="secName" />
+    <result column="book_id" jdbcType="VARCHAR" property="bookId" />
+    <result column="book_name" jdbcType="VARCHAR" property="bookName" />
+    <result column="likes" jdbcType="INTEGER" property="likes" />
+    <result column="recom_no" jdbcType="INTEGER" property="recomNo" />
+    <result column="views" jdbcType="INTEGER" property="views" />
+    <result column="adopt" jdbcType="INTEGER" property="adopt" />
+    <!--<result column="favorer" jdbcType="VARCHAR" property="favorer" />-->
+    <result column="creator" jdbcType="VARCHAR" property="creator" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+    <result column="create_dat" jdbcType="TIMESTAMP" property="createDat" />
+    <result column="l_update_dat" jdbcType="TIMESTAMP" property="lUpdateDat" />
+    <result column="is_del" jdbcType="INTEGER" property="isDel" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+<sql id="Base_Column_List">
+	  	  	      	no,
+       	  	      	title,
+       	  	      	summary,
+       	  	      	content,
+       	  	      	pic,
+       	  	      	charp_id,
+       	  	      	charp_name,
+       	  	      	sec_name,
+       	  	      	book_id,
+       	  	      	book_name,
+       	  	      	likes,
+       	  	      	recom_no,
+       	  	      	views,
+       	  	      	adopt,
+       	  	      	/*favorer,*/
+       	  	      	creator,
+       	  	      	create_by,
+       	  	      	create_dat,
+       	  	      	l_update_dat,
+       	  	    	  	is_del
+       	</sql>
+  <select id="selectByExample" parameterType="com.fc.test.model.auto.ProContentExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_pro_content
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_pro_content
+    where no = #{no,jdbcType=VARCHAR}
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from t_pro_content
+    where no = #{no,jdbcType=VARCHAR}
+  </delete>
+
+    <update id="deleteStsByKey" parameterType="com.fc.test.model.auto.ProContent">
+        update t_pro_content
+        SET is_del = #{isDel}
+        where no = #{no}
+    </update>
+
+  <delete id="deleteByExample" parameterType="com.fc.test.model.auto.ProContentExample">
+    delete from t_pro_content
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  
+  <insert id="insert" parameterType="com.fc.test.model.auto.ProContent">
+    insert into t_pro_content (
+      	  	       no,
+       	  	       title,
+       	  	       summary,
+       	  	       content,
+       	  	       pic,
+       	  	       charp_id,
+       	  	       charp_name,
+       	  	       sec_name,
+       	  	       book_id,
+       	  	       book_name,
+       	  	       likes,
+       	  	       recom_no,
+       	  	       views,
+       	  	       adopt,
+       	  	       /*favorer,*/
+       	  	       creator,
+       	  	       create_by,
+       	  	       create_dat,
+       	  	       l_update_dat,
+       	  	    	  is_del
+       	    )
+    values (
+	  	  	      	#{no,jdbcType=VARCHAR},
+       	  	      	#{title,jdbcType=VARCHAR},
+       	  	      	#{summary,jdbcType=VARCHAR},
+       	  	      	#{content,jdbcType=VARCHAR},
+       	  	      	#{pic,jdbcType=VARCHAR},
+       	  	      	#{charpId,jdbcType=BIGINT},
+       	  	      	#{charpName,jdbcType=VARCHAR},
+       	  	      	#{secName,jdbcType=VARCHAR},
+       	  	      	#{bookId,jdbcType=VARCHAR},
+       	  	      	#{bookName,jdbcType=VARCHAR},
+       	  	      	#{likes,jdbcType=INTEGER},
+       	  	      	#{recomNo,jdbcType=INTEGER},
+       	  	      	#{views,jdbcType=INTEGER},
+       	  	      	#{adopt,jdbcType=INTEGER},
+       	  	      	/*#{favorer,jdbcType=VARCHAR},*/
+       	  	      	#{creator,jdbcType=VARCHAR},
+       	  	      	#{createBy,jdbcType=VARCHAR},
+       	  	      	#{createDat,jdbcType=TIMESTAMP},
+       	  	      	#{lUpdateDat,jdbcType=TIMESTAMP},
+       	  	    	  #{isDel,jdbcType=INTEGER}
+       	    )
+  </insert>
+  
+  <insert id="insertSelective" parameterType="com.fc.test.model.auto.ProContent">
+    insert into t_pro_content
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+          
+      <if test="no != null">
+        no,
+      </if>
+      
+         
+      <if test="title != null">
+        title,
+      </if>
+      
+         
+      <if test="summary != null">
+        summary,
+      </if>
+      
+         
+      <if test="content != null">
+        content,
+      </if>
+      
+         
+      <if test="pic != null">
+        pic,
+      </if>
+      
+         
+      <if test="charpId != null">
+        charp_id,
+      </if>
+      
+         
+      <if test="charpName != null">
+        charp_name,
+      </if>
+      
+         
+      <if test="secName != null">
+        sec_name,
+      </if>
+      
+         
+      <if test="bookId != null">
+        book_id,
+      </if>
+      
+         
+      <if test="bookName != null">
+        book_name,
+      </if>
+      
+         
+      <if test="likes != null">
+        likes,
+      </if>
+      
+         
+      <if test="recomNo != null">
+        recom_no,
+      </if>
+      
+         
+      <if test="views != null">
+        views,
+      </if>
+      
+         
+      <if test="adopt != null">
+        adopt,
+      </if>
+      
+         
+     <!-- <if test="favorer != null">
+        favorer,
+      </if>-->
+      
+         
+      <if test="creator != null">
+        creator,
+      </if>
+      
+         
+      <if test="createBy != null">
+        create_by,
+      </if>
+      
+         
+      <if test="createDat != null">
+        create_dat,
+      </if>
+      
+         
+      <if test="lUpdateDat != null">
+        l_update_dat,
+      </if>
+      
+         
+      <if test="isDel != null">
+        is_del,
+      </if>
+      
+         </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+          <if test="no != null">
+        #{no,jdbcType=VARCHAR},
+      </if>
+          <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+          <if test="summary != null">
+        #{summary,jdbcType=VARCHAR},
+      </if>
+          <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+          <if test="pic != null">
+        #{pic,jdbcType=VARCHAR},
+      </if>
+          <if test="charpId != null">
+        #{charpId,jdbcType=BIGINT},
+      </if>
+          <if test="charpName != null">
+        #{charpName,jdbcType=VARCHAR},
+      </if>
+          <if test="secName != null">
+        #{secName,jdbcType=VARCHAR},
+      </if>
+          <if test="bookId != null">
+        #{bookId,jdbcType=VARCHAR},
+      </if>
+          <if test="bookName != null">
+        #{bookName,jdbcType=VARCHAR},
+      </if>
+          <if test="likes != null">
+        #{likes,jdbcType=INTEGER},
+      </if>
+          <if test="recomNo != null">
+        #{recomNo,jdbcType=INTEGER},
+      </if>
+          <if test="views != null">
+        #{views,jdbcType=INTEGER},
+      </if>
+          <if test="adopt != null">
+        #{adopt,jdbcType=INTEGER},
+      </if>
+         <!-- <if test="favorer != null">
+        #{favorer,jdbcType=VARCHAR},
+      </if>-->
+          <if test="creator != null">
+        #{creator,jdbcType=VARCHAR},
+      </if>
+          <if test="createBy != null">
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+          <if test="createDat != null">
+        #{createDat,jdbcType=TIMESTAMP},
+      </if>
+          <if test="lUpdateDat != null">
+        #{lUpdateDat,jdbcType=TIMESTAMP},
+      </if>
+          <if test="isDel != null">
+        #{isDel,jdbcType=INTEGER},
+      </if>
+        </trim>
+  </insert>
+  
+  <select id="countByExample" parameterType="com.fc.test.model.auto.ProContentExample" resultType="java.lang.Long">
+    select count(*) from t_pro_content
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+
+    <select id="selectRecomContentByChapId" parameterType="com.fc.test.model.auto.ProContent" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from t_pro_content
+
+        where is_del = 0
+        <if test="createBy!=null and createBy!=''">
+            AND create_by = #{createBy}
+        </if>
+        <if test="charpId!=null">
+            AND charp_id = #{charpId}
+        </if>
+        AND likes >= #{likes}
+        AND recom_no >= #{recomNo}
+        ORDER BY recom_no DESC,likes DESC
+    </select>
+
+
+    <select id="selectAdoptContentByChapId" parameterType="com.fc.test.model.auto.ProContent" resultMap="BaseResultMap">
+        select
+            A.no,
+            A.title,
+            A.summary,
+            A.content,
+            A.pic,
+            A.charp_id,
+            A.charp_name,
+            A.sec_name,
+            A.book_id,
+            A.book_name,
+            A.likes,
+            A.recom_no,
+            A.views,
+            A.adopt,
+            A.creator,
+            A.create_by,
+            A.create_dat
+        from t_pro_content as A
+        left join t_pro_user_adopt as B
+        on B.is_del = 0
+        and B.charp_id = #{charpId}
+        where A.is_del = 0
+        and A.charp_id = #{charpId}
+        ORDER BY A.create_dat DESC
+    </select>
+
+    <select id="selectAdoptCount" parameterType="com.fc.test.model.auto.ProContent" resultType="java.lang.Integer">
+        select
+        count(A.adopt)
+        from
+        t_pro_content as A
+        left join
+        t_pro_charpt as B
+        on B.is_del = 0
+        AND B.id = #{charpId}
+        AND B.chap_type != 0
+        WHERE A.charp_id = B.id
+        AND A.adopt = 1
+        AND A.is_del = 0
+    </select>
+
+  <update id="updateByExampleSelective" parameterType="map">
+    update t_pro_content
+    <set>
+          <if test="record.no != null">
+        no = #{record.no,jdbcType=VARCHAR},
+      </if>
+          <if test="record.title != null">
+        title = #{record.title,jdbcType=VARCHAR},
+      </if>
+          <if test="record.summary != null">
+        summary = #{record.summary,jdbcType=VARCHAR},
+      </if>
+          <if test="record.content != null">
+        content = #{record.content,jdbcType=VARCHAR},
+      </if>
+          <if test="record.pic != null">
+        pic = #{record.pic,jdbcType=VARCHAR},
+      </if>
+          <if test="record.charpId != null">
+        charp_id = #{record.charpId,jdbcType=BIGINT},
+      </if>
+          <if test="record.charpName != null">
+        charp_name = #{record.charpName,jdbcType=VARCHAR},
+      </if>
+          <if test="record.secName != null">
+        sec_name = #{record.secName,jdbcType=VARCHAR},
+      </if>
+          <if test="record.bookId != null">
+        book_id = #{record.bookId,jdbcType=VARCHAR},
+      </if>
+          <if test="record.bookName != null">
+        book_name = #{record.bookName,jdbcType=VARCHAR},
+      </if>
+          <if test="record.likes != null">
+        likes = #{record.likes,jdbcType=INTEGER},
+      </if>
+          <if test="record.recomNo != null">
+        recom_no = #{record.recomNo,jdbcType=INTEGER},
+      </if>
+          <if test="record.views != null">
+        views = #{record.views,jdbcType=INTEGER},
+      </if>
+          <if test="record.adopt != null">
+        adopt = #{record.adopt,jdbcType=INTEGER},
+      </if>
+         <!-- <if test="record.favorer != null">
+        favorer = #{record.favorer,jdbcType=VARCHAR},
+      </if>-->
+          <if test="record.creator != null">
+        creator = #{record.creator,jdbcType=VARCHAR},
+      </if>
+          <if test="record.createBy != null">
+        create_by = #{record.createBy,jdbcType=VARCHAR},
+      </if>
+          <if test="record.createDat != null">
+        create_dat = #{record.createDat,jdbcType=TIMESTAMP},
+      </if>
+          <if test="record.lUpdateDat != null">
+        l_update_dat = #{record.lUpdateDat,jdbcType=TIMESTAMP},
+      </if>
+          <if test="record.isDel != null">
+        is_del = #{record.isDel,jdbcType=INTEGER},
+      </if>
+         
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  
+  
+  <update id="updateByExample" parameterType="map">
+    update t_pro_content
+    set
+            	     	 no = #{record.no,jdbcType=VARCHAR},
+    	         	     	 title = #{record.title,jdbcType=VARCHAR},
+    	         	     	 summary = #{record.summary,jdbcType=VARCHAR},
+    	         	     	 content = #{record.content,jdbcType=VARCHAR},
+    	         	     	 pic = #{record.pic,jdbcType=VARCHAR},
+    	         	     	 charp_id = #{record.charpId,jdbcType=BIGINT},
+    	         	     	 charp_name = #{record.charpName,jdbcType=VARCHAR},
+    	         	     	 sec_name = #{record.secName,jdbcType=VARCHAR},
+    	         	     	 book_id = #{record.bookId,jdbcType=VARCHAR},
+    	         	     	 book_name = #{record.bookName,jdbcType=VARCHAR},
+    	         	     	 likes = #{record.likes,jdbcType=INTEGER},
+    	         	     	 recom_no = #{record.recomNo,jdbcType=INTEGER},
+    	         	     	 views = #{record.views,jdbcType=INTEGER},
+    	         	     	 adopt = #{record.adopt,jdbcType=INTEGER},
+    	         	     	 /*favorer = #{record.favorer,jdbcType=VARCHAR},*/
+    	         	     	 creator = #{record.creator,jdbcType=VARCHAR},
+    	         	     	 create_by = #{record.createBy,jdbcType=VARCHAR},
+    	         	     	 create_dat = #{record.createDat,jdbcType=TIMESTAMP},
+    	         	     	 l_update_dat = #{record.lUpdateDat,jdbcType=TIMESTAMP},
+    	         	     	 is_del = #{record.isDel,jdbcType=INTEGER}
+    	         <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  
+  
+      <update id="updateByPrimaryKeySelective" parameterType="com.fc.test.model.auto.ProContent">
+    update t_pro_content
+    <set>
+                          <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+                      <if test="summary != null">
+        summary = #{summary,jdbcType=VARCHAR},
+      </if>
+                      <if test="content != null">
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+                      <if test="pic != null">
+        pic = #{pic,jdbcType=VARCHAR},
+      </if>
+                      <if test="charpId != null">
+        charp_id = #{charpId,jdbcType=BIGINT},
+      </if>
+                      <if test="charpName != null">
+        charp_name = #{charpName,jdbcType=VARCHAR},
+      </if>
+                      <if test="secName != null">
+        sec_name = #{secName,jdbcType=VARCHAR},
+      </if>
+                      <if test="bookId != null">
+        book_id = #{bookId,jdbcType=VARCHAR},
+      </if>
+                      <if test="bookName != null">
+        book_name = #{bookName,jdbcType=VARCHAR},
+      </if>
+                      <if test="likes != null">
+        likes = #{likes,jdbcType=INTEGER},
+      </if>
+                      <if test="recomNo != null">
+        recom_no = #{recomNo,jdbcType=INTEGER},
+      </if>
+                      <if test="views != null">
+        views = #{views,jdbcType=INTEGER},
+      </if>
+                      <if test="adopt != null">
+        adopt = #{adopt,jdbcType=INTEGER},
+      </if>
+                      <!--<if test="favorer != null">
+        favorer = #{favorer,jdbcType=VARCHAR},
+      </if>-->
+                      <if test="creator != null">
+        creator = #{creator,jdbcType=VARCHAR},
+      </if>
+                      <if test="createBy != null">
+        create_by = #{createBy,jdbcType=VARCHAR},
+      </if>
+                      <if test="createDat != null">
+        create_dat = #{createDat,jdbcType=TIMESTAMP},
+      </if>
+                      <if test="lUpdateDat != null">
+        l_update_dat = #{lUpdateDat,jdbcType=TIMESTAMP},
+      </if>
+                      <if test="isDel != null">
+        is_del = #{isDel,jdbcType=INTEGER},
+      </if>
+              </set>
+    where 
+            no = #{no,jdbcType=VARCHAR}
+                                                                                                                                                                  
+  </update>
+
+      	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	
+
+  <update id="updateByPrimaryKey" parameterType="com.fc.test.model.auto.ProContent">
+    update t_pro_content
+    set 
+             	        	    	 			title = #{title,jdbcType=VARCHAR},
+		     	        	    	 			summary = #{summary,jdbcType=VARCHAR},
+		     	        	    	 			content = #{content,jdbcType=VARCHAR},
+		     	        	    	 			pic = #{pic,jdbcType=VARCHAR},
+		     	        	    	 			charp_id = #{charpId,jdbcType=BIGINT},
+		     	        	    	 			charp_name = #{charpName,jdbcType=VARCHAR},
+		     	        	    	 			sec_name = #{secName,jdbcType=VARCHAR},
+		     	        	    	 			book_id = #{bookId,jdbcType=VARCHAR},
+		     	        	    	 			book_name = #{bookName,jdbcType=VARCHAR},
+		     	        	    	 			likes = #{likes,jdbcType=INTEGER},
+		     	        	    	 			recom_no = #{recomNo,jdbcType=INTEGER},
+		     	        	    	 			views = #{views,jdbcType=INTEGER},
+		     	        	    	 			adopt = #{adopt,jdbcType=INTEGER},
+		     	        	    	 			/*favorer = #{favorer,jdbcType=VARCHAR},*/
+		     	        	    	 			creator = #{creator,jdbcType=VARCHAR},
+		     	        	    	 			create_by = #{createBy,jdbcType=VARCHAR},
+		     	        	    	 			create_dat = #{createDat,jdbcType=TIMESTAMP},
+		     	        	    	 			l_update_dat = #{lUpdateDat,jdbcType=TIMESTAMP},
+		     	        	    	 			is_del = #{isDel,jdbcType=INTEGER}
+		     	        where 
+            no = #{no,jdbcType=VARCHAR}
+                                                                                                                                                                    
+  </update>
+
+    <update id="deleteBatchByPrimaryKey" parameterType="java.util.List">
+        update t_pro_content
+        set
+        is_del = '1'
+        where no in
+        <foreach collection="list" item="item" index="index" separator="," open="(" close=")">
+            #{item}
+        </foreach>
+        and is_del = '0'
+    </update>
+</mapper>

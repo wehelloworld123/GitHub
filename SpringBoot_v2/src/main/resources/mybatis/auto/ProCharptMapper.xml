@@ -1,0 +1,819 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fc.test.mapper.auto.ProCharptMapper">
+  <resultMap id="BaseResultMap" type="com.fc.test.model.auto.ProCharpt">
+    <result column="id" jdbcType="BIGINT" property="id" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="introduce" jdbcType="VARCHAR" property="introduce" />
+    <result column="pic" jdbcType="VARCHAR" property="pic" />
+    <result column="requirement" jdbcType="VARCHAR" property="requirement" />
+    <result column="chap_type" jdbcType="INTEGER" property="chapType" />
+    <result column="label" jdbcType="VARCHAR" property="label" />
+    <result column="creators" jdbcType="INTEGER" property="creators" />
+    <result column="root" jdbcType="INTEGER" property="root" />
+    <result column="root_id" jdbcType="BIGINT" property="rootId" />
+    <result column="book_id" jdbcType="VARCHAR" property="bookId" />
+    <result column="paint_id" jdbcType="BIGINT" property="paintId" />
+    <result column="poem_id" jdbcType="BIGINT" property="poemId" />
+    <result column="root_ord" jdbcType="INTEGER" property="rootOrd" />
+    <result column="ord" jdbcType="INTEGER" property="ord" />
+    <result column="is_lock" jdbcType="INTEGER" property="isLock" />
+    <result column="finish" jdbcType="INTEGER" property="finish" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+    <result column="create_dat" jdbcType="TIMESTAMP" property="createDat" />
+    <result column="l_update_dat" jdbcType="TIMESTAMP" property="lUpdateDat" />
+    <result column="is_del" jdbcType="INTEGER" property="isDel" />
+
+  </resultMap>
+
+  <resultMap id="AdoptResultMap" type="com.fc.test.model.auto.ProCharpt">
+    <result column="id" jdbcType="BIGINT" property="id" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="introduce" jdbcType="VARCHAR" property="introduce" />
+    <result column="pic" jdbcType="VARCHAR" property="pic" />
+    <result column="requirement" jdbcType="VARCHAR" property="requirement" />
+    <result column="chap_type" jdbcType="INTEGER" property="chapType" />
+    <result column="label" jdbcType="VARCHAR" property="label" />
+    <result column="creators" jdbcType="INTEGER" property="creators" />
+    <result column="root" jdbcType="INTEGER" property="root" />
+    <result column="root_id" jdbcType="BIGINT" property="rootId" />
+    <result column="book_id" jdbcType="VARCHAR" property="bookId" />
+    <result column="paint_id" jdbcType="BIGINT" property="paintId" />
+    <result column="poem_id" jdbcType="BIGINT" property="poemId" />
+    <result column="root_ord" jdbcType="INTEGER" property="rootOrd" />
+    <result column="ord" jdbcType="INTEGER" property="ord" />
+    <result column="is_lock" jdbcType="INTEGER" property="isLock" />
+    <result column="finish" jdbcType="INTEGER" property="finish" />
+    <collection property="proUserAdopts" ofType="com.fc.test.model.auto.ProUserAdopt">
+      <result column="_id" jdbcType="BIGINT" property="id" />
+      <result column="_title" jdbcType="VARCHAR" property="title" />
+      <result column="seter" jdbcType="VARCHAR" property="seter" />
+      <result column="content" jdbcType="VARCHAR" property="content" />
+      <result column="content_id" jdbcType="VARCHAR" property="contentId" />
+      <result column="picture" jdbcType="VARCHAR" property="picture" />
+      <result column="pro_no" jdbcType="VARCHAR" property="proNo" />
+      <result column="liter_text" jdbcType="LONGVARCHAR" property="literText" />
+      <result column="creation_nm" jdbcType="VARCHAR" property="creationNm" />
+      <result column="creation_id" jdbcType="VARCHAR" property="creationId" />
+      <result column="charp_nm" jdbcType="VARCHAR" property="charpNm" />
+      <result column="charp_id" jdbcType="BIGINT" property="charpId" />
+      <result column="content_id" jdbcType="VARCHAR" property="contentId" />
+      <result column="typ" jdbcType="INTEGER" property="typ" />
+      <result column="user_id" jdbcType="VARCHAR" property="userId" />
+      <result column="nickname" jdbcType="VARCHAR" property="nickname" />
+      <result column="avatar" jdbcType="VARCHAR" property="avatar" />
+      <result column="adopt" jdbcType="INTEGER" property="adopt" />
+      <result column="_create_by" jdbcType="VARCHAR" property="createBy" />
+      <result column="_create_dat" jdbcType="TIMESTAMP" property="createDat" />
+      <result column="_l_update_dat" jdbcType="TIMESTAMP" property="lUpdateDat" />
+      <result column="_is_del" jdbcType="INTEGER" property="isDel" />
+    </collection>
+  </resultMap>
+
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+<sql id="Base_Column_List">
+	  	  	      	id,
+       	  	      	title,
+       	  	      	introduce,
+       	  	      	pic,
+       	  	      	requirement,
+       	  	      	chap_type,
+       	  	      	label,
+       	  	      	creators,
+       	  	      	root,
+       	  	      	root_id,
+       	  	      	book_id,
+       	  	      	paint_id,
+       	  	      	poem_id,
+       	  	      	root_ord,
+       	  	      	ord,
+       	  	      	is_lock,
+       	  	      	finish,
+       	  	      	create_by,
+       	  	      	create_dat,
+       	  	      	l_update_dat,
+       	  	    	  	is_del
+       	</sql>
+  <select id="selectByExample" parameterType="com.fc.test.model.auto.ProCharptExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_pro_charpt
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_pro_charpt
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_pro_charpt
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+
+  <update id="deleteStsByKey" parameterType="com.fc.test.model.auto.ProCharpt">
+    update t_pro_charpt
+    SET is_del = #{isDel}
+    where id = #{id}
+  </update>
+
+  <delete id="deleteByExample" parameterType="com.fc.test.model.auto.ProCharptExample">
+    delete from t_pro_charpt
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  
+  <insert id="insert" parameterType="com.fc.test.model.auto.ProCharpt">
+    insert into t_pro_charpt (
+      	  	       id,
+       	  	       title,
+       	  	       introduce,
+       	  	       pic,
+       	  	       requirement,
+       	  	       chap_type,
+       	  	       label,
+       	  	       creators,
+       	  	       root,
+       	  	       root_id,
+       	  	       book_id,
+       	  	       paint_id,
+       	  	       poem_id,
+       	  	       root_ord,
+       	  	       ord,
+       	  	       is_lock,
+       	  	       finish,
+       	  	       create_by,
+       	  	       create_dat,
+       	  	       l_update_dat,
+       	  	    	  is_del
+       	    )
+    values (
+	  	  	      	#{id,jdbcType=BIGINT},
+       	  	      	#{title,jdbcType=VARCHAR},
+       	  	      	#{introduce,jdbcType=VARCHAR},
+       	  	      	#{pic,jdbcType=VARCHAR},
+       	  	      	#{requirement,jdbcType=VARCHAR},
+       	  	      	#{chapType,jdbcType=INTEGER},
+       	  	      	#{label,jdbcType=VARCHAR},
+       	  	      	#{creators,jdbcType=INTEGER},
+       	  	      	#{root,jdbcType=INTEGER},
+       	  	      	#{rootId,jdbcType=BIGINT},
+       	  	      	#{bookId,jdbcType=VARCHAR},
+       	  	      	#{paintId,jdbcType=BIGINT},
+       	  	      	#{poemId,jdbcType=BIGINT},
+       	  	      	#{rootOrd,jdbcType=INTEGER},
+       	  	      	#{ord,jdbcType=INTEGER},
+       	  	      	#{isLock,jdbcType=INTEGER},
+       	  	      	#{finish,jdbcType=INTEGER},
+       	  	      	#{createBy,jdbcType=VARCHAR},
+       	  	      	#{createDat,jdbcType=TIMESTAMP},
+       	  	      	#{lUpdateDat,jdbcType=TIMESTAMP},
+       	  	    	  #{isDel,jdbcType=INTEGER}
+       	    )
+  </insert>
+
+  <insert id="insertBatch" parameterType="com.fc.test.model.auto.ProCharpt" useGeneratedKeys="true">
+    insert into t_pro_paint_part (
+    id,
+    title,
+    introduce,
+    pic,
+    requirement,
+    chap_type,
+    label,
+    creators,
+    root,
+    root_id,
+    book_id,
+    paint_id,
+    poem_id,
+    root_ord,
+    ord,
+    is_lock,
+    finish,
+    create_by,
+    create_dat,
+    l_update_dat,
+    is_del
+    )
+    values
+    <foreach collection="list" item="item" separator=",">
+      (
+      #{item.id,jdbcType=BIGINT},
+      #{item.title,jdbcType=VARCHAR},
+      #{item.introduce,jdbcType=VARCHAR},
+      #{item.pic,jdbcType=VARCHAR},
+      #{item.requirement,jdbcType=VARCHAR},
+      #{item.chapType,jdbcType=INTEGER},
+      #{item.label,jdbcType=VARCHAR},
+      #{item.creators,jdbcType=INTEGER},
+      #{item.root,jdbcType=INTEGER},
+      #{item.rootId,jdbcType=BIGINT},
+      #{item.bookId,jdbcType=VARCHAR},
+      #{item.paintId,jdbcType=BIGINT},
+      #{item.poemId,jdbcType=BIGINT},
+      #{item.rootOrd,jdbcType=INTEGER},
+      #{item.ord,jdbcType=INTEGER},
+      #{item.isLock,jdbcType=INTEGER},
+      #{item.finish,jdbcType=INTEGER},
+      #{item.createBy,jdbcType=VARCHAR},
+      #{item.createDat,jdbcType=TIMESTAMP},
+      #{item.lUpdateDat,jdbcType=TIMESTAMP},
+      #{item.isDel,jdbcType=INTEGER}
+      )
+    </foreach>
+  </insert>
+
+
+  <insert id="insertSelective" parameterType="com.fc.test.model.auto.ProCharpt">
+    insert into t_pro_charpt
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+          
+      <if test="id != null">
+        id,
+      </if>
+      
+         
+      <if test="title != null">
+        title,
+      </if>
+      
+         
+      <if test="introduce != null">
+        introduce,
+      </if>
+      
+         
+      <if test="pic != null">
+        pic,
+      </if>
+      
+         
+      <if test="requirement != null">
+        requirement,
+      </if>
+      
+         
+      <if test="chapType != null">
+        chap_type,
+      </if>
+      
+         
+      <if test="label != null">
+        label,
+      </if>
+      
+         
+      <if test="creators != null">
+        creators,
+      </if>
+      
+         
+      <if test="root != null">
+        root,
+      </if>
+      
+         
+      <if test="rootId != null">
+        root_id,
+      </if>
+      
+         
+      <if test="bookId != null">
+        book_id,
+      </if>
+      
+         
+      <if test="paintId != null">
+        paint_id,
+      </if>
+      
+         
+      <if test="poemId != null">
+        poem_id,
+      </if>
+      
+         
+      <if test="rootOrd != null">
+        root_ord,
+      </if>
+      
+         
+      <if test="ord != null">
+        ord,
+      </if>
+      
+         
+      <if test="isLock != null">
+        is_lock,
+      </if>
+      
+         
+      <if test="finish != null">
+        finish,
+      </if>
+      
+         
+      <if test="createBy != null">
+        create_by,
+      </if>
+      
+         
+      <if test="createDat != null">
+        create_dat,
+      </if>
+      
+         
+      <if test="lUpdateDat != null">
+        l_update_dat,
+      </if>
+      
+         
+      <if test="isDel != null">
+        is_del,
+      </if>
+      
+         </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+          <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+          <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+          <if test="introduce != null">
+        #{introduce,jdbcType=VARCHAR},
+      </if>
+          <if test="pic != null">
+        #{pic,jdbcType=VARCHAR},
+      </if>
+          <if test="requirement != null">
+        #{requirement,jdbcType=VARCHAR},
+      </if>
+          <if test="chapType != null">
+        #{chapType,jdbcType=INTEGER},
+      </if>
+          <if test="label != null">
+        #{label,jdbcType=VARCHAR},
+      </if>
+          <if test="creators != null">
+        #{creators,jdbcType=INTEGER},
+      </if>
+          <if test="root != null">
+        #{root,jdbcType=INTEGER},
+      </if>
+          <if test="rootId != null">
+        #{rootId,jdbcType=BIGINT},
+      </if>
+          <if test="bookId != null">
+        #{bookId,jdbcType=VARCHAR},
+      </if>
+          <if test="paintId != null">
+        #{paintId,jdbcType=BIGINT},
+      </if>
+          <if test="poemId != null">
+        #{poemId,jdbcType=BIGINT},
+      </if>
+          <if test="rootOrd != null">
+        #{rootOrd,jdbcType=INTEGER},
+      </if>
+          <if test="ord != null">
+        #{ord,jdbcType=INTEGER},
+      </if>
+          <if test="isLock != null">
+        #{isLock,jdbcType=INTEGER},
+      </if>
+          <if test="finish != null">
+        #{finish,jdbcType=INTEGER},
+      </if>
+          <if test="createBy != null">
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+          <if test="createDat != null">
+        #{createDat,jdbcType=TIMESTAMP},
+      </if>
+          <if test="lUpdateDat != null">
+        #{lUpdateDat,jdbcType=TIMESTAMP},
+      </if>
+          <if test="isDel != null">
+        #{isDel,jdbcType=INTEGER},
+      </if>
+        </trim>
+  </insert>
+  
+  <select id="countByExample" parameterType="com.fc.test.model.auto.ProCharptExample" resultType="java.lang.Long">
+    select count(*) from t_pro_charpt
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+
+  <select id="queryRootInfo" parameterType="com.fc.test.model.auto.ProCharpt" resultType="java.util.HashMap">
+    select
+    count(A.root) as roots,
+    A.root_ord as rootOrd,
+    A.ord as ord,
+    B.uid as bookId,
+    B.charpter as charpter,
+    B.section as sections
+    from t_pro_charpt as A
+    left join t_pro_liter  as B
+    on B.is_del = '0'
+    and B.uid = #{bookId}
+    where A.is_del = '0'
+    and A.root = #{root}
+    and A.book_id = B.uid
+    order by A.root_ord ASC,A.ord ASC
+  </select>
+
+  <select id="queryProductInfoByChaptId" parameterType="com.fc.test.model.auto.ProCharpt" resultType="java.util.HashMap">
+    select
+    A.id as id,
+    A.title as title,
+    B.uid as uid,
+    B.name as bookName
+    from t_pro_charpt as A
+    left join t_pro_liter  as B
+    on  A.id = #{id}
+    and A.is_del = '0'
+    where B.is_del = '0'
+    and B.uid = A.book_id
+  </select>
+
+  <select id="queryAdoptContentByProId" parameterType="com.fc.test.model.auto.ProCharpt" resultMap="AdoptResultMap">
+    SELECT
+      A.id,
+      A.title,
+      A.introduce,
+      A.chap_type,
+      A.label,
+      A.creators,
+      A.root,
+      A.root_id,
+      A.book_id,
+      A.root_ord,
+      A.ord,
+      A.finish,
+      B.title as _title,
+      B.seter,
+      B.content,
+      B.picture,
+      B.liter_text,
+      B.creation_id,
+      B.creation_nm,
+      B.charp_id,
+      B.charp_nm,
+      B.nickname,
+      B.avatar,
+      B.is_del as B._is_del
+      FROM t_pro_charpt as A
+      LEFT JOIN t_pro_user_adopt as B
+      ON A.book_id = #{bookId}
+      AND A.finish = 1
+      AND A.root = 0
+      AND A.is_del = 0
+      WHERE B.creation_id = #{bookId}
+      AND B.charp_id = A.id
+      AND B.adopt = 1
+      AND B.is_del = 0
+      ORDER BY A.root_ord ASC,A.ord ASC
+  </select>
+
+  <select id="queryNoRootChaptInfo" parameterType="com.fc.test.model.auto.ProCharpt" resultType="java.util.HashMap">
+    select
+    id,
+    root_ord as rootOrd,
+    root_id as rootId,
+    title,
+    count(1) as count
+    from t_pro_charpt
+    where book_id=#{bookId}
+    and root = #{root}
+    and is_del = 0
+    group by root_id
+    order by root_ord asc
+  </select>
+
+
+  <update id="updateByExampleSelective" parameterType="map">
+    update t_pro_charpt
+    <set>
+          <if test="record.id != null">
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+          <if test="record.title != null">
+        title = #{record.title,jdbcType=VARCHAR},
+      </if>
+          <if test="record.introduce != null">
+        introduce = #{record.introduce,jdbcType=VARCHAR},
+      </if>
+          <if test="record.pic != null">
+        pic = #{record.pic,jdbcType=VARCHAR},
+      </if>
+          <if test="record.requirement != null">
+        requirement = #{record.requirement,jdbcType=VARCHAR},
+      </if>
+          <if test="record.chapType != null">
+        chap_type = #{record.chapType,jdbcType=INTEGER},
+      </if>
+          <if test="record.label != null">
+        label = #{record.label,jdbcType=VARCHAR},
+      </if>
+          <if test="record.creators != null">
+        creators = #{record.creators,jdbcType=INTEGER},
+      </if>
+          <if test="record.root != null">
+        root = #{record.root,jdbcType=INTEGER},
+      </if>
+          <if test="record.rootId != null">
+        root_id = #{record.rootId,jdbcType=BIGINT},
+      </if>
+          <if test="record.bookId != null">
+        book_id = #{record.bookId,jdbcType=VARCHAR},
+      </if>
+          <if test="record.paintId != null">
+        paint_id = #{record.paintId,jdbcType=BIGINT},
+      </if>
+          <if test="record.poemId != null">
+        poem_id = #{record.poemId,jdbcType=BIGINT},
+      </if>
+          <if test="record.rootOrd != null">
+        root_ord = #{record.rootOrd,jdbcType=INTEGER},
+      </if>
+          <if test="record.ord != null">
+        ord = #{record.ord,jdbcType=INTEGER},
+      </if>
+          <if test="record.isLock != null">
+        is_lock = #{record.isLock,jdbcType=INTEGER},
+      </if>
+          <if test="record.finish != null">
+        finish = #{record.finish,jdbcType=INTEGER},
+      </if>
+          <if test="record.createBy != null">
+        create_by = #{record.createBy,jdbcType=VARCHAR},
+      </if>
+          <if test="record.createDat != null">
+        create_dat = #{record.createDat,jdbcType=TIMESTAMP},
+      </if>
+          <if test="record.lUpdateDat != null">
+        l_update_dat = #{record.lUpdateDat,jdbcType=TIMESTAMP},
+      </if>
+          <if test="record.isDel != null">
+        is_del = #{record.isDel,jdbcType=INTEGER},
+      </if>
+         
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  
+  
+  <update id="updateByExample" parameterType="map">
+    update t_pro_charpt
+    set
+            	     	 id = #{record.id,jdbcType=BIGINT},
+    	         	     	 title = #{record.title,jdbcType=VARCHAR},
+    	         	     	 introduce = #{record.introduce,jdbcType=VARCHAR},
+    	         	     	 pic = #{record.pic,jdbcType=VARCHAR},
+    	         	     	 requirement = #{record.requirement,jdbcType=VARCHAR},
+    	         	     	 chap_type = #{record.chapType,jdbcType=INTEGER},
+    	         	     	 label = #{record.label,jdbcType=VARCHAR},
+    	         	     	 creators = #{record.creators,jdbcType=INTEGER},
+    	         	     	 root = #{record.root,jdbcType=INTEGER},
+    	         	     	 root_id = #{record.rootId,jdbcType=BIGINT},
+    	         	     	 book_id = #{record.bookId,jdbcType=VARCHAR},
+    	         	     	 paint_id = #{record.paintId,jdbcType=BIGINT},
+    	         	     	 poem_id = #{record.poemId,jdbcType=BIGINT},
+    	         	     	 root_ord = #{record.rootOrd,jdbcType=INTEGER},
+    	         	     	 ord = #{record.ord,jdbcType=INTEGER},
+    	         	     	 is_lock = #{record.isLock,jdbcType=INTEGER},
+    	         	     	 finish = #{record.finish,jdbcType=INTEGER},
+    	         	     	 create_by = #{record.createBy,jdbcType=VARCHAR},
+    	         	     	 create_dat = #{record.createDat,jdbcType=TIMESTAMP},
+    	         	     	 l_update_dat = #{record.lUpdateDat,jdbcType=TIMESTAMP},
+    	         	     	 is_del = #{record.isDel,jdbcType=INTEGER}
+    	         <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  
+  
+      <update id="updateByPrimaryKeySelective" parameterType="com.fc.test.model.auto.ProCharpt">
+    update t_pro_charpt
+    <set>
+                          <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+                      <if test="introduce != null">
+        introduce = #{introduce,jdbcType=VARCHAR},
+      </if>
+                      <if test="pic != null">
+        pic = #{pic,jdbcType=VARCHAR},
+      </if>
+                      <if test="requirement != null">
+        requirement = #{requirement,jdbcType=VARCHAR},
+      </if>
+                      <if test="chapType != null">
+        chap_type = #{chapType,jdbcType=INTEGER},
+      </if>
+                      <if test="label != null">
+        label = #{label,jdbcType=VARCHAR},
+      </if>
+                      <if test="creators != null">
+        creators = #{creators,jdbcType=INTEGER},
+      </if>
+                      <if test="root != null">
+        root = #{root,jdbcType=INTEGER},
+      </if>
+                      <if test="rootId != null">
+        root_id = #{rootId,jdbcType=BIGINT},
+      </if>
+                      <if test="bookId != null">
+        book_id = #{bookId,jdbcType=VARCHAR},
+      </if>
+                      <if test="paintId != null">
+        paint_id = #{paintId,jdbcType=BIGINT},
+      </if>
+                      <if test="poemId != null">
+        poem_id = #{poemId,jdbcType=BIGINT},
+      </if>
+                      <if test="rootOrd != null">
+        root_ord = #{rootOrd,jdbcType=INTEGER},
+      </if>
+                      <if test="ord != null">
+        ord = #{ord,jdbcType=INTEGER},
+      </if>
+                      <if test="isLock != null">
+        is_lock = #{isLock,jdbcType=INTEGER},
+      </if>
+                      <if test="finish != null">
+        finish = #{finish,jdbcType=INTEGER},
+      </if>
+                      <if test="createBy != null">
+        create_by = #{createBy,jdbcType=VARCHAR},
+      </if>
+                      <if test="createDat != null">
+        create_dat = #{createDat,jdbcType=TIMESTAMP},
+      </if>
+                      <if test="lUpdateDat != null">
+        l_update_dat = #{lUpdateDat,jdbcType=TIMESTAMP},
+      </if>
+                      <if test="isDel != null">
+        is_del = #{isDel,jdbcType=INTEGER},
+      </if>
+              </set>
+    where 
+            id = #{id,jdbcType=BIGINT}
+                                                                                                                                                                          
+  </update>
+
+      	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	
+
+  <update id="updateByPrimaryKey" parameterType="com.fc.test.model.auto.ProCharpt">
+    update t_pro_charpt
+    set 
+             	        	    	 			title = #{title,jdbcType=VARCHAR},
+		     	        	    	 			introduce = #{introduce,jdbcType=VARCHAR},
+		     	        	    	 			pic = #{pic,jdbcType=VARCHAR},
+		     	        	    	 			requirement = #{requirement,jdbcType=VARCHAR},
+		     	        	    	 			chap_type = #{chapType,jdbcType=INTEGER},
+		     	        	    	 			label = #{label,jdbcType=VARCHAR},
+		     	        	    	 			creators = #{creators,jdbcType=INTEGER},
+		     	        	    	 			root = #{root,jdbcType=INTEGER},
+		     	        	    	 			root_id = #{rootId,jdbcType=BIGINT},
+		     	        	    	 			book_id = #{bookId,jdbcType=VARCHAR},
+		     	        	    	 			paint_id = #{paintId,jdbcType=BIGINT},
+		     	        	    	 			poem_id = #{poemId,jdbcType=BIGINT},
+		     	        	    	 			root_ord = #{rootOrd,jdbcType=INTEGER},
+		     	        	    	 			ord = #{ord,jdbcType=INTEGER},
+		     	        	    	 			is_lock = #{isLock,jdbcType=INTEGER},
+		     	        	    	 			finish = #{finish,jdbcType=INTEGER},
+		     	        	    	 			create_by = #{createBy,jdbcType=VARCHAR},
+		     	        	    	 			create_dat = #{createDat,jdbcType=TIMESTAMP},
+		     	        	    	 			l_update_dat = #{lUpdateDat,jdbcType=TIMESTAMP},
+		     	        	    	 			is_del = #{isDel,jdbcType=INTEGER}
+		     	        where 
+            id = #{id,jdbcType=BIGINT}
+                                                                                                                                                                            
+  </update>
+
+
+  <update id="deleteBatchByPrimaryKey" parameterType="java.util.List">
+    update t_pro_charpt
+    set
+     is_del = '1'
+    where id in
+    <foreach collection="list" item="item" index="index" separator="," open="(" close=")">
+      #{item}
+    </foreach>
+    and is_del = '0'
+  </update>
+
+  <select id="selectChaptByCreateBy"  parameterType="com.fc.test.model.auto.ProCharpt"  resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_pro_charpt
+    where is_del = 0
+    <if test="createBy!=null and createBy!=''">
+      AND create_by = #{createBy}
+    </if>
+    <if test="finish!=null">
+      AND finish = #{finish}
+    </if>
+    <if test="isLock!=null">
+      AND is_lock = #{isLock}
+    </if>
+    <if test="root!=null">
+      AND root = #{root}
+    </if>
+  </select>
+
+
+  <select id="selectChaptCountByBookId"  parameterType="com.fc.test.model.auto.ProCharpt"  resultType="java.util.HashMap">
+    select
+    B.charpter as charpter,
+    B.section as section,
+    count(A.id) as count
+    from t_pro_charpt as A
+    left join
+    t_pro_liter as  B
+    ON B.is_del = 0
+    AND B.uid=#{bookId}
+    <if test="createBy!=null and createBy!=''">
+      AND B.create_by = #{createBy}
+    </if>
+    where A.is_del = 0
+    AND A.book_id=B.uid
+    <if test="root!=null">
+      AND A.root = #{root}
+    </if>
+  </select>
+</mapper>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.pollix.at/thymeleaf/shiro">
+<head>
+    <meta charset="UTF-8">
+    <title>Bootstrap 模板</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1, maximum-scale=1">
+
+    <!-- 引入 Bootstrap -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) -->
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <!-- 包括所有已编译的插件 -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+
+    <script type="text/javascript" src="js/js.js"></script>
+    <script type="text/javascript" src="js/swiper.min.js"></script>
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <link rel="stylesheet" href="css/workStyle.css">
+    <script type="text/javascript" src="js/tools.js"></script>
+</head>
+<body>
+<!--窗口导航栏-->
+<div id="nav_container" class="nav_container">
+    <div class="logo_name">
+        <img src="" class="logo"/>
+        <h1>网站名称</h1>
+    </div>
+    <div id="nav">
+        <div class="inline_nav_banner">
+                <ul class="banner_ul">
+                    <li><a class="inline select" href="index.html" title="首页" target="_blank">首页</a></li>
+                    <li><a class="inline" href="work.html" title="作品" >作品</a></li>
+                    <li><a class="inline" href="creater_new.html" title="作者" target="_blank">作者</a></li>
+                    <li><a class="inline" href="featuredream.html" title="未来愿景" target="_blank">未来愿景</a></li>
+                    <li><a class="inline" href="" title="加入我们" target="_blank">加入我们</a></li>
+                </ul>
+            </div>
+    </div>
+    <div  class="search_box">
+        <input type="text" placeholder="请输入..." />
+        <button class="search_btn" >搜索</button>
+    </div>
+    <div class="login_register">
+        <ul class="ul_login">
+            <li><a href="/" title="登录">登录</a></li>
+            <li><a href="" title="注册">注册</a></li>
+        </ul>
+    </div>
+</div>
+
+<div class="body_container">
+
+    <div class="recommend_container">
+        <h2>每日一荐</h2>
+        <hr>
+    <div class="recommend_daily">
+        <div class="work_img">
+          <img src="images/letter.jpg" />
+        </div>
+        <div class="work_introduction_container">
+            <div class="work_introduction">
+                <p>在16世纪，里多尔菲家族都是小矮人。为了使女儿相信这样的身高才是正常的，他们在庄园里只雇用小矮人，还为她买了一个矮人同伴——但是后来同伴突然长高了。应该怎么做？这位小姐认为长高是个不幸的事情，于是她弄瞎女孩的双眼，这样她就看不到“普通人”的样子，然后砍下膝 盖，以免她“畸形”。 故事来到1955年的佛罗伦萨，意大利没落贵族小姐琪娅拉和白手起家的医生萨尔瓦托相遇。琪娅拉充满热情，而萨尔瓦托从小就决心与人保持距离，尽管如此，他仍然生气地发现自己无助地爱上了琪娅拉。他们彼此相爱到了痛苦的程度，可是他们之前的爱情却是由一系列误解和争吵推动的。这本书关于用无辜来追求幸福，以及我们居然认定幸福天然地，十分理所当然地，是爱的结果。
+                ---
+                这是迄今为止佩内洛普·菲茨杰拉德小说中最丰满、最丰富的一部，也是最有野心的一部。像往常一样，她的写作有一种天然的权威，幽默、温...
+                </p>
+            </div>
+            <div class="more_button">
+                <button>更多</button>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="swiper-container">
+        <h2>最佳人气榜</h2><small>周更</small>
+        <hr>
+        <div class="swiper-wrapper">
+
+            <div class="swiper-slide" style="background-image:url(./images/nature-1.jpg)"></div>
+
+            <div class="swiper-slide" style="background-image:url(./images/nature-2.jpg)"></div>
+
+            <div class="swiper-slide" style="background-image:url(./images/nature-3.jpg)"></div>
+
+            <div class="swiper-slide" style="background-image:url(./images/nature-4.jpg)"></div>
+
+            <div class="swiper-slide" style="background-image:url(./images/nature-5.jpg)"></div>
+
+            <div class="swiper-slide" style="background-image:url(./images/nature-6.jpg)"></div>
+
+            <div class="swiper-slide" style="background-image:url(./images/nature-7.jpg)"></div>
+
+            <div class="swiper-slide" style="background-image:url(./images/nature-8.jpg)"></div>
+
+
+            <div class="swiper-slide" style="background-image:url(./images/nature-10.jpg)"></div>
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+    </div>
+
+    <h2>分类</h2>
+    <hr>
+    <div class="classify">
+        <img src="images/classify_img.png">
+        <img src="images/classify_img.png">
+        <img src="images/classify_img.png">
+        <img src="images/classify_img.png">
+        <img src="images/classify_img.png">
+    </div>
+
+    <hr>
+    <footer>
+        <div class="footer">
+            <div class="copyright">kunming 版权所属 (c)2019<br> &copy; 联系电话：13260663386   邮箱：770320622@qq.com</div>
+            <div class="credits"></div>
+        </div>
+    </footer>
+
+</div>
+
+
+
+
+
+
+
+    <script>
+        $('.work_introduction').each(function(){
+            //设置显示获取字符串的字数  这个根绝要求 看需要大概显示几行
+            var maxwidth=300;
+            if($(this).text().length>maxwidth){
+                //截取字符串
+                $(this).text($(this).text().substring(0,maxwidth));
+                //多余的用省略号显示
+                $(this).html($(this).html()+'...');
+            }
+        });
+
+
+        var swiper = new Swiper('.swiper-container', {
+
+        effect: 'coverflow',
+
+        grabCursor: true,
+
+        centeredSlides: true,
+
+        slidesPerView: 'auto',
+
+        coverflowEffect: {
+
+            rotate: 50,
+
+            stretch: 0,
+
+            depth: 100,
+
+            modifier: 1,
+
+            slideShadows: true,
+
+        },
+
+        pagination: {
+
+            el: '.swiper-pagination',
+
+        },
+
+    });
+
+
+
+</script>
+
+</body>
+</html>

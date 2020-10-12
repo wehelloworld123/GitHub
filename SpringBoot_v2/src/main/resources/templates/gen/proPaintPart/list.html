@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+      xmlns:sec="http://www.pollix.at/thymeleaf/shiro">
+<head th:replace="admin/common/html/head :: head_Normal(~{::title},~{::link},~{::style})">
+
+<title th:text=${title}></title>
+<!-- 这儿引用单独的css link -->
+<!-- Ladda for Bootstrap 3按钮加载进度插件 -->
+<link rel="stylesheet" th:href="@{/static/admin/assets/js/button/ladda/ladda.min.css}">
+<!-- bootstrap-table表单样式 -->
+<link th:href="@{/static/admin/assets/js/bootstrap/css/bootstrap-table/bootstrap-table.min.css}" rel="stylesheet"/>
+
+<style type="text/css">
+/**
+*这里写单独的css样式
+*/
+
+</style>
+
+</head>
+
+<body id="listbody">
+<!-- # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 代码编写处 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # -->
+
+<!-- 右边内容 -->
+<div class="wrap-fluid">
+    <div class="container-fluid paper-wrap bevel tlbr">
+        <!-- 内容 -->
+        <!--标题 通用-->
+        <div th:replace="admin/common/html/title :: title(${title},${parenttitle},${isMsg},${msgHTML})">
+        </div>
+        <!-- 结束标题 通用-->
+        <div class="content-wrap">
+            <!-- 结束内容 -->
+            <div class="row">
+                <div class="col-sm-12">
+                <!-- 搜索条件 -->
+                
+                	 <div class="nest" id="inlineClose">
+                            <div class="title-alt">
+                                <h6>搜索条件</h6>
+                                <div class="titleClose">
+                                    <a class="gone" href="#inlineClose">
+                                        <span class="entypo-cancel"></span>
+                                    </a>
+                                </div>
+                                <div class="titleToggle">
+                                    <a class="nav-toggle-alt" href="#search_div" >
+                                        <span class="entypo-down-open"></span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="body-nest" id="search_div" style="display: none">
+                                <div class="form_left">
+                                    <form role="form" class="form-inline">
+                                    												
+											<div class="form-group">
+	                                            <label for="exampleInputEmail2" class="sr-only">主键</label>
+	                                            <input type="text" name="id" placeholder="主键"class="form-control">
+	                                        </div>
+	                                        
+																					
+											<div class="form-group">
+	                                            <label for="exampleInputEmail2" class="sr-only">主题</label>
+	                                            <input type="text" name="subject" placeholder="主题"class="form-control">
+	                                        </div>
+	                                        
+																					
+											<div class="form-group">
+	                                            <label for="exampleInputEmail2" class="sr-only">章节介绍</label>
+	                                            <input type="text" name="introduce" placeholder="章节介绍"class="form-control">
+	                                        </div>
+	                                        
+																					
+											<div class="form-group">
+	                                            <label for="exampleInputEmail2" class="sr-only">图片</label>
+	                                            <input type="text" name="pic" placeholder="图片"class="form-control">
+	                                        </div>
+	                                        
+																					
+											<div class="form-group">
+	                                            <label for="exampleInputEmail2" class="sr-only">创作要求</label>
+	                                            <input type="text" name="requirement" placeholder="创作要求"class="form-control">
+	                                        </div>
+	                                        
+																					
+											<div class="form-group">
+	                                            <label for="exampleInputEmail2" class="sr-only">类型</label>
+	                                            <input type="text" name="partType" placeholder="类型"class="form-control">
+	                                        </div>
+	                                        
+																					
+											<div class="form-group">
+	                                            <label for="exampleInputEmail2" class="sr-only">创作者</label>
+	                                            <input type="text" name="creators" placeholder="创作者"class="form-control">
+	                                        </div>
+	                                        
+																					
+											<div class="form-group">
+	                                            <label for="exampleInputEmail2" class="sr-only">父节点</label>
+	                                            <input type="text" name="root" placeholder="父节点"class="form-control">
+	                                        </div>
+	                                        
+																					
+											<div class="form-group">
+	                                            <label for="exampleInputEmail2" class="sr-only">分集编号</label>
+	                                            <input type="text" name="rootId" placeholder="分集编号"class="form-control">
+	                                        </div>
+	                                        
+																					
+											<div class="form-group">
+	                                            <label for="exampleInputEmail2" class="sr-only">关联文章编号</label>
+	                                            <input type="text" name="literId" placeholder="关联文章编号"class="form-control">
+	                                        </div>
+	                                        
+																					
+											<div class="form-group">
+	                                            <label for="exampleInputEmail2" class="sr-only">关联诗歌编号</label>
+	                                            <input type="text" name="poemId" placeholder="关联诗歌编号"class="form-control">
+	                                        </div>
+
+																					
+											<div class="form-group">
+	                                            <label for="exampleInputEmail2" class="sr-only">数量</label>
+	                                            <input type="text" name="number" placeholder="数量"class="form-control">
+	                                        </div>
+	                                        
+																					
+											<div class="form-group">
+	                                            <label for="exampleInputEmail2" class="sr-only">主序号</label>
+	                                            <input type="text" name="rootOrd" placeholder="主序号"class="form-control">
+	                                        </div>
+	                                        
+																					
+											<div class="form-group">
+	                                            <label for="exampleInputEmail2" class="sr-only">序号</label>
+	                                            <input type="text" name="ord" placeholder="序号"class="form-control">
+	                                        </div>
+	                                        
+																					
+											<div class="form-group">
+	                                            <label for="exampleInputEmail2" class="sr-only">画集编号</label>
+	                                            <input type="text" name="paintId" placeholder="画集编号"class="form-control">
+	                                        </div>
+	                                        
+																					
+											<div class="form-group">
+	                                            <label for="exampleInputEmail2" class="sr-only">完成</label>
+	                                            <input type="text" name="finish" placeholder="完成"class="form-control">
+	                                        </div>
+	                                        
+																					
+									<!--		<div class="form-group">
+	                                            <label for="exampleInputEmail2" class="sr-only">创建人Id</label>
+	                                            <input type="text" name="createBy" placeholder="创建人Id"class="form-control">
+	                                        </div>
+	                                        
+																					
+											<div class="form-group">
+	                                            <label for="exampleInputEmail2" class="sr-only">创建时间</label>
+	                                            <input type="text" name="createDat" placeholder="创建时间"class="form-control">
+	                                        </div>
+	                                        
+																					
+											<div class="form-group">
+	                                            <label for="exampleInputEmail2" class="sr-only">最后更新时间</label>
+	                                            <input type="text" name="lUpdateDat" placeholder="最后更新时间"class="form-control">
+	                                        </div>
+	                                        
+																					
+											<div class="form-group">
+	                                            <label for="exampleInputEmail2" class="sr-only">删除</label>
+	                                            <input type="text" name="isDel" placeholder="删除"class="form-control">
+	                                        </div>-->
+	                                        
+																				
+                                        <button onclick="$.table.search(this)" class="btn btn-success" type="button"><i class="fa fa-search"></i>&nbsp;搜索</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                	<!-- END搜索条件 -->
+                    <!-- 空白页开始-->
+                    <div class="nest" id="Blank_PageClose">
+                        <div class="title-alt">
+                            <h6>表单</h6>
+                            <div class="titleClose">
+                                <a class="gone" href="#Blank_PageClose">
+                                    <span class="entypo-cancel"></span>
+                                </a>
+                            </div>
+                            <div class="titleToggle">
+                                <a class="nav-toggle-alt" href="#Blank_Page_Content">
+                                    <span class="entypo-up-open"></span>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="body-nest" id="Blank_Page_Content">
+                            <!-- 工具条 -->
+                      <!--      <div class="btn-group hidden-xs" id="exampleTableEventsToolbar" role="group">
+                            	<button onclick="$.operate.add()" type="button" class="btn btn-primary">
+                                    <span class="entypo-plus-squared"></span>&nbsp;&nbsp;新增
+                                </button>
+                               <button onclick="$.operate.batRemove()" type="button" class="btn btn-info">
+                                    <span class="entypo-trash"></span>&nbsp;&nbsp;删除
+                               </button>
+								<button onclick="back()" type="button" class="btn btn-success">
+									<span class="entypo-back"></span>&nbsp;&nbsp;返回上一页
+								</button>
+								<button onclick="backType()" type="button" class="btn btn-default">
+									<span class="entypo-reply-all"></span>&nbsp;&nbsp;返回绘画作品
+								</button>
+                               
+                           </div>-->
+                            <!-- 工具条 end-->
+                           <table id="dataTable" class="table-striped footable-res footable metro-blue" data-page-size="6">
+                                   
+                           </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- 空白页结束 -->
+            </div>
+            <!-- 结束内容 -->
+        </div>
+    </div>
+</div>
+<!-- 结束右边内容 -->
+<!-- # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 代码编写处 END# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # -->
+
+
+
+
+
+
+
+<!-- 右侧隐藏滑块内容 -->
+<div th:include="admin/common/html/rightHide :: rightHide">
+    
+</div>
+   <!-- END 右侧隐藏滑块内容-->
+
+<!-- 通用js -->
+<div th:include="admin/common/html/js :: onload_js">
+   
+</div>
+<!-- bootstarp 表格 -->
+<script th:src="@{/static/admin/assets/js/bootstrap/js/bootstrap-table/bootstrap-table.min.js}" type="text/javascript"></script>
+<script th:src="@{/static/admin/assets/js/bootstrap/js/bootstrap-table/locale/bootstrap-table-zh-CN.min.js}" type="text/javascript"></script>
+<script th:src="@{/static/admin/assets/js/bootstrap/js/base_list.js}" type="text/javascript"></script>
+<!-- jquery-export 表格导出插件 -->
+<script th:src="@{/static/admin/assets/js/bootstrap/extensions/export/bootstrap-table-export.js}" type="text/javascript"></script>
+<script th:src="@{/static/admin/assets/js/bootstrap/extensions/export/tableExport.js}" type="text/javascript"></script>
+
+<!-- 弹窗 -->
+<script th:src="@{/static/admin/assets/js/layer/layer.js}" type="text/javascript"></script>
+<!-- 遮罩层 -->
+<script th:src="@{/static/admin/assets/js/blockUI/jquery.blockUI.js}" type="text/javascript"></script>
+
+<script type="text/javascript">
+
+      	   	      	      	      	      	      	      	      	      	      	      	      	      	      	      	      	      	      	      	      	      
+/**  请求URL配置   **/
+var dataUrl=window.rootPath+"/ProPaintPartController/list?paintId=[[${paintId}]]";
+var removeUrl=window.rootPath+"/ProPaintPartController/remove";
+var createUrl=window.rootPath+"/ProPaintPartController/add";
+var updateUrl=window.rootPath+"/ProPaintPartController/edit/{id}";
+var viewUrl=window.rootPath+"/ProPaintContentController/view2";
+var finishUrl=window.rootPath+"/ProPaintPartController/finish";
+var proPaintUrl=window.rootPath+"/ProPaintController/view";
+var exportUrl=window.rootPath+"/ProPaintPartController/export";
+  var options = {
+		dataUrl: dataUrl,
+        createUrl: createUrl,
+        updateUrl: updateUrl,
+        removeUrl:removeUrl,
+      	finishUrl:finishUrl,
+        exportUrl: exportUrl,
+        sortName: "roleSort",
+        modalName: "绘画作品分集",
+        search: false,
+	   dataColumns: [
+			{
+			    title: "序号",
+				formatter: function (value, row, index) {
+				  var actions = [];
+				  actions.push(index+1);
+
+				  return actions.join('');
+				}
+			},
+			{
+			    field: 'id',
+			    title: '编号'
+			},
+			{
+			    field: 'subject',
+			    title: '主题'
+			},
+			{
+			    field: 'introduce',
+			    title: '章节介绍'
+			},
+			{
+			    field: 'pic',
+			    title: '图片'
+			},
+			{
+			    field: 'requirement',
+			    title: '创作要求'
+			},
+			{
+			    field: 'partType',
+			    title: '类型',
+           formatter: function (value, row, index) {
+				var kind = row.partType;
+				var actions = [];
+				if(kind==0) {
+					actions.push('自由创作');
+				}else if(kind==1){
+					actions.push('历史');
+				}else if(kind==2){
+					actions.push('文学');
+				}else if(kind==3){
+					actions.push('思想');
+				}else if(kind==4){
+					actions.push('游戏');
+				}else if(kind==5){
+					actions.push('言情');
+				}
+				else if(kind==5){
+					actions.push('心理');
+				}
+				return actions.join('');
+				}
+			},
+			{
+			    field: 'creators',
+			    title: '创作者'
+			},
+			{
+			    field: 'root',
+			    title: '主节点',
+                formatter: function (value, row, index) {
+                    var actions = [];
+                    if(value==1){
+                        actions.push('是');
+                    }else{
+                        actions.push('否');
+                    }
+                    return actions.join('');
+                }
+			},
+			{
+			    field: 'rootId',
+			    title: '分集编号'
+			},
+			{
+			    field: 'literId',
+			    title: '关联文章编号'
+			},
+			{
+			    field: 'poemId',
+			    title: '关联诗歌编号'
+			},
+			{
+			    field: 'number',
+			    title: '数量'
+			},
+	/*		{
+			    field: 'rootOrd',
+			    title: '主序号'
+			},
+			{
+			    field: 'ord',
+			    title: '序号'
+			},*/
+			{
+			    field: 'paintId',
+			    title: '画集编号'
+			},
+           {
+               field: 'finish',
+               title: '状态',
+               formatter: function (value, row, index) {
+                   var actions = [];
+                   if(value==0){
+                       actions.push('创作中');
+                   }else if(value==1){
+                       actions.push('完成');
+                   }else if(value==-1){
+                       actions.push('编辑');
+                   }
+                   return actions.join('');
+               }
+           },
+/*			{
+			    field: 'createBy',
+			    title: '创建人Id'
+			},
+			{
+			    field: 'createDat',
+			    title: '创建时间'
+			},
+			{
+			    field: 'lUpdateDat',
+			    title: '最后更新时间'
+			},
+			{
+			    field: 'isDel',
+			    title: '删除'
+			},*/
+
+/*	
+参照修改注释
+		{
+			    field: 'xxstate',
+			    title: 'xx状态',
+			    visible: false, //隐藏
+			    searchable: false,//搜索
+			   	sortable:false,//设置true为允许列可以排序
+			    order: 'asc', //排序顺序
+		    	formatter: function (value, row, index) {
+			        var actions = [];
+			        if(value==0){
+			        	 actions.push('<span class="label label-primary">关闭</span>');
+			        }else if(value==1){
+			        	 actions.push('<span class="label label-danger">开启</span>');
+			        }
+			      	return actions.join('');			    
+				 }
+			}
+*/
+			{
+			    title: '操作',
+			    formatter: function (value, row, index) {
+			        var id = row.id;
+			        var actions = [];
+			        actions.push('<a class="btn btn-success btn-xs"  href="#" onclick="$.operate.finish(\'' + row.id + '\')"><i class="fa fa-edit"></i>完成</a> ');
+                    actions.push('<a class="btn btn-info btn-xs"  href="#" onclick="queryList(\'' + row.id + '\')"><i class="fa fa-list-ul"></i>查看</a> ');
+			        return actions.join('');
+			    }
+			}]
+  };
+$(function(){
+	var oTab=$.table.oTableInit(options);
+	oTab.Init();
+})
+
+
+//查看
+function queryList(no) {
+    console.log(no);
+    window.location.href=viewUrl+"?no="+no;
+}
+</script>
+
+</body>
+
+
+</html>

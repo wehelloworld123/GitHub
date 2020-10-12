@@ -1,0 +1,28 @@
+package com.example.demo;
+
+import com.example.demo.domain.HelloSender;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.stereotype.Component;
+import org.springframework.test.context.junit4.SpringRunner;
+
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class RabbitMqHelloTest {
+    @Autowired
+    private HelloSender helloSender;
+
+    @Test
+    public void hello() throws Exception{
+        helloSender.send();
+    }
+    
+    @Test
+    public void oneToMany() throws Exception{
+        for (int i=0;i<100;i++){
+           // neoSender.sender(i);
+        }
+    }
+}

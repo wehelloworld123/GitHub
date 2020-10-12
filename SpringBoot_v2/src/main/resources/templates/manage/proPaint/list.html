@@ -1,0 +1,561 @@
+<!--管理员审核-->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.pollix.at/thymeleaf/shiro">
+<head th:replace="admin/common/html/head :: head_Normal(~{::title},~{::link},~{::style})">
+
+	<title th:text=${title}></title>
+	<!-- 这儿引用单独的css link -->
+	<!-- Ladda for Bootstrap 3按钮加载进度插件 -->
+	<link rel="stylesheet" th:href="@{/static/admin/assets/js/button/ladda/ladda.min.css}">
+	<!-- bootstrap-table表单样式 -->
+	<link th:href="@{/static/admin/assets/js/bootstrap/css/bootstrap-table/bootstrap-table.min.css}" rel="stylesheet"/>
+
+	<style type="text/css">
+		/**
+        *这里写单独的css样式
+        */
+
+	</style>
+
+</head>
+
+<body id="listbody">
+<!-- # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 代码编写处 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # -->
+
+<!-- 右边内容 -->
+<div class="wrap-fluid">
+	<div class="container-fluid paper-wrap bevel tlbr">
+		<!-- 内容 -->
+		<!--标题 通用-->
+		<div th:replace="admin/common/html/title :: title(${title},${parenttitle},${isMsg},${msgHTML})">
+		</div>
+		<!-- 结束标题 通用-->
+		<div class="content-wrap">
+			<!-- 结束内容 -->
+			<div class="row">
+				<div class="col-sm-12">
+					<!-- 搜索条件 -->
+
+					<div class="nest" id="inlineClose">
+						<div class="title-alt">
+							<h6>搜索条件</h6>
+							<div class="titleClose">
+								<a class="gone" href="#inlineClose">
+									<span class="entypo-cancel"></span>
+								</a>
+							</div>
+							<div class="titleToggle">
+								<a class="nav-toggle-alt" href="#search_div" >
+									<span class="entypo-down-open"></span>
+								</a>
+							</div>
+						</div>
+
+						<div class="body-nest" id="search_div" style="display: none">
+							<div class="form_left">
+								<form role="form" class="form-inline">
+
+									<div class="form-group">
+										<label for="exampleInputEmail2" class="sr-only">主键</label>
+										<input type="text" name="uid" placeholder="主键"class="form-control">
+									</div>
+
+
+									<div class="form-group">
+										<label for="exampleInputEmail2" class="sr-only">集名</label>
+										<input type="text" name="seter" placeholder="集名"class="form-control">
+									</div>
+
+
+									<div class="form-group">
+										<label for="exampleInputEmail2" class="sr-only">名称</label>
+										<input type="text" name="name" placeholder="名称"class="form-control">
+									</div>
+
+
+									<div class="form-group">
+										<label for="exampleInputEmail2" class="sr-only">二维码</label>
+										<input type="text" name="qrCode" placeholder="二维码"class="form-control">
+									</div>
+
+
+									<div class="form-group">
+										<label for="exampleInputEmail2" class="sr-only">展示图</label>
+										<input type="text" name="exhibition" placeholder="展示图"class="form-control">
+									</div>
+
+
+									<div class="form-group">
+										<label for="exampleInputEmail2" class="sr-only">封面</label>
+										<input type="text" name="cover" placeholder="封面"class="form-control">
+									</div>
+
+
+									<div class="form-group">
+										<label for="exampleInputEmail2" class="sr-only">主旨</label>
+										<input type="text" name="topic" placeholder="主旨"class="form-control">
+									</div>
+
+
+									<div class="form-group">
+										<label for="exampleInputEmail2" class="sr-only">用途</label>
+										<input type="text" name="purpose" placeholder="用途"class="form-control">
+									</div>
+
+
+									<div class="form-group">
+										<label for="exampleInputEmail2" class="sr-only">描述</label>
+										<input type="text" name="description" placeholder="描述"class="form-control">
+									</div>
+
+
+									<div class="form-group">
+										<label for="exampleInputEmail2" class="sr-only">评分</label>
+										<input type="text" name="rate" placeholder="评分"class="form-control">
+									</div>
+
+
+									<div class="form-group">
+										<label for="exampleInputEmail2" class="sr-only">类别</label>
+										<!--<input type="text" name="kind" placeholder="类别"class="form-control">-->
+										<select id="kind" readonly="true" name="kind" class="form-control valid" aria-invalid="false">
+											<option value="0" selected="selected">自由创作</option>
+											<option value="1">历史</option>
+											<option value="2">文学</option>
+											<option value="3">思想</option>
+											<option value="4">游戏</option>
+											<option value="5">言情</option>
+											<option value="6">心理</option>
+										</select>
+									</div>
+
+
+									<div class="form-group">
+										<label for="exampleInputEmail2" class="sr-only">分集</label>
+										<input type="text" name="parts" placeholder="分集"class="form-control">
+									</div>
+
+
+									<div class="form-group">
+										<label for="exampleInputEmail2" class="sr-only">画作</label>
+										<input type="text" name="section" placeholder="画作"class="form-control">
+									</div>
+
+
+									<div class="form-group">
+										<label for="exampleInputEmail2" class="sr-only">完成分集</label>
+										<input type="text" name="finPart" placeholder="完成分集"class="form-control">
+									</div>
+
+
+									<div class="form-group">
+										<label for="exampleInputEmail2" class="sr-only">完成画作</label>
+										<input type="text" name="finSection" placeholder="完成画作"class="form-control">
+									</div>
+
+
+									<div class="form-group">
+										<label for="exampleInputEmail2" class="sr-only">形式</label>
+										<input type="text" name="form" placeholder="形式"class="form-control">
+									</div>
+
+
+									<div class="form-group">
+										<label for="exampleInputEmail2" class="sr-only">创作者</label>
+										<input type="text" name="partner" placeholder="创作者"class="form-control">
+									</div>
+
+
+									<div class="form-group">
+										<label for="exampleInputEmail2" class="sr-only">浏览量</label>
+										<input type="text" name="views" placeholder="浏览量"class="form-control">
+									</div>
+
+
+									<div class="form-group">
+										<label for="exampleInputEmail2" class="sr-only">版权</label>
+										<input type="text" name="copyright" placeholder="版权"class="form-control">
+									</div>
+
+
+									<div class="form-group">
+										<label for="exampleInputEmail2" class="sr-only">版费</label>
+										<input type="text" name="reward" placeholder="版费"class="form-control">
+									</div>
+
+
+									<div class="form-group">
+										<label for="exampleInputEmail2" class="sr-only">期限</label>
+										<input type="text" name="deadline" placeholder="期限"class="form-control">
+									</div>
+
+
+									<div class="form-group">
+										<label for="exampleInputEmail2" class="sr-only">出品方</label>
+										<input type="text" name="publisher" placeholder="出品方"class="form-control">
+									</div>
+
+
+									<div class="form-group">
+										<label for="exampleInputEmail2" class="sr-only">置顶</label>
+										<input type="text" name="isTop" placeholder="置顶"class="form-control">
+									</div>
+
+
+									<div class="form-group">
+										<label for="exampleInputEmail2" class="sr-only">完成</label>
+										<input type="text" name="finish" placeholder="完成"class="form-control">
+									</div>
+
+
+									<!--		<div class="form-group">
+	                                            <label for="exampleInputEmail2" class="sr-only">创建人Id</label>
+	                                            <input type="text" name="createBy" placeholder="创建人Id"class="form-control">
+	                                        </div>
+
+
+											<div class="form-group">
+	                                            <label for="exampleInputEmail2" class="sr-only">创建时间</label>
+	                                            <input type="text" name="createDat" placeholder="创建时间"class="form-control">
+	                                        </div>
+
+
+											<div class="form-group">
+	                                            <label for="exampleInputEmail2" class="sr-only">最后更新时间</label>
+	                                            <input type="text" name="lUpdateDat" placeholder="最后更新时间"class="form-control">
+	                                        </div>
+
+
+											<div class="form-group">
+	                                            <label for="exampleInputEmail2" class="sr-only">删除</label>
+	                                            <input type="text" name="isDel" placeholder="删除"class="form-control">
+	                                        </div>-->
+
+
+									<button onclick="$.table.search(this)" class="btn btn-success" type="button"><i class="fa fa-search"></i>&nbsp;搜索</button>
+								</form>
+							</div>
+						</div>
+					</div>
+					<!-- END搜索条件 -->
+					<!-- 空白页开始-->
+					<div class="nest" id="Blank_PageClose">
+						<div class="title-alt">
+							<h6>表单</h6>
+							<div class="titleClose">
+								<a class="gone" href="#Blank_PageClose">
+									<span class="entypo-cancel"></span>
+								</a>
+							</div>
+							<div class="titleToggle">
+								<a class="nav-toggle-alt" href="#Blank_Page_Content">
+									<span class="entypo-up-open"></span>
+								</a>
+							</div>
+						</div>
+
+						<div class="body-nest" id="Blank_Page_Content">
+							<!-- 工具条 -->
+							<div class="btn-group hidden-xs" id="exampleTableEventsToolbar" role="group">
+								<button onclick="$.operate.add()" type="button" class="btn btn-primary">
+									<span class="entypo-plus-squared"></span>&nbsp;&nbsp;新增
+								</button>
+								<button onclick="$.operate.batRemove()" type="button" class="btn btn-info">
+									<span class="entypo-trash"></span>&nbsp;&nbsp;删除
+								</button>
+
+							</div>
+							<!-- 工具条 end-->
+							<table id="dataTable" class="table-striped footable-res footable metro-blue" data-page-size="6">
+
+							</table>
+						</div>
+					</div>
+				</div>
+				<!-- 空白页结束 -->
+			</div>
+			<!-- 结束内容 -->
+		</div>
+	</div>
+</div>
+<!-- 结束右边内容 -->
+<!-- # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 代码编写处 END# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # -->
+
+
+
+
+
+
+
+<!-- 右侧隐藏滑块内容 -->
+<div th:include="admin/common/html/rightHide :: rightHide">
+
+</div>
+<!-- END 右侧隐藏滑块内容-->
+
+<!-- 通用js -->
+<div th:include="admin/common/html/js :: onload_js">
+
+</div>
+<!-- bootstarp 表格 -->
+<script th:src="@{/static/admin/assets/js/bootstrap/js/bootstrap-table/bootstrap-table.min.js}" type="text/javascript"></script>
+<script th:src="@{/static/admin/assets/js/bootstrap/js/bootstrap-table/locale/bootstrap-table-zh-CN.min.js}" type="text/javascript"></script>
+<script th:src="@{/static/admin/assets/js/bootstrap/js/base_list.js}" type="text/javascript"></script>
+<!-- jquery-export 表格导出插件 -->
+<script th:src="@{/static/admin/assets/js/bootstrap/extensions/export/bootstrap-table-export.js}" type="text/javascript"></script>
+<script th:src="@{/static/admin/assets/js/bootstrap/extensions/export/tableExport.js}" type="text/javascript"></script>
+
+<!-- 弹窗 -->
+<script th:src="@{/static/admin/assets/js/layer/layer.js}" type="text/javascript"></script>
+<!-- 遮罩层 -->
+<script th:src="@{/static/admin/assets/js/blockUI/jquery.blockUI.js}" type="text/javascript"></script>
+
+<script type="text/javascript">
+
+
+    /**  请求URL配置   **/
+    var dataUrl=window.rootPath+"/ProPaintManageController/list";
+    var removeUrl=window.rootPath+"/ProPaintManageController/remove";
+    var viewUrl=window.rootPath+"/ProPaintPartManageController/view2";
+    var finishUrl=window.rootPath+"/ProPaintManageController/finish";
+    var createUrl=window.rootPath+"/ProPaintManageController/add";
+    var lookUrl=window.rootPath+"/ProPaintManageController/edit/{id}";
+    var exportUrl=window.rootPath+"/ProPaintManageController/export";
+    var applyUrl=window.rootPath+"/ProPaintManageController/apply";
+    var loseUrl=window.rootPath+"/ProPaintManageController/lose";
+    var options = {
+        dataUrl: dataUrl,
+        createUrl: createUrl,
+        lookUrl: lookUrl,
+        finishUrl:finishUrl,
+        removeUrl:removeUrl,
+        applyUrl:applyUrl,
+        exportUrl: exportUrl,
+        loseUrl:loseUrl,
+        sortName: "roleSort",
+        modalName: "绘画创作集",
+        search: false,
+        dataColumns: [
+            {
+                checkbox: true
+            },
+            {
+                field: 'uid',
+                title: '主键'
+            },
+            {
+                field: 'seter',
+                title: '集名'
+            },
+            {
+                field: 'name',
+                title: '名称'
+            },
+            {
+                field: 'qrCode',
+                title: '二维码',
+                visible: false //隐藏
+            },
+            {
+                field: 'exhibition',
+                title: '展示图',
+                visible: false //隐藏
+            },
+            {
+                field: 'cover',
+                title: '封面',
+                visible: false //隐藏
+            },
+            {
+                field: 'topic',
+                title: '主旨'
+            },
+            {
+                field: 'purpose',
+                title: '用途'
+            },
+            {
+                field: 'description',
+                title: '描述'
+            },
+            {
+                field: 'rate',
+                title: '评分'
+            },
+            {
+                field: 'kind',
+                title: '类别',
+                formatter: function (value, row, index) {
+                    var kind = row.kind;
+                    var actions = [];
+                    if(kind==0) {
+                        actions.push('自由创作');
+                    }else if(kind==1){
+                        actions.push('历史');
+                    }else if(kind==2){
+                        actions.push('文学');
+                    }else if(kind==3){
+                        actions.push('思想');
+                    }else if(kind==4){
+                        actions.push('游戏');
+                    }else if(kind==5){
+                        actions.push('言情');
+                    }
+                    else if(kind==5){
+                        actions.push('心理');
+                    }
+                    return actions.join('');
+                }
+            },
+            {
+                field: 'parts',
+                title: '分集'
+            },
+            {
+                field: 'section',
+                title: '画作'
+            },
+            {
+                field: 'finPart',
+                title: '完成分集'
+            },
+            {
+                field: 'finSection',
+                title: '完成画作'
+            },
+            {
+                field: 'form',
+                title: '形式',
+                formatter: function (value, row, index) {
+                    var form = row.form;
+                    var actions = [];
+                    if(form==0) {
+                        actions.push('众创');
+                    }else if(form==1){
+                        actions.push('预约');
+                    }else if(form==2){
+                        actions.push('组创');
+                    }
+                    return actions.join('');
+                }
+            },
+            {
+                field: 'partner',
+                title: '创作者',
+                visible: false //隐藏
+            },
+            {
+                field: 'views',
+                title: '浏览量',
+                visible: false //隐藏
+            },
+            {
+                field: 'copyright',
+                title: '版权'
+            },
+            {
+                field: 'reward',
+                title: '版费'
+            },
+            {
+                field: 'deadline',
+                title: '期限'
+            },
+            {
+                field: 'publisher',
+                title: '出品方'
+            },
+            {
+                field: 'isTop',
+                title: '置顶',
+                formatter: function (value, row, index) {
+                    var isTop = row.isTop;
+                    var actions = [];
+                    if(isTop==1) {
+                        actions.push('<span class="fontawesome fontawesome-ok"></span>');
+                    }
+                    return actions.join('');
+                }
+            },
+            {
+                field: 'finish',
+                title: '完成',
+                formatter: function (value, row, index) {
+                    var finish = row.finish;
+                    var actions = [];
+                    if(finish==1) {
+                        actions.push('<span class="fontawesome fontawesome-ok"></span>');
+                    }else if(finish==-1){
+                        actions.push('<span class="fontawesome fontawesome-minus-sign"></span>');
+                    }
+                    return actions.join('');
+                }
+            },
+            /*			{
+                            field: 'createBy',
+                            title: '创建人Id'
+                        },
+                        {
+                            field: 'createDat',
+                            title: '创建时间'
+                        },
+                        {
+                            field: 'lUpdateDat',
+                            title: '最后更新时间'
+                        },
+                        {
+                            field: 'isDel',
+                            title: '是否删除'
+                        },*/
+
+            /*
+            参照修改注释
+                    {
+                            field: 'xxstate',
+                            title: 'xx状态',
+                            visible: false, //隐藏
+                            searchable: false,//搜索
+                               sortable:false,//设置true为允许列可以排序
+                            order: 'asc', //排序顺序
+                            formatter: function (value, row, index) {
+                                var actions = [];
+                                if(value==0){
+                                     actions.push('<span class="label label-primary">关闭</span>');
+                                }else if(value==1){
+                                     actions.push('<span class="label label-danger">开启</span>');
+                                }
+                                  return actions.join('');
+                             }
+                        }
+            */
+            {
+                title: '操作',
+                formatter: function (value, row, index) {
+                    // var id = row.id;
+                    var finish = row.finish;
+                    var actions = [];
+                    actions.push('<a class="btn btn-success btn-xs"  href="#" onclick="$.operate.finish(\'' + row.uid + '\')"><i class="entypo entypo-paper-plane"></i>通过</a> ');
+                    actions.push('<a class="btn btn-success btn-xs"  href="#" onclick="$.operate.look(\'' + row.uid + '\')"><i class="fa fa-edit"></i>预览</a> ');
+                    actions.push('<a class="btn btn-info btn-xs"  href="#" onclick="queryList(\'' + row.uid + '\')"><i class="fa fa-list-ul"></i>查看</a> ');
+                    actions.push('<a class="btn btn-danger btn-xs" href="#" onclick="$.operate.lose(\'' + row.uid + '\')"><i class="fa fa-remove"></i>打回</a>');
+
+                    return actions.join('');
+                }
+            }]
+    };
+    $(function(){
+        var oTab=$.table.oTableInit(options);
+        oTab.Init();
+    })
+    //显示字典表数据
+    function queryList(dictId) {
+        console.log(dictId);
+        window.location.href=viewUrl+"?uid="+dictId;
+    }
+</script>
+
+</body>
+
+
+</html>

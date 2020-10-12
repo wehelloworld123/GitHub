@@ -1,0 +1,770 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fc.test.mapper.auto.ProPoetryMapper">
+  <resultMap id="BaseResultMap" type="com.fc.test.model.auto.ProPoetry">
+    <result column="uid" jdbcType="VARCHAR" property="uid" />
+    <result column="seter" jdbcType="VARCHAR" property="seter" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="cover" jdbcType="VARCHAR" property="cover" />
+    <result column="qr_code" jdbcType="VARCHAR" property="qrCode" />
+    <result column="exhibition" jdbcType="VARCHAR" property="exhibition" />
+    <result column="topic" jdbcType="VARCHAR" property="topic" />
+    <result column="purpose" jdbcType="VARCHAR" property="purpose" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="rate" jdbcType="REAL" property="rate" />
+    <result column="kind" jdbcType="VARCHAR" property="kind" />
+    <result column="charpter" jdbcType="INTEGER" property="charpter" />
+    <result column="section" jdbcType="INTEGER" property="section" />
+    <result column="fin_charpter" jdbcType="INTEGER" property="finCharpter" />
+    <result column="fin_section" jdbcType="INTEGER" property="finSection" />
+    <result column="form" jdbcType="VARCHAR" property="form" />
+    <result column="partner" jdbcType="BIGINT" property="partner" />
+    <result column="views" jdbcType="BIGINT" property="views" />
+    <result column="copyright" jdbcType="INTEGER" property="copyright" />
+    <result column="reward" jdbcType="VARCHAR" property="reward" />
+    <result column="deadline" jdbcType="TIMESTAMP" property="deadline" />
+    <result column="publisher" jdbcType="VARCHAR" property="publisher" />
+    <result column="is_top" jdbcType="INTEGER" property="isTop" />
+    <result column="source" jdbcType="VARCHAR" property="source" />
+    <result column="finish" jdbcType="INTEGER" property="finish" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+    <result column="create_dat" jdbcType="TIMESTAMP" property="createDat" />
+    <result column="l_update_dat" jdbcType="TIMESTAMP" property="lUpdateDat" />
+    <result column="is_del" jdbcType="INTEGER" property="isDel" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+<sql id="Base_Column_List">
+	  	  	      	uid,
+       	  	      	seter,
+       	  	      	name,
+       	  	      	cover,
+       	  	      	qr_code,
+       	  	      	exhibition,
+       	  	      	topic,
+       	  	      	purpose,
+       	  	      	description,
+       	  	      	rate,
+       	  	      	kind,
+       	  	      	charpter,
+       	  	      	section,
+       	  	      	fin_charpter,
+       	  	      	fin_section,
+       	  	      	form,
+       	  	      	partner,
+       	  	      	views,
+       	  	      	copyright,
+       	  	      	reward,
+       	  	      	deadline,
+       	  	      	publisher,
+       	  	      	is_top,
+       	  	      	source,
+       	  	      	finish,
+       	  	      	create_by,
+       	  	      	create_dat,
+       	  	      	l_update_dat,
+       	  	    	  	is_del
+       	</sql>
+  <select id="selectByExample" parameterType="com.fc.test.model.auto.ProPoetryExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_pro_poetry
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_pro_poetry
+    where uid = #{uid,jdbcType=VARCHAR}
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from t_pro_poetry
+    where uid = #{uid,jdbcType=VARCHAR}
+  </delete>
+
+  <update id="deleteStsByKey" parameterType="com.fc.test.model.auto.ProPoetry">
+    update t_pro_poetry
+    SET is_del = #{isDel}
+    where uid = #{uid}
+  </update>
+
+  <delete id="deleteByExample" parameterType="com.fc.test.model.auto.ProPoetryExample">
+    delete from t_pro_poetry
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  
+  <insert id="insert" parameterType="com.fc.test.model.auto.ProPoetry">
+    insert into t_pro_poetry (
+      	  	       uid,
+       	  	       seter,
+       	  	       name,
+       	  	       cover,
+       	  	       qr_code,
+       	  	       exhibition,
+       	  	       topic,
+       	  	       purpose,
+       	  	       description,
+       	  	       rate,
+       	  	       kind,
+       	  	       charpter,
+       	  	       section,
+       	  	       fin_charpter,
+       	  	       fin_section,
+       	  	       form,
+       	  	       partner,
+       	  	       views,
+       	  	       copyright,
+       	  	       reward,
+       	  	       deadline,
+       	  	       publisher,
+       	  	       is_top,
+       	  	       source,
+       	  	       finish,
+       	  	       create_by,
+       	  	       create_dat,
+       	  	       l_update_dat,
+       	  	    	  is_del
+       	    )
+    values (
+	  	  	      	#{uid,jdbcType=VARCHAR},
+       	  	      	#{seter,jdbcType=VARCHAR},
+       	  	      	#{name,jdbcType=VARCHAR},
+       	  	      	#{cover,jdbcType=VARCHAR},
+       	  	      	#{qrCode,jdbcType=VARCHAR},
+       	  	      	#{exhibition,jdbcType=VARCHAR},
+       	  	      	#{topic,jdbcType=VARCHAR},
+       	  	      	#{purpose,jdbcType=VARCHAR},
+       	  	      	#{description,jdbcType=VARCHAR},
+       	  	      	#{rate,jdbcType=REAL},
+       	  	      	#{kind,jdbcType=VARCHAR},
+       	  	      	#{charpter,jdbcType=INTEGER},
+       	  	      	#{section,jdbcType=INTEGER},
+       	  	      	#{finCharpter,jdbcType=INTEGER},
+       	  	      	#{finSection,jdbcType=INTEGER},
+       	  	      	#{form,jdbcType=VARCHAR},
+       	  	      	#{partner,jdbcType=BIGINT},
+       	  	      	#{views,jdbcType=BIGINT},
+       	  	      	#{copyright,jdbcType=INTEGER},
+       	  	      	#{reward,jdbcType=VARCHAR},
+       	  	      	#{deadline,jdbcType=TIMESTAMP},
+       	  	      	#{publisher,jdbcType=VARCHAR},
+       	  	      	#{isTop,jdbcType=INTEGER},
+       	  	      	#{source,jdbcType=VARCHAR},
+       	  	      	#{finish,jdbcType=INTEGER},
+       	  	      	#{createBy,jdbcType=VARCHAR},
+       	  	      	#{createDat,jdbcType=TIMESTAMP},
+       	  	      	#{lUpdateDat,jdbcType=TIMESTAMP},
+       	  	    	  #{isDel,jdbcType=INTEGER}
+       	    )
+  </insert>
+  
+  <insert id="insertSelective" parameterType="com.fc.test.model.auto.ProPoetry">
+    insert into t_pro_poetry
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+          
+      <if test="uid != null">
+        uid,
+      </if>
+      
+         
+      <if test="seter != null">
+        seter,
+      </if>
+      
+         
+      <if test="name != null">
+        name,
+      </if>
+      
+         
+      <if test="cover != null">
+        cover,
+      </if>
+      
+         
+      <if test="qrCode != null">
+        qr_code,
+      </if>
+      
+         
+      <if test="exhibition != null">
+        exhibition,
+      </if>
+      
+         
+      <if test="topic != null">
+        topic,
+      </if>
+      
+         
+      <if test="purpose != null">
+        purpose,
+      </if>
+      
+         
+      <if test="description != null">
+        description,
+      </if>
+      
+         
+      <if test="rate != null">
+        rate,
+      </if>
+      
+         
+      <if test="kind != null">
+        kind,
+      </if>
+      
+         
+      <if test="charpter != null">
+        charpter,
+      </if>
+      
+         
+      <if test="section != null">
+        section,
+      </if>
+      
+         
+      <if test="finCharpter != null">
+        fin_charpter,
+      </if>
+      
+         
+      <if test="finSection != null">
+        fin_section,
+      </if>
+      
+         
+      <if test="form != null">
+        form,
+      </if>
+      
+         
+      <if test="partner != null">
+        partner,
+      </if>
+      
+         
+      <if test="views != null">
+        views,
+      </if>
+      
+         
+      <if test="copyright != null">
+        copyright,
+      </if>
+      
+         
+      <if test="reward != null">
+        reward,
+      </if>
+      
+         
+      <if test="deadline != null">
+        deadline,
+      </if>
+      
+         
+      <if test="publisher != null">
+        publisher,
+      </if>
+      
+         
+      <if test="isTop != null">
+        is_top,
+      </if>
+
+      <if test="source != null">
+        source,
+      </if>
+      
+         
+      <if test="finish != null">
+        finish,
+      </if>
+      
+         
+      <if test="createBy != null">
+        create_by,
+      </if>
+      
+         
+      <if test="createDat != null">
+        create_dat,
+      </if>
+      
+         
+      <if test="lUpdateDat != null">
+        l_update_dat,
+      </if>
+      
+         
+      <if test="isDel != null">
+        is_del,
+      </if>
+      
+         </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+          <if test="uid != null">
+        #{uid,jdbcType=VARCHAR},
+      </if>
+          <if test="seter != null">
+        #{seter,jdbcType=VARCHAR},
+      </if>
+          <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+          <if test="cover != null">
+        #{cover,jdbcType=VARCHAR},
+      </if>
+          <if test="qrCode != null">
+        #{qrCode,jdbcType=VARCHAR},
+      </if>
+          <if test="exhibition != null">
+        #{exhibition,jdbcType=VARCHAR},
+      </if>
+          <if test="topic != null">
+        #{topic,jdbcType=VARCHAR},
+      </if>
+          <if test="purpose != null">
+        #{purpose,jdbcType=VARCHAR},
+      </if>
+          <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+          <if test="rate != null">
+        #{rate,jdbcType=REAL},
+      </if>
+          <if test="kind != null">
+        #{kind,jdbcType=VARCHAR},
+      </if>
+          <if test="charpter != null">
+        #{charpter,jdbcType=INTEGER},
+      </if>
+          <if test="section != null">
+        #{section,jdbcType=INTEGER},
+      </if>
+          <if test="finCharpter != null">
+        #{finCharpter,jdbcType=INTEGER},
+      </if>
+          <if test="finSection != null">
+        #{finSection,jdbcType=INTEGER},
+      </if>
+          <if test="form != null">
+        #{form,jdbcType=VARCHAR},
+      </if>
+          <if test="partner != null">
+        #{partner,jdbcType=BIGINT},
+      </if>
+          <if test="views != null">
+        #{views,jdbcType=BIGINT},
+      </if>
+          <if test="copyright != null">
+        #{copyright,jdbcType=INTEGER},
+      </if>
+          <if test="reward != null">
+        #{reward,jdbcType=VARCHAR},
+      </if>
+          <if test="deadline != null">
+        #{deadline,jdbcType=TIMESTAMP},
+      </if>
+          <if test="publisher != null">
+        #{publisher,jdbcType=VARCHAR},
+      </if>
+          <if test="isTop != null">
+        #{isTop,jdbcType=INTEGER},
+      </if>
+          <if test="source != null">
+        #{source,jdbcType=VARCHAR},
+      </if>
+          <if test="finish != null">
+        #{finish,jdbcType=INTEGER},
+      </if>
+          <if test="createBy != null">
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+          <if test="createDat != null">
+        #{createDat,jdbcType=TIMESTAMP},
+      </if>
+          <if test="lUpdateDat != null">
+        #{lUpdateDat,jdbcType=TIMESTAMP},
+      </if>
+          <if test="isDel != null">
+        #{isDel,jdbcType=INTEGER},
+      </if>
+        </trim>
+  </insert>
+  
+  <select id="countByExample" parameterType="com.fc.test.model.auto.ProPoetryExample" resultType="java.lang.Long">
+    select count(*) from t_pro_poetry
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  
+  <update id="updateByExampleSelective" parameterType="map">
+    update t_pro_poetry
+    <set>
+          <if test="record.uid != null">
+        uid = #{record.uid,jdbcType=VARCHAR},
+      </if>
+          <if test="record.seter != null">
+        seter = #{record.seter,jdbcType=VARCHAR},
+      </if>
+          <if test="record.name != null">
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+          <if test="record.cover != null">
+        cover = #{record.cover,jdbcType=VARCHAR},
+      </if>
+          <if test="record.qrCode != null">
+        qr_code = #{record.qrCode,jdbcType=VARCHAR},
+      </if>
+          <if test="record.exhibition != null">
+        exhibition = #{record.exhibition,jdbcType=VARCHAR},
+      </if>
+          <if test="record.topic != null">
+        topic = #{record.topic,jdbcType=VARCHAR},
+      </if>
+          <if test="record.purpose != null">
+        purpose = #{record.purpose,jdbcType=VARCHAR},
+      </if>
+          <if test="record.description != null">
+        description = #{record.description,jdbcType=VARCHAR},
+      </if>
+          <if test="record.rate != null">
+        rate = #{record.rate,jdbcType=REAL},
+      </if>
+          <if test="record.kind != null">
+        kind = #{record.kind,jdbcType=VARCHAR},
+      </if>
+          <if test="record.charpter != null">
+        charpter = #{record.charpter,jdbcType=INTEGER},
+      </if>
+          <if test="record.section != null">
+        section = #{record.section,jdbcType=INTEGER},
+      </if>
+          <if test="record.finCharpter != null">
+        fin_charpter = #{record.finCharpter,jdbcType=INTEGER},
+      </if>
+          <if test="record.finSection != null">
+        fin_section = #{record.finSection,jdbcType=INTEGER},
+      </if>
+          <if test="record.form != null">
+        form = #{record.form,jdbcType=VARCHAR},
+      </if>
+          <if test="record.partner != null">
+        partner = #{record.partner,jdbcType=BIGINT},
+      </if>
+          <if test="record.views != null">
+        views = #{record.views,jdbcType=BIGINT},
+      </if>
+          <if test="record.copyright != null">
+        copyright = #{record.copyright,jdbcType=INTEGER},
+      </if>
+          <if test="record.reward != null">
+        reward = #{record.reward,jdbcType=VARCHAR},
+      </if>
+          <if test="record.deadline != null">
+        deadline = #{record.deadline,jdbcType=TIMESTAMP},
+      </if>
+          <if test="record.publisher != null">
+        publisher = #{record.publisher,jdbcType=VARCHAR},
+      </if>
+          <if test="record.isTop != null">
+        is_top = #{record.isTop,jdbcType=INTEGER},
+      </if>
+          <if test="record.isTop != null">
+        source = #{record.source,jdbcType=VARCHAR},
+      </if>
+          <if test="record.finish != null">
+        finish = #{record.finish,jdbcType=INTEGER},
+      </if>
+          <if test="record.createBy != null">
+        create_by = #{record.createBy,jdbcType=VARCHAR},
+      </if>
+          <if test="record.createDat != null">
+        create_dat = #{record.createDat,jdbcType=TIMESTAMP},
+      </if>
+          <if test="record.lUpdateDat != null">
+        l_update_dat = #{record.lUpdateDat,jdbcType=TIMESTAMP},
+      </if>
+          <if test="record.isDel != null">
+        is_del = #{record.isDel,jdbcType=INTEGER},
+      </if>
+         
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  
+  
+  <update id="updateByExample" parameterType="map">
+    update t_pro_poetry
+    set
+            	     	 uid = #{record.uid,jdbcType=VARCHAR},
+    	         	     	 seter = #{record.seter,jdbcType=VARCHAR},
+    	         	     	 name = #{record.name,jdbcType=VARCHAR},
+    	         	     	 cover = #{record.cover,jdbcType=VARCHAR},
+    	         	     	 qr_code = #{record.qrCode,jdbcType=VARCHAR},
+    	         	     	 exhibition = #{record.exhibition,jdbcType=VARCHAR},
+    	         	     	 topic = #{record.topic,jdbcType=VARCHAR},
+    	         	     	 purpose = #{record.purpose,jdbcType=VARCHAR},
+    	         	     	 description = #{record.description,jdbcType=VARCHAR},
+    	         	     	 rate = #{record.rate,jdbcType=REAL},
+    	         	     	 kind = #{record.kind,jdbcType=VARCHAR},
+    	         	     	 charpter = #{record.charpter,jdbcType=INTEGER},
+    	         	     	 section = #{record.section,jdbcType=INTEGER},
+    	         	     	 fin_charpter = #{record.finCharpter,jdbcType=INTEGER},
+    	         	     	 fin_section = #{record.finSection,jdbcType=INTEGER},
+    	         	     	 form = #{record.form,jdbcType=VARCHAR},
+    	         	     	 partner = #{record.partner,jdbcType=BIGINT},
+    	         	     	 views = #{record.views,jdbcType=BIGINT},
+    	         	     	 copyright = #{record.copyright,jdbcType=INTEGER},
+    	         	     	 reward = #{record.reward,jdbcType=VARCHAR},
+    	         	     	 deadline = #{record.deadline,jdbcType=TIMESTAMP},
+    	         	     	 publisher = #{record.publisher,jdbcType=VARCHAR},
+    	         	     	 is_top = #{record.isTop,jdbcType=INTEGER},
+                             source = #{record.source,jdbcType=VARCHAR},
+    	         	     	 finish = #{record.finish,jdbcType=INTEGER},
+    	         	     	 create_by = #{record.createBy,jdbcType=VARCHAR},
+    	         	     	 create_dat = #{record.createDat,jdbcType=TIMESTAMP},
+    	         	     	 l_update_dat = #{record.lUpdateDat,jdbcType=TIMESTAMP},
+    	         	     	 is_del = #{record.isDel,jdbcType=INTEGER}
+    	         <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  
+  
+      <update id="updateByPrimaryKeySelective" parameterType="com.fc.test.model.auto.ProPoetry">
+    update t_pro_poetry
+    <set>
+                          <if test="seter != null">
+        seter = #{seter,jdbcType=VARCHAR},
+      </if>
+                      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+                      <if test="cover != null">
+        cover = #{cover,jdbcType=VARCHAR},
+      </if>
+                      <if test="qrCode != null">
+        qr_code = #{qrCode,jdbcType=VARCHAR},
+      </if>
+                      <if test="exhibition != null">
+        exhibition = #{exhibition,jdbcType=VARCHAR},
+      </if>
+                      <if test="topic != null">
+        topic = #{topic,jdbcType=VARCHAR},
+      </if>
+                      <if test="purpose != null">
+        purpose = #{purpose,jdbcType=VARCHAR},
+      </if>
+                      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+                      <if test="rate != null">
+        rate = #{rate,jdbcType=REAL},
+      </if>
+                      <if test="kind != null">
+        kind = #{kind,jdbcType=VARCHAR},
+      </if>
+                      <if test="charpter != null">
+        charpter = #{charpter,jdbcType=INTEGER},
+      </if>
+                      <if test="section != null">
+        section = #{section,jdbcType=INTEGER},
+      </if>
+                      <if test="finCharpter != null">
+        fin_charpter = #{finCharpter,jdbcType=INTEGER},
+      </if>
+                      <if test="finSection != null">
+        fin_section = #{finSection,jdbcType=INTEGER},
+      </if>
+                      <if test="form != null">
+        form = #{form,jdbcType=VARCHAR},
+      </if>
+                      <if test="partner != null">
+        partner = #{partner,jdbcType=BIGINT},
+      </if>
+                      <if test="views != null">
+        views = #{views,jdbcType=BIGINT},
+      </if>
+                      <if test="copyright != null">
+        copyright = #{copyright,jdbcType=INTEGER},
+      </if>
+                      <if test="reward != null">
+        reward = #{reward,jdbcType=VARCHAR},
+      </if>
+                      <if test="deadline != null">
+        deadline = #{deadline,jdbcType=TIMESTAMP},
+      </if>
+                      <if test="publisher != null">
+        publisher = #{publisher,jdbcType=VARCHAR},
+      </if>
+                      <if test="isTop != null">
+        is_top = #{isTop,jdbcType=INTEGER},
+      </if>
+                      <if test="source != null">
+        source = #{source,jdbcType=VARCHAR},
+      </if>
+                      <if test="finish != null">
+        finish = #{finish,jdbcType=INTEGER},
+      </if>
+                      <if test="createBy != null">
+        create_by = #{createBy,jdbcType=VARCHAR},
+      </if>
+                      <if test="createDat != null">
+        create_dat = #{createDat,jdbcType=TIMESTAMP},
+      </if>
+                      <if test="lUpdateDat != null">
+        l_update_dat = #{lUpdateDat,jdbcType=TIMESTAMP},
+      </if>
+                      <if test="isDel != null">
+        is_del = #{isDel,jdbcType=INTEGER},
+      </if>
+              </set>
+    where 
+            uid = #{uid,jdbcType=VARCHAR}
+                                                                                                                                                                                                                                  
+  </update>
+
+      	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	
+
+  <update id="updateByPrimaryKey" parameterType="com.fc.test.model.auto.ProPoetry">
+    update t_pro_poetry
+    set 
+             	        	    	 			seter = #{seter,jdbcType=VARCHAR},
+		     	        	    	 			name = #{name,jdbcType=VARCHAR},
+		     	        	    	 			cover = #{cover,jdbcType=VARCHAR},
+		     	        	    	 			qr_code = #{qrCode,jdbcType=VARCHAR},
+		     	        	    	 			exhibition = #{exhibition,jdbcType=VARCHAR},
+		     	        	    	 			topic = #{topic,jdbcType=VARCHAR},
+		     	        	    	 			purpose = #{purpose,jdbcType=VARCHAR},
+		     	        	    	 			description = #{description,jdbcType=VARCHAR},
+		     	        	    	 			rate = #{rate,jdbcType=REAL},
+		     	        	    	 			kind = #{kind,jdbcType=VARCHAR},
+		     	        	    	 			charpter = #{charpter,jdbcType=INTEGER},
+		     	        	    	 			section = #{section,jdbcType=INTEGER},
+		     	        	    	 			fin_charpter = #{finCharpter,jdbcType=INTEGER},
+		     	        	    	 			fin_section = #{finSection,jdbcType=INTEGER},
+		     	        	    	 			form = #{form,jdbcType=VARCHAR},
+		     	        	    	 			partner = #{partner,jdbcType=BIGINT},
+		     	        	    	 			views = #{views,jdbcType=BIGINT},
+		     	        	    	 			copyright = #{copyright,jdbcType=INTEGER},
+		     	        	    	 			reward = #{reward,jdbcType=VARCHAR},
+		     	        	    	 			deadline = #{deadline,jdbcType=TIMESTAMP},
+		     	        	    	 			publisher = #{publisher,jdbcType=VARCHAR},
+		     	        	    	 			is_top = #{isTop,jdbcType=INTEGER},
+		     	        	    	 			source = #{source,jdbcType=VARCHAR},
+		     	        	    	 			finish = #{finish,jdbcType=INTEGER},
+		     	        	    	 			create_by = #{createBy,jdbcType=VARCHAR},
+		     	        	    	 			create_dat = #{createDat,jdbcType=TIMESTAMP},
+		     	        	    	 			l_update_dat = #{lUpdateDat,jdbcType=TIMESTAMP},
+		     	        	    	 			is_del = #{isDel,jdbcType=INTEGER}
+		     	        where 
+            uid = #{uid,jdbcType=VARCHAR}
+                                                                                                                                                                                                                                    
+  </update>
+
+  <update id="deleteBatchByPrimaryKey" parameterType="java.util.List">
+    update t_pro_poetry
+    set
+    is_del = '1'
+    where uid in
+    <foreach collection="list" item="item" index="index" separator="," open="(" close=")">
+      #{item}
+    </foreach>
+    and is_del = '0'
+  </update>
+
+  <select id="selectFinChaptCount" parameterType="com.fc.test.model.auto.ProPoetry" resultType="java.util.HashMap">
+    select
+    A.section as section,
+    count(B.finish) as count
+
+    from
+    t_pro_poetry as A
+    left join
+    t_pro_poemset as B
+    on B.is_del = 0
+    AND B.poetry_id = #{uid}
+    AND B.root = 0
+    AND B.finish = 1
+    WHERE A.uid = #{uid}
+    AND A.is_del = 0
+    limit 1
+  </select>
+                                                                                                                                                
+</mapper>

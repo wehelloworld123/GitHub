@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Bootstrap 模板</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 引入 Bootstrap -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) -->
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <!-- 包括所有已编译的插件 -->
+    <script src="js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/JoinStyle.css">
+</head>
+<body>
+<!--窗口导航栏-->
+<div id="nav_container" class="nav_container">
+    <div class="logo_name">
+        <img src="" class="logo"/>
+        <h1>网站名称</h1>
+    </div>
+    <div id="nav">
+        <div class="inline_nav_banner">
+            <ul class="banner_ul">
+                <li><a class="inline select" href="index.html" title="首页" >首页</a></li>
+                <li><a class="inline" href="work.html" title="作品" target="_blank">作品</a></li>
+                <li><a class="inline" href="creater_new.html" title="作者" target="_blank">作者</a></li>
+                <li><a class="inline" href="featuredream.html" title="未来愿景" target="_blank">未来愿景</a></li>
+                <li><a class="inline" href="" title="加入我们" target="_blank">加入我们</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="login_register">
+        <ul class="ul_login">
+            <li><a href="/" title="登录">登录</a></li>
+            <li><a href="" title="注册">注册</a></li>
+        </ul>
+    </div>
+</div>
+
+<div class="rg_layout">
+    <div class="rg_left">
+        <p>新用户注册</p>
+        <p>USER REGISTER</p>
+    </div>
+
+    <div class="rg_center">
+        <div class="rg_form">
+            <form action="#" method="post">
+                <table>
+                    <tr>
+                        <td class="td_left"><label for="username">用户名</label></td>
+                        <td class="td_right"><input type="text" name="username" id="username" placeholder="请输入用户名"></td>
+                    </tr>
+
+                    <tr>
+                        <td class="td_left"><label for="password">密码</label></td>
+                        <td class="td_right"><input type="password" name="password" id="password" placeholder="请输入密码"></td>
+                    </tr>
+
+                    <tr>
+                        <td class="td_left"><label for="email">Email</label></td>
+                        <td class="td_right"><input type="email" name="email" id="email" placeholder="请输入邮箱"></td>
+                    </tr>
+
+                    <tr>
+                        <td class="td_left"><label for="name">姓名</label></td>
+                        <td class="td_right"><input type="text" name="name" id="name" placeholder="请输入姓名"></td>
+                    </tr>
+
+                    <tr>
+                        <td class="td_left"><label for="tel">手机号</label></td>
+                        <td class="td_right"><input type="text" name="tel" id="tel" placeholder="请输入手机号"></td>
+                    </tr>
+
+                    <tr>
+                        <td class="td_left"><label>性别</label></td>
+                        <td class="td_right">
+                            <input type="radio" name="gender" value="male"> 男
+                            <input type="radio" name="gender" value="female"> 女
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="td_left"><label for="birthday">出生日期</label></td>
+                        <td class="td_right"><input type="date" name="birthday" id="birthday" placeholder="请输入出生日期"></td>
+                    </tr>
+
+                    <tr>
+                        <td class="td_left"><label for="checkcode" >验证码</label></td>
+                        <td class="td_right"><input type="text" name="checkcode" id="checkcode" placeholder="请输入验证码">
+                            <img id="img_check" src="img/verify_code.jpg">
+                        </td>
+                    </tr>
+
+
+                    <tr>
+                        <td colspan="2" align="center"><input type="submit" id="btn_submit" value="注册"></td>
+                    </tr>
+                </table>
+
+            </form>
+        </div>
+
+    </div>
+
+    <div class="rg_right">
+        <p>已有账号?<a href="#">立即登录</a></p>
+
+    </div>
+
+</div>
+
+<div class="join_container">
+    <div class="joinus">
+        <img src="images/schoolpartner.png"  class="join_img_left" >
+        <img src="images/societypartner.png" class="join_img_right" >
+    </div>
+</div>
+
+</body>
+<hr>
+<footer>
+    <div class="footer">
+        <div class="copyright">kunming 版权所属 (c)2019<br> &copy; 联系电话：13260663386   邮箱：770320622@qq.com</div>
+        <div class="credits"></div>
+    </div>
+</footer>
+</html>

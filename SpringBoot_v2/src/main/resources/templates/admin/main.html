@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.pollix.at/thymeleaf/shiro">
+<head th:replace="admin/common/html/head :: head_Normal(~{::title},~{::link},~{::style})">
+
+<title th:text=${title}></title>
+<!-- 这儿引用单独的css link -->
+<link rel="stylesheet" th:href="@{/static/admin/assets/js/button/ladda/ladda.min.css}">
+<script type="text/javascript" th:src="@{/static/admin/bootstarp/ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.js}"></script>
+
+<link rel="stylesheet" th:href="@{/static/admin/assets/css/style.css}">
+<link rel="stylesheet" th:href="@{/static/admin/assets/css/loader-style.css}">
+<link rel="stylesheet" th:href="@{/static/admin/assets/css/bootstrap.css}">
+<link rel="stylesheet" th:href="@{/static/admin/assets/css/media.css}">
+
+
+
+
+<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<!-- Fav and touch icons -->
+<link rel="shortcut icon" href="assets/ico/minus.png">
+<style type="text/css">
+   .p-height{
+       height: 100px;
+   }
+    .content-flex{
+        display: flex;
+        flex-direction: row;
+     /*   flex-wrap: wrap;
+        -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap*/
+    }
+</style>
+
+</head>
+
+<body id="listbody">
+<!-- 右边内容 -->
+<!--<div class="wrap-fluid">
+    <div class="container-fluid paper-wrap bevel tlbr">
+        &lt;!&ndash; 内容 &ndash;&gt;
+        &lt;!&ndash;标题 通用&ndash;&gt;
+        <div th:replace="admin/common/html/title :: title(${title},${parenttitle},${isMsg},${msgHTML})">
+        </div>
+
+    </div>
+</div>-->
+<div class="wrap-fluid">
+<div class="container-fluid paper-wrap bevel tlbr">
+
+
+
+
+
+    <!-- CONTENT -->
+    <!--TITLE -->
+    <div class="row">
+        <div id="paper-top">
+            <div class="col-sm-3">
+                <h2 class="tittle-content-header">
+                    <i class="icon-camera"></i>
+                    <span>艺术品展示
+                            </span>
+                </h2>
+
+            </div>
+
+            <div class="col-sm-7">
+                <div class="devider-vertical visible-lg"></div>
+                <div class="tittle-middle-header">
+
+                    <div class="alert">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                        <span class="tittle-alert entypo-info-circled"></span>
+                        欢迎回来,&nbsp;
+                        <strong>Dave mattew!</strong>&nbsp;&nbsp;Your last sig in at Yesterday, 16:54 PM
+                    </div>
+
+
+                </div>
+
+            </div>
+            <div class="col-sm-2">
+                <div class="devider-vertical visible-lg"></div>
+                <div class="btn-group btn-wigdet pull-right visible-lg">
+                    <div class="btn">
+                        Widget</div>
+                    <button data-toggle="dropdown" class="btn dropdown-toggle" type="button">
+                        <span class="caret"></span>
+                        <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <ul role="menu" class="dropdown-menu">
+                        <li>
+                            <a href="#">
+                                <span class="entypo-plus-circled margin-iconic"></span>Add New</a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="entypo-heart margin-iconic"></span>Favorite</a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="entypo-cog margin-iconic"></span>Setting</a>
+                        </li>
+                    </ul>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    <!--/ TITLE -->
+
+    <!-- BREADCRUMB -->
+    <ul id="breadcrumb">
+        <li>
+            <span class="entypo-home"></span>
+        </li>
+        <li><i class="fa fa-lg fa-angle-right"></i>
+        </li>
+        <li><a href="#" title="Sample page 1">首页</a>
+        </li>
+        <li><i class="fa fa-lg fa-angle-right"></i>
+        </li>
+        <li><a href="#" title="Sample page 1">展览</a>
+        </li>
+        <li class="pull-right">
+            <div class="input-group input-widget">
+
+                <input style="border-radius:15px" type="text" placeholder="Search..." class="form-control">
+            </div>
+        </li>
+    </ul>
+
+    <!-- END OF BREADCRUMB -->
+
+
+    <!-- MASONRY MEDIA-->
+
+
+
+    <div class="container-fluid" style="padding:0 30px!important;margin-top:30px;">
+
+        <div class="title">
+            <h4>艺术作品展览</h4>
+        </div>
+        <th:block th:if="${not #lists.isEmpty(proSale1)}">
+        <div class="row-mansory content-flex">
+
+                    <th:block th:each="pro : ${proSale1}" >
+
+
+            <!-- PHOTO -->
+            <div class="col-md-4">
+                <div class="well-media">
+
+                    <div class="vendor">
+
+                        <a class="fancybox" rel="group" href="#">
+                            <img class="img-responsive-media" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1595058888914&di=e001096c598be620290b2e9f113c2e80&imgtype=0&src=http%3A%2F%2Fgss0.baidu.com%2F-vo3dSag_xI4khGko9WTAnF6hhy%2Fzhidao%2Fpic%2Fitem%2Fa8014c086e061d954f51db5679f40ad162d9ca4d.jpg" alt="" />
+                        </a>
+                    </div>
+                    <div class="video-text">
+
+                        <h2 th:text="${pro.title}"></h2>
+                        <p class="p-height" th:text="${pro.description}"></p>
+                    </div>
+                    <div class="tag-nest">
+                        <th:block th:if="${pro.label} != null" th:each="text : ${#strings.arraySplit(pro.label, ';')}">
+                        <i th:text="${text}"></i>
+                        </th:block>
+                    </div>
+                    <th:block th:if="${(pro.typ) eq 1}">
+                        <div class="video-category-bg">
+                            <h3>Video</h3>
+                            <a class="link-media pull-right" href="#">
+                                <span class="fontawesome-film"></span>
+                            </a>
+                            <div class="triangle-white"></div>
+                            <div class="triangle-video-right"></div>
+                        </div>
+                    </th:block>
+                    <th:block th:if="${(pro.typ) eq 2}">
+                        <div class="photo-category-bg">
+                            <h3>Photo</h3>
+                            <a class="link-media pull-right" href="#">
+                                <span class="fontawesome-picture"></span>
+                            </a>
+                            <div class="triangle-white"></div>
+                            <div class="triangle-photo-right"></div>
+                        </div>
+                    </th:block>
+                    <th:block th:if="${(pro.typ) eq 3}">
+                        <div class="audio-category-bg">
+                            <h3>audio</h3>
+                            <a class="link-media pull-right" href="#">
+                                <span class="entypo-note-beamed"></span>
+                            </a>
+                            <div class="triangle-white"></div>
+                            <div class="triangle-audio-right"></div>
+                        </div>
+                    </th:block>
+                    <th:block th:if="${(pro.typ) eq 4}">
+                        <div class="album-category-bg">
+                            <h3>Photoset</h3>
+                            <a class="link-media pull-right" href="#">
+                                <span class="entypo-picture"></span>
+                            </a>
+                            <div class="triangle-white"></div>
+                            <div class="triangle-album-right"></div>
+                        </div>
+                    </th:block>
+
+
+                </div>
+            </div>
+
+            </th:block>
+        </div>
+        </th:block>
+        <th:block th:if="${not #lists.isEmpty(proSale2)}">
+            <div class="row-mansory content-flex">
+
+                <th:block th:each="pro : ${proSale2}" >
+
+
+                    <!-- PHOTO -->
+                    <div class="col-md-4">
+                        <div class="well-media">
+
+                            <div class="vendor">
+
+                                <a class="fancybox" rel="group" href="#">
+                                    <img class="img-responsive-media" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1595058888914&di=e001096c598be620290b2e9f113c2e80&imgtype=0&src=http%3A%2F%2Fgss0.baidu.com%2F-vo3dSag_xI4khGko9WTAnF6hhy%2Fzhidao%2Fpic%2Fitem%2Fa8014c086e061d954f51db5679f40ad162d9ca4d.jpg" alt="" />
+                                </a>
+                            </div>
+                            <div class="video-text">
+
+                                <h2 th:text="${pro.title}"></h2>
+                                <p class="p-height" th:text="${pro.description}"></p>
+                            </div>
+                            <div class="tag-nest">
+                                <th:block th:if="${pro.label} != null" th:each="text : ${#strings.arraySplit(pro.label, ';')}">
+                                    <i th:text="${text}"></i>
+                                </th:block>
+                            </div>
+                            <th:block th:if="${(pro.typ) eq 1}">
+                                <div class="video-category-bg">
+                                    <h3>Video</h3>
+                                    <a class="link-media pull-right" href="#">
+                                        <span class="fontawesome-film"></span>
+                                    </a>
+                                    <div class="triangle-white"></div>
+                                    <div class="triangle-video-right"></div>
+                                </div>
+                            </th:block>
+                            <th:block th:if="${(pro.typ) eq 2}">
+                                <div class="photo-category-bg">
+                                    <h3>Photo</h3>
+                                    <a class="link-media pull-right" href="#">
+                                        <span class="fontawesome-picture"></span>
+                                    </a>
+                                    <div class="triangle-white"></div>
+                                    <div class="triangle-photo-right"></div>
+                                </div>
+                            </th:block>
+                            <th:block th:if="${(pro.typ) eq 3}">
+                                <div class="audio-category-bg">
+                                    <h3>audio</h3>
+                                    <a class="link-media pull-right" href="#">
+                                        <span class="entypo-note-beamed"></span>
+                                    </a>
+                                    <div class="triangle-white"></div>
+                                    <div class="triangle-audio-right"></div>
+                                </div>
+                            </th:block>
+                            <th:block th:if="${(pro.typ) eq 4}">
+                                <div class="album-category-bg">
+                                    <h3>Photoset</h3>
+                                    <a class="link-media pull-right" href="#">
+                                        <span class="entypo-picture"></span>
+                                    </a>
+                                    <div class="triangle-white"></div>
+                                    <div class="triangle-album-right"></div>
+                                </div>
+                            </th:block>
+
+
+                        </div>
+                    </div>
+
+                </th:block>
+            </div>
+        </th:block>
+        <th:block th:if="${not #lists.isEmpty(proSale3)}">
+            <div class="row-mansory content-flex">
+
+                <th:block th:each="pro : ${proSale3}" >
+
+
+                    <!-- PHOTO -->
+                    <div class="col-md-4">
+                        <div class="well-media">
+
+                            <div class="vendor">
+
+                                <a class="fancybox" rel="group" href="#">
+                                    <img class="img-responsive-media" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1595058888914&di=e001096c598be620290b2e9f113c2e80&imgtype=0&src=http%3A%2F%2Fgss0.baidu.com%2F-vo3dSag_xI4khGko9WTAnF6hhy%2Fzhidao%2Fpic%2Fitem%2Fa8014c086e061d954f51db5679f40ad162d9ca4d.jpg" alt="" />
+                                </a>
+                            </div>
+                            <div class="video-text">
+
+                                <h2 th:text="${pro.title}"></h2>
+                                <p class="p-height" th:text="${pro.description}"></p>
+                            </div>
+                            <div class="tag-nest">
+                                <th:block th:if="${pro.label} != null" th:each="text : ${#strings.arraySplit(pro.label, ';')}">
+                                    <i th:text="${text}"></i>
+                                </th:block>
+                            </div>
+                            <th:block th:if="${(pro.typ) eq 1}">
+                                <div class="video-category-bg">
+                                    <h3>Video</h3>
+                                    <a class="link-media pull-right" href="#">
+                                        <span class="fontawesome-film"></span>
+                                    </a>
+                                    <div class="triangle-white"></div>
+                                    <div class="triangle-video-right"></div>
+                                </div>
+                            </th:block>
+                            <th:block th:if="${(pro.typ) eq 2}">
+                                <div class="photo-category-bg">
+                                    <h3>Photo</h3>
+                                    <a class="link-media pull-right" href="#">
+                                        <span class="fontawesome-picture"></span>
+                                    </a>
+                                    <div class="triangle-white"></div>
+                                    <div class="triangle-photo-right"></div>
+                                </div>
+                            </th:block>
+                            <th:block th:if="${(pro.typ) eq 3}">
+                                <div class="audio-category-bg">
+                                    <h3>audio</h3>
+                                    <a class="link-media pull-right" href="#">
+                                        <span class="entypo-note-beamed"></span>
+                                    </a>
+                                    <div class="triangle-white"></div>
+                                    <div class="triangle-audio-right"></div>
+                                </div>
+                            </th:block>
+                            <th:block th:if="${(pro.typ) eq 4}">
+                                <div class="album-category-bg">
+                                    <h3>Photoset</h3>
+                                    <a class="link-media pull-right" href="#">
+                                        <span class="entypo-picture"></span>
+                                    </a>
+                                    <div class="triangle-white"></div>
+                                    <div class="triangle-album-right"></div>
+                                </div>
+                            </th:block>
+
+
+                        </div>
+                    </div>
+
+                </th:block>
+            </div>
+        </th:block>
+
+</div>
+
+
+        </div>
+    </div>
+
+
+
+
+    <!-- /END OF CONTENT -->
+<!-- 结束右边内容 -->
+
+
+<!-- 通用js -->
+<div th:include="admin/common/html/js :: onload_js">
+</div>
+<!-- MAIN EFFECT -->
+<script type="text/javascript" th:src="@{/static/admin/assets/js/preloader.js}"></script>
+<script type="text/javascript" th:src="@{/static/admin/assets/js/bootstrap.js}"></script>
+<script type="text/javascript" th:src="@{/static/admin/assets/js/app.js}"></script>
+<script type="text/javascript" th:src="@{/static/admin/assets/js/load.js}"></script>
+<script type="text/javascript" th:src="@{/static/admin/assets/js/main.js}"></script>
+<script type="text/javascript" th:src="@{/static/admin/assets/js/flatvideo/jquery.fitvids.js}"></script>
+
+<script>
+    var listUrl = window.rootPath+"/admin/list";
+    // Basic FitVids Test
+    $(".well-media").fitVids();
+    $(".vendor").fitVids();
+    // Custom selector and No-Double-Wrapping Prevention Test
+    $(".well-media").fitVids({
+        customSelector: "iframe[src^='http://socialcam.com']"
+    });
+    $(function(){
+        initData();
+    })
+
+    function initData() {
+
+        $.ajax({
+            cache : true,
+            type : "GET",
+            url : listUrl,
+            data : {},
+            async : false,
+            error : function(request) {
+                $.modal.alertError("系统错误");
+            },
+            success : function(data) {
+
+            }
+        });
+    }
+</script>
+<script type="text/javascript" th:src="@{/static/admin/assets/js/toggle_close.js}"></script>
+
+</body>
+
+</html>

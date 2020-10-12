@@ -1,0 +1,867 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fc.test.mapper.auto.ProPaintPartMapper">
+  <resultMap id="BaseResultMap" type="com.fc.test.model.auto.ProPaintPart">
+    <result column="id" jdbcType="BIGINT" property="id" />
+    <result column="subject" jdbcType="VARCHAR" property="subject" />
+    <result column="introduce" jdbcType="VARCHAR" property="introduce" />
+    <result column="pic" jdbcType="VARCHAR" property="pic" />
+    <result column="requirement" jdbcType="VARCHAR" property="requirement" />
+    <result column="part_type" jdbcType="VARCHAR" property="partType" />
+    <result column="creators" jdbcType="INTEGER" property="creators" />
+    <result column="root" jdbcType="INTEGER" property="root" />
+    <result column="root_id" jdbcType="BIGINT" property="rootId" />
+    <result column="liter_id" jdbcType="BIGINT" property="literId" />
+    <result column="poem_id" jdbcType="BIGINT" property="poemId" />
+    <result column="number" jdbcType="INTEGER" property="number" />
+    <result column="root_ord" jdbcType="INTEGER" property="rootOrd" />
+    <result column="ord" jdbcType="INTEGER" property="ord" />
+    <result column="paint_id" jdbcType="VARCHAR" property="paintId" />
+    <result column="is_lock" jdbcType="INTEGER" property="isLock" />
+    <result column="finish" jdbcType="INTEGER" property="finish" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+    <result column="create_dat" jdbcType="TIMESTAMP" property="createDat" />
+    <result column="l_update_dat" jdbcType="TIMESTAMP" property="lUpdateDat" />
+    <result column="is_del" jdbcType="INTEGER" property="isDel" />
+  </resultMap>
+
+
+    <resultMap id="AdoptResultMap" type="com.fc.test.model.auto.ProPaintPart">
+        <result column="id" jdbcType="BIGINT" property="id" />
+        <result column="subject" jdbcType="VARCHAR" property="subject" />
+        <result column="introduce" jdbcType="VARCHAR" property="introduce" />
+        <result column="pic" jdbcType="VARCHAR" property="pic" />
+        <result column="requirement" jdbcType="VARCHAR" property="requirement" />
+        <result column="part_type" jdbcType="VARCHAR" property="partType" />
+        <result column="creators" jdbcType="INTEGER" property="creators" />
+        <result column="root" jdbcType="INTEGER" property="root" />
+        <result column="root_id" jdbcType="BIGINT" property="rootId" />
+        <result column="liter_id" jdbcType="BIGINT" property="literId" />
+        <result column="poem_id" jdbcType="BIGINT" property="poemId" />
+        <result column="number" jdbcType="INTEGER" property="number" />
+        <result column="root_ord" jdbcType="INTEGER" property="rootOrd" />
+        <result column="ord" jdbcType="INTEGER" property="ord" />
+        <result column="paint_id" jdbcType="VARCHAR" property="paintId" />
+        <result column="is_lock" jdbcType="INTEGER" property="isLock" />
+        <result column="finish" jdbcType="INTEGER" property="finish" />
+        <collection property="proUserAdopts" ofType="com.fc.test.model.auto.ProUserAdopt">
+            <result column="_title" jdbcType="VARCHAR" property="title" />
+            <result column="seter" jdbcType="VARCHAR" property="seter" />
+            <result column="content" jdbcType="VARCHAR" property="content" />
+            <result column="content_id" jdbcType="VARCHAR" property="contentId" />
+            <result column="picture" jdbcType="VARCHAR" property="picture" />
+            <result column="pro_no" jdbcType="VARCHAR" property="proNo" />
+            <result column="liter_text" jdbcType="LONGVARCHAR" property="literText" />
+            <result column="creation_nm" jdbcType="VARCHAR" property="creationNm" />
+            <result column="creation_id" jdbcType="VARCHAR" property="creationId" />
+            <result column="charp_nm" jdbcType="VARCHAR" property="charpNm" />
+            <result column="charp_id" jdbcType="BIGINT" property="charpId" />
+            <result column="content_id" jdbcType="VARCHAR" property="contentId" />
+            <result column="typ" jdbcType="INTEGER" property="typ" />
+            <result column="user_id" jdbcType="VARCHAR" property="userId" />
+            <result column="nickname" jdbcType="VARCHAR" property="nickname" />
+            <result column="avatar" jdbcType="VARCHAR" property="avatar" />
+            <result column="adopt" jdbcType="INTEGER" property="adopt" />
+            <result column="_create_by" jdbcType="VARCHAR" property="createBy" />
+            <result column="_create_dat" jdbcType="TIMESTAMP" property="createDat" />
+            <result column="_l_update_dat" jdbcType="TIMESTAMP" property="lUpdateDat" />
+            <result column="_is_del" jdbcType="INTEGER" property="isDel" />
+        </collection>
+    </resultMap>
+
+    <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+<sql id="Base_Column_List">
+	  	  	      	id,
+       	  	      	subject,
+       	  	      	introduce,
+       	  	      	pic,
+       	  	      	requirement,
+       	  	      	part_type,
+       	  	      	creators,
+       	  	      	root,
+       	  	      	root_id,
+       	  	      	liter_id,
+       	  	      	poem_id,
+       	  	      	number,
+       	  	      	root_ord,
+       	  	      	ord,
+       	  	      	paint_id,
+       	  	      	is_lock,
+       	  	      	finish,
+       	  	      	create_by,
+       	  	      	create_dat,
+       	  	      	l_update_dat,
+       	  	    	  	is_del
+       	</sql>
+
+
+    <select id="queryAdoptContentByPaintId" parameterType="com.fc.test.model.auto.ProPaintPart" resultMap="AdoptResultMap">
+        SELECT
+        A.id,
+        A.subject,
+        A.introduce,
+        A.part_type,
+        A.creators,
+        A.root,
+        A.root_id,
+        A.paint_id,
+        A.root_ord,
+        A.ord,
+        A.finish,
+        B.title as _title,
+        B.seter,
+        B.content,
+        B.picture,
+        B.liter_text,
+        B.creation_id,
+        B.creation_nm,
+        B.charp_id,
+        B.charp_nm,
+        B.nickname,
+        B.avatar,
+        B.is_del as B._is_del
+        FROM t_pro_paint_part as A
+        LEFT JOIN t_pro_user_adopt as B
+        ON A.paint_id = #{paintId}
+        AND A.finish = 1
+        AND A.root = 0
+        AND A.is_del = 0
+        WHERE B.creation_id = #{paintId}
+        AND B.charp_id = A.id
+        AND B.adopt = 1
+        AND B.is_del = 0
+        ORDER BY A.root_ord ASC,A.ord ASC
+    </select>
+
+    <select id="queryProductInfoByChaptId" parameterType="com.fc.test.model.auto.ProPaintPart" resultType="java.util.HashMap">
+        select
+        A.id as id,
+        A.subject as subject,
+        B.uid as uid,
+        B.seter as seter,
+        B.name as paintName
+        from t_pro_paint_part as A
+        left join t_pro_paint  as B
+        on  A.id = #{id}
+        and A.is_del = '0'
+        where B.is_del = '0'
+        and B.uid = A.paint_id
+    </select>
+
+  <select id="selectByExample" parameterType="com.fc.test.model.auto.ProPaintPartExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_pro_paint_part
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_pro_paint_part
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+
+
+    <select id="queryRootInfo" parameterType="com.fc.test.model.auto.ProPaintPart" resultType="java.util.HashMap">
+        select
+        count(A.root) as roots,
+        A.root_ord as rootOrd,
+        A.ord as ord,
+        B.uid as paintId,
+        B.parts as parts,
+        B.section as sections
+        from t_pro_paint_part as A
+        left join t_pro_paint  as B
+        on B.is_del = '0'
+        and B.uid = #{paintId}
+        where A.is_del = '0'
+        and A.root = #{root}
+        and A.paint_id = B.uid
+        order by A.root_ord ASC,A.ord ASC
+    </select>
+
+    <select id="queryAdoptContentByProId" parameterType="com.fc.test.model.auto.ProPaintPart" resultMap="AdoptResultMap">
+        SELECT
+        A.id,
+        A.title,
+        A.introduce,
+        A.chap_type,
+        A.label,
+        A.creators,
+        A.root,
+        A.root_id,
+        A.book_id,
+        A.root_ord,
+        A.ord,
+        A.finish,
+        B.title as _title,
+        B.seter,
+        B.content,
+        B.picture,
+        B.liter_text,
+        B.creation_id,
+        B.creation_nm,
+        B.charp_id,
+        B.charp_nm,
+        B.nickname,
+        B.avatar,
+        B.is_del as B._is_del
+        FROM t_pro_charpt as A
+        LEFT JOIN t_pro_user_adopt as B
+        ON A.book_id = #{bookId}
+        AND A.finish = 1
+        AND A.root = 0
+        AND A.is_del = 0
+        WHERE B.creation_id = #{bookId}
+        AND B.charp_id = A.id
+        AND B.adopt = 1
+        AND B.is_del = 0
+        ORDER BY A.root_ord ASC,A.ord ASC
+    </select>
+
+    <select id="queryNoRootChaptInfo" parameterType="com.fc.test.model.auto.ProPaintPart" resultType="java.util.HashMap">
+        select
+        id,
+        root_ord as rootOrd,
+        root_id as rootId,
+        subject,
+        count(1) as count
+        from t_pro_paint_part
+        where paint_id=#{paintId}
+        and root = #{root}
+        and is_del = 0
+        group by root_id
+        order by root_ord asc;
+    </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_pro_paint_part
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+
+    <update id="deleteStsByKey" parameterType="com.fc.test.model.auto.ProPaintPart">
+        update t_pro_paint_part
+        SET is_del = #{isDel}
+        where id = #{id}
+    </update>
+
+  <delete id="deleteByExample" parameterType="com.fc.test.model.auto.ProPaintPartExample">
+    delete from t_pro_paint_part
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  
+  <insert id="insert" parameterType="com.fc.test.model.auto.ProPaintPart">
+    insert into t_pro_paint_part (
+      	  	       id,
+       	  	       subject,
+       	  	       introduce,
+       	  	       pic,
+       	  	       requirement,
+       	  	       part_type,
+       	  	       creators,
+       	  	       root,
+       	  	       root_id,
+       	  	       liter_id,
+       	  	       poem_id,
+       	  	       number,
+       	  	       root_ord,
+       	  	       ord,
+       	  	       paint_id,
+       	  	       is_lock,
+       	  	       finish,
+       	  	       create_by,
+       	  	       create_dat,
+       	  	       l_update_dat,
+       	  	    	  is_del
+       	    )
+    values (
+	  	  	      	#{id,jdbcType=BIGINT},
+       	  	      	#{subject,jdbcType=VARCHAR},
+       	  	      	#{introduce,jdbcType=VARCHAR},
+       	  	      	#{pic,jdbcType=VARCHAR},
+       	  	      	#{requirement,jdbcType=VARCHAR},
+       	  	      	#{partType,jdbcType=VARCHAR},
+       	  	      	#{creators,jdbcType=INTEGER},
+       	  	      	#{root,jdbcType=INTEGER},
+       	  	      	#{rootId,jdbcType=BIGINT},
+       	  	      	#{literId,jdbcType=BIGINT},
+       	  	      	#{poemId,jdbcType=BIGINT},
+       	  	      	#{number,jdbcType=INTEGER},
+       	  	      	#{rootOrd,jdbcType=INTEGER},
+       	  	      	#{ord,jdbcType=INTEGER},
+       	  	      	#{paintId,jdbcType=VARCHAR},
+       	  	      	#{isLock,jdbcType=INTEGER},
+       	  	      	#{finish,jdbcType=INTEGER},
+       	  	      	#{createBy,jdbcType=VARCHAR},
+       	  	      	#{createDat,jdbcType=TIMESTAMP},
+       	  	      	#{lUpdateDat,jdbcType=TIMESTAMP},
+       	  	    	  #{isDel,jdbcType=INTEGER}
+       	    )
+  </insert>
+
+    <insert id="insertBatch" parameterType="com.fc.test.model.auto.ProPaintPart" useGeneratedKeys="true">
+        insert into t_pro_paint_part (
+        id,
+        subject,
+        introduce,
+        pic,
+        requirement,
+        part_type,
+        creators,
+        root,
+        root_id,
+        liter_id,
+        poem_id,
+        number,
+        root_ord,
+        ord,
+        paint_id,
+        is_lock,
+        finish,
+        create_by,
+        create_dat,
+        l_update_dat,
+        is_del
+        )
+        values
+         <foreach collection="list" item="item" separator=",">
+         (
+        #{item.id,jdbcType=BIGINT},
+        #{item.subject,jdbcType=VARCHAR},
+        #{item.introduce,jdbcType=VARCHAR},
+        #{item.pic,jdbcType=VARCHAR},
+        #{item.requirement,jdbcType=VARCHAR},
+        #{item.partType,jdbcType=VARCHAR},
+        #{item.creators,jdbcType=INTEGER},
+        #{item.root,jdbcType=INTEGER},
+        #{item.rootId,jdbcType=BIGINT},
+        #{item.literId,jdbcType=BIGINT},
+        #{item.poemId,jdbcType=BIGINT},
+        #{item.number,jdbcType=INTEGER},
+        #{item.rootOrd,jdbcType=INTEGER},
+        #{item.ord,jdbcType=INTEGER},
+        #{item.paintId,jdbcType=VARCHAR},
+        #{item.isLock,jdbcType=INTEGER},
+        #{item.finish,jdbcType=INTEGER},
+        #{item.createBy,jdbcType=VARCHAR},
+        #{item.createDat,jdbcType=TIMESTAMP},
+        #{item.lUpdateDat,jdbcType=TIMESTAMP},
+        #{item.isDel,jdbcType=INTEGER}
+        )
+         </foreach>
+    </insert>
+
+  <insert id="insertSelective" parameterType="com.fc.test.model.auto.ProPaintPart">
+    insert into t_pro_paint_part
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+          
+      <if test="id != null">
+        id,
+      </if>
+      
+         
+      <if test="subject != null">
+        subject,
+      </if>
+      
+         
+      <if test="introduce != null">
+        introduce,
+      </if>
+      
+         
+      <if test="pic != null">
+        pic,
+      </if>
+      
+         
+      <if test="requirement != null">
+        requirement,
+      </if>
+      
+         
+      <if test="partType != null">
+        part_type,
+      </if>
+      
+         
+      <if test="creators != null">
+        creators,
+      </if>
+      
+         
+      <if test="root != null">
+        root,
+      </if>
+      
+         
+      <if test="rootId != null">
+        root_id,
+      </if>
+      
+         
+      <if test="literId != null">
+        liter_id,
+      </if>
+      
+         
+      <if test="poemId != null">
+        poem_id,
+      </if>
+      
+         
+      <if test="number != null">
+        number,
+      </if>
+      
+         
+      <if test="rootOrd != null">
+        root_ord,
+      </if>
+      
+         
+      <if test="ord != null">
+        ord,
+      </if>
+      
+         
+      <if test="paintId != null">
+        paint_id,
+      </if>
+
+        <if test="lock != null">
+          lock,
+        </if>
+         
+      <if test="finish != null">
+        finish,
+      </if>
+      
+         
+      <if test="createBy != null">
+        create_by,
+      </if>
+      
+         
+      <if test="createDat != null">
+        create_dat,
+      </if>
+      
+         
+      <if test="lUpdateDat != null">
+        l_update_dat,
+      </if>
+      
+         
+      <if test="isDel != null">
+        is_del,
+      </if>
+      
+         </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+          <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+          <if test="subject != null">
+        #{subject,jdbcType=VARCHAR},
+      </if>
+          <if test="introduce != null">
+        #{introduce,jdbcType=VARCHAR},
+      </if>
+          <if test="pic != null">
+        #{pic,jdbcType=VARCHAR},
+      </if>
+          <if test="requirement != null">
+        #{requirement,jdbcType=VARCHAR},
+      </if>
+          <if test="partType != null">
+        #{partType,jdbcType=VARCHAR},
+      </if>
+          <if test="creators != null">
+        #{creators,jdbcType=INTEGER},
+      </if>
+          <if test="root != null">
+        #{root,jdbcType=INTEGER},
+      </if>
+          <if test="rootId != null">
+        #{rootId,jdbcType=BIGINT},
+      </if>
+          <if test="literId != null">
+        #{literId,jdbcType=BIGINT},
+      </if>
+          <if test="poemId != null">
+        #{poemId,jdbcType=BIGINT},
+      </if>
+          <if test="number != null">
+        #{number,jdbcType=INTEGER},
+      </if>
+          <if test="rootOrd != null">
+        #{rootOrd,jdbcType=INTEGER},
+      </if>
+          <if test="ord != null">
+        #{ord,jdbcType=INTEGER},
+      </if>
+          <if test="paintId != null">
+        #{paintId,jdbcType=VARCHAR},
+      </if>
+        <if test="lock != null">
+            #{lock,jdbcType=INTEGER},
+        </if>
+          <if test="finish != null">
+        #{finish,jdbcType=INTEGER},
+      </if>
+          <if test="createBy != null">
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+          <if test="createDat != null">
+        #{createDat,jdbcType=TIMESTAMP},
+      </if>
+          <if test="lUpdateDat != null">
+        #{lUpdateDat,jdbcType=TIMESTAMP},
+      </if>
+          <if test="isDel != null">
+        #{isDel,jdbcType=INTEGER},
+      </if>
+        </trim>
+  </insert>
+  
+  <select id="countByExample" parameterType="com.fc.test.model.auto.ProPaintPartExample" resultType="java.lang.Long">
+    select count(*) from t_pro_paint_part
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  
+  <update id="updateByExampleSelective" parameterType="map">
+    update t_pro_paint_part
+    <set>
+          <if test="record.id != null">
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+          <if test="record.subject != null">
+        subject = #{record.subject,jdbcType=VARCHAR},
+      </if>
+          <if test="record.introduce != null">
+        introduce = #{record.introduce,jdbcType=VARCHAR},
+      </if>
+          <if test="record.pic != null">
+        pic = #{record.pic,jdbcType=VARCHAR},
+      </if>
+          <if test="record.requirement != null">
+        requirement = #{record.requirement,jdbcType=VARCHAR},
+      </if>
+          <if test="record.partType != null">
+        part_type = #{record.partType,jdbcType=VARCHAR},
+      </if>
+          <if test="record.creators != null">
+        creators = #{record.creators,jdbcType=INTEGER},
+      </if>
+          <if test="record.root != null">
+        root = #{record.root,jdbcType=INTEGER},
+      </if>
+          <if test="record.rootId != null">
+        root_id = #{record.rootId,jdbcType=BIGINT},
+      </if>
+          <if test="record.literId != null">
+        liter_id = #{record.literId,jdbcType=BIGINT},
+      </if>
+          <if test="record.poemId != null">
+        poem_id = #{record.poemId,jdbcType=BIGINT},
+      </if>
+          <if test="record.number != null">
+        number = #{record.number,jdbcType=INTEGER},
+      </if>
+          <if test="record.rootOrd != null">
+        root_ord = #{record.rootOrd,jdbcType=INTEGER},
+      </if>
+          <if test="record.ord != null">
+        ord = #{record.ord,jdbcType=INTEGER},
+      </if>
+          <if test="record.paintId != null">
+        paint_id = #{record.paintId,jdbcType=VARCHAR},
+      </if>
+        <if test="record.lock != null">
+            is_lock = #{record.lock,jdbcType=INTEGER},
+        </if>
+          <if test="record.finish != null">
+        finish = #{record.finish,jdbcType=INTEGER},
+      </if>
+          <if test="record.createBy != null">
+        create_by = #{record.createBy,jdbcType=VARCHAR},
+      </if>
+          <if test="record.createDat != null">
+        create_dat = #{record.createDat,jdbcType=TIMESTAMP},
+      </if>
+          <if test="record.lUpdateDat != null">
+        l_update_dat = #{record.lUpdateDat,jdbcType=TIMESTAMP},
+      </if>
+          <if test="record.isDel != null">
+        is_del = #{record.isDel,jdbcType=INTEGER},
+      </if>
+         
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  
+  
+  <update id="updateByExample" parameterType="map">
+    update t_pro_paint_part
+    set
+            	     	 id = #{record.id,jdbcType=BIGINT},
+    	         	     	 subject = #{record.subject,jdbcType=VARCHAR},
+    	         	     	 introduce = #{record.introduce,jdbcType=VARCHAR},
+    	         	     	 pic = #{record.pic,jdbcType=VARCHAR},
+    	         	     	 requirement = #{record.requirement,jdbcType=VARCHAR},
+    	         	     	 part_type = #{record.partType,jdbcType=VARCHAR},
+    	         	     	 creators = #{record.creators,jdbcType=INTEGER},
+    	         	     	 root = #{record.root,jdbcType=INTEGER},
+    	         	     	 root_id = #{record.rootId,jdbcType=BIGINT},
+    	         	     	 liter_id = #{record.literId,jdbcType=BIGINT},
+    	         	     	 poem_id = #{record.poemId,jdbcType=BIGINT},
+    	         	     	 number = #{record.number,jdbcType=INTEGER},
+    	         	     	 root_ord = #{record.rootOrd,jdbcType=INTEGER},
+    	         	     	 ord = #{record.ord,jdbcType=INTEGER},
+    	         	     	 paint_id = #{record.paintId,jdbcType=VARCHAR},
+                             is_lock = #{record.lock,jdbcType=INTEGER},
+    	         	     	 finish = #{record.finish,jdbcType=INTEGER},
+    	         	     	 create_by = #{record.createBy,jdbcType=VARCHAR},
+    	         	     	 create_dat = #{record.createDat,jdbcType=TIMESTAMP},
+    	         	     	 l_update_dat = #{record.lUpdateDat,jdbcType=TIMESTAMP},
+    	         	     	 is_del = #{record.isDel,jdbcType=INTEGER}
+    	         <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  
+  
+      <update id="updateByPrimaryKeySelective" parameterType="com.fc.test.model.auto.ProPaintPart">
+    update t_pro_paint_part
+    <set>
+                          <if test="subject != null">
+        subject = #{subject,jdbcType=VARCHAR},
+      </if>
+                      <if test="introduce != null">
+        introduce = #{introduce,jdbcType=VARCHAR},
+      </if>
+                      <if test="pic != null">
+        pic = #{pic,jdbcType=VARCHAR},
+      </if>
+                      <if test="requirement != null">
+        requirement = #{requirement,jdbcType=VARCHAR},
+      </if>
+                      <if test="partType != null">
+        part_type = #{partType,jdbcType=VARCHAR},
+      </if>
+                      <if test="creators != null">
+        creators = #{creators,jdbcType=INTEGER},
+      </if>
+                      <if test="root != null">
+        root = #{root,jdbcType=INTEGER},
+      </if>
+                      <if test="rootId != null">
+        root_id = #{rootId,jdbcType=BIGINT},
+      </if>
+                      <if test="literId != null">
+        liter_id = #{literId,jdbcType=BIGINT},
+      </if>
+                      <if test="poemId != null">
+        poem_id = #{poemId,jdbcType=BIGINT},
+      </if>
+                      <if test="number != null">
+        number = #{number,jdbcType=INTEGER},
+      </if>
+                      <if test="rootOrd != null">
+        root_ord = #{rootOrd,jdbcType=INTEGER},
+      </if>
+                      <if test="ord != null">
+        ord = #{ord,jdbcType=INTEGER},
+      </if>
+                      <if test="paintId != null">
+        paint_id = #{paintId,jdbcType=VARCHAR},
+      </if>
+                      <if test="lock != null">
+        is_lock = #{lock,jdbcType=INTEGER},
+        </if>
+                      <if test="finish != null">
+        finish = #{finish,jdbcType=INTEGER},
+      </if>
+                      <if test="createBy != null">
+        create_by = #{createBy,jdbcType=VARCHAR},
+      </if>
+                      <if test="createDat != null">
+        create_dat = #{createDat,jdbcType=TIMESTAMP},
+      </if>
+                      <if test="lUpdateDat != null">
+        l_update_dat = #{lUpdateDat,jdbcType=TIMESTAMP},
+      </if>
+                      <if test="isDel != null">
+        is_del = #{isDel,jdbcType=INTEGER},
+      </if>
+              </set>
+    where 
+            id = #{id,jdbcType=BIGINT}
+                                                                                                                                                                  
+  </update>
+
+      	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	
+
+  <update id="updateByPrimaryKey" parameterType="com.fc.test.model.auto.ProPaintPart">
+    update t_pro_paint_part
+    set 
+             	        	    	 			subject = #{subject,jdbcType=VARCHAR},
+		     	        	    	 			introduce = #{introduce,jdbcType=VARCHAR},
+		     	        	    	 			pic = #{pic,jdbcType=VARCHAR},
+		     	        	    	 			requirement = #{requirement,jdbcType=VARCHAR},
+		     	        	    	 			part_type = #{partType,jdbcType=VARCHAR},
+		     	        	    	 			creators = #{creators,jdbcType=INTEGER},
+		     	        	    	 			root = #{root,jdbcType=INTEGER},
+		     	        	    	 			root_id = #{rootId,jdbcType=BIGINT},
+		     	        	    	 			liter_id = #{literId,jdbcType=BIGINT},
+		     	        	    	 			poem_id = #{poemId,jdbcType=BIGINT},
+		     	        	    	 			number = #{number,jdbcType=INTEGER},
+		     	        	    	 			root_ord = #{rootOrd,jdbcType=INTEGER},
+		     	        	    	 			ord = #{ord,jdbcType=INTEGER},
+		     	        	    	 			paint_id = #{paintId,jdbcType=VARCHAR},
+		     	        	    	 			is_lock = #{lock,jdbcType=INTEGER},
+		     	        	    	 			finish = #{finish,jdbcType=INTEGER},
+		     	        	    	 			create_by = #{createBy,jdbcType=VARCHAR},
+		     	        	    	 			create_dat = #{createDat,jdbcType=TIMESTAMP},
+		     	        	    	 			l_update_dat = #{lUpdateDat,jdbcType=TIMESTAMP},
+		     	        	    	 			is_del = #{isDel,jdbcType=INTEGER}
+		     	        where 
+            id = #{id,jdbcType=BIGINT}
+                                                                                                                                                                    
+  </update>
+
+    <update id="deleteBatchByPrimaryKey" parameterType="java.util.List">
+        update t_pro_paint_part
+        set
+        is_del = '1'
+        where id in
+        <foreach collection="list" item="item" index="index" separator="," open="(" close=")">
+            #{item}
+        </foreach>
+        and is_del = '0'
+    </update>
+
+  <select id="selectPartByCreateBy"  parameterType="com.fc.test.model.auto.ProPaintPart"  resultMap="BaseResultMap">
+      select
+      <include refid="Base_Column_List" />
+      from t_pro_paint_part
+      where is_del = 0
+      <if test="createBy!=null and createBy!=''">
+          AND create_by = #{createBy}
+      </if>
+      <if test="finish!=null">
+          AND finish = #{finish}
+      </if>
+      <if test="id!=null and id!=''">
+          AND id = #{id}
+      </if>
+      <if test="subject!=null and subject!=''">
+          AND subject = #{subject}
+      </if>
+      <if test="paintId!=null and paintId!=''">
+          AND paint_id = #{paintId}
+      </if>
+      <if test="isLock!=null">
+          AND is_lock = #{isLock}
+      </if>
+      <if test="root!=null">
+          AND root = #{root}
+      </if>
+  </select>
+
+
+   <select id="selectPartCountByPaintId"  parameterType="com.fc.test.model.auto.ProPaintPart"  resultType="java.util.HashMap">
+        select
+       B.parts as parts,
+       B.section as section,
+       count(A.id) as count
+        from t_pro_paint_part as A
+        left join
+        t_pro_paint as  B
+        ON B.is_del = 0
+        AND B.uid=#{paintId}
+        <if test="createBy!=null and createBy!=''">
+            AND B.create_by = #{createBy}
+        </if>
+       where A.is_del = 0
+       AND A.paint_id=B.uid
+       <if test="root!=null">
+           AND A.root = #{root}
+       </if>
+       <!--<if test="root== 0">
+           AND A.root_id = #{rootId} order by ord desc limit 1
+       </if>-->
+    </select>
+</mapper>

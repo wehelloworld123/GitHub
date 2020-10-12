@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+      xmlns:sec="http://www.pollix.at/thymeleaf/shiro">
+<head th:replace="admin/common/html/tableHead :: tableHead(~{::title},~{::link},~{::style})">
+
+<title th:text=${title}></title>
+<!-- 这儿引用单独的css link -->
+<!-- Ladda for Bootstrap 3按钮加载进度插件 -->
+<link rel="stylesheet" th:href="@{/static/admin/assets/js/button/ladda/ladda.min.css}">
+<!-- bootstrap-table表单样式 -->
+<link th:href="@{/static/admin/assets/js/bootstrap/css/bootstrap-table/bootstrap-table.min.css}" rel="stylesheet"/>
+
+<!-- 用户界面自定义css -->
+<link th:href="@{/static/admin/user/css/user-add.css}" rel="stylesheet"/>
+<link th:href="@{/static/admin/bootstarp/css/bootstrap.css/bootstrap.min.css}" rel="stylesheet"/>
+<link th:href="@{/static/admin/bootstarp/css/fileinput.min.css}" rel="stylesheet"/>
+<style type="text/css"></style>
+
+</head>
+
+<body>
+      	   	      	      	      	      	      	      	      	      	      	      	      	      	      	      	      	      	      	      	      
+<div class="content-wrap">
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="nest" id="elementClose">
+				<div class="">
+				</div>
+				<div class="body-nest" id="element">
+					<div class="panel-body">
+						<form  class="form-horizontal m" id="form-edit" th:object="${ProPoemset}">
+							<input id="id" name="id" type="hidden" th:field="*{id}"/>
+						
+									<div class="form-group">
+										<label class="col-sm-3 control-label ">题：</label>
+										<div class="col-sm-8">
+											<input class="form-control" type="text" id="charpter" name="charpter" th:value="*{charpter}"/>
+										</div>
+									</div>
+
+								
+									<div class="form-group">
+										<label class="col-sm-3 control-label ">章节介绍：</label>
+										<div class="col-sm-8">
+											<textarea class="form-control" type="text" id="description" name="description" th:value="*{description}"></textarea>
+										</div>
+									</div>
+
+
+									<div class="form-group">
+										<label class="col-sm-3 control-label ">展示图：</label>
+										<div class="col-sm-8">
+											<input data- data-show-preview="false" data-allowed-file-extensions='["jpg","png"]' data-show-upload="true" class="file" type="file" id="pic1" name="pic1"/>
+										</div>
+									</div>
+
+
+									<div class="form-group">
+										<label class="col-sm-3 control-label ">预览：</label>
+										<div class="col-sm-8">
+											<div class="panel-thumbnail">
+												<img style="width: 100%;" alt="" class="img-responsive-social"  id="pic2" name="pic2" th:src="*{(pic != null && !#strings.isEmpty(pic)) ?pic : '/asset/avatar/head_portrait2.png'}">
+											</div>
+										</div>
+									</div>
+									<input id="pic" name="pic" type="hidden"/>
+
+								
+									<div class="form-group">
+										<label class="col-sm-3 control-label ">创作要求：</label>
+										<div class="col-sm-8">
+											<textarea class="form-control" type="text" id="requirement" name="requirement" th:value="*{requirement}"></textarea>
+										</div>
+									</div>
+
+								
+
+
+								
+									<div class="form-group">
+										<label class="col-sm-3 control-label ">关联文章编号：</label>
+										<div class="col-sm-8">
+											<input class="form-control" type="text" id="literId" name="literId" th:value="*{literId}"/>
+										</div>
+									</div>
+
+								
+									<div class="form-group">
+										<label class="col-sm-3 control-label ">关联绘画编号：</label>
+										<div class="col-sm-8">
+											<input class="form-control" type="text" id="paintId" name="paintId" th:value="*{paintId}"/>
+										</div>
+									</div>
+
+								<!--
+									<div class="form-group">
+										<label class="col-sm-3 control-label ">创作人员数：</label>
+										<div class="col-sm-8">
+											<input class="form-control" type="text" id="creators" name="creators" th:value="*{creators}"/>
+										</div>
+									</div>
+
+								
+									<div class="form-group">
+										<label class="col-sm-3 control-label ">数量：</label>
+										<div class="col-sm-8">
+											<input class="form-control" type="text" id="number" name="number" th:value="*{number}"/>
+										</div>
+									</div>-->
+							<div class="form-group">
+								<label class="col-sm-3 control-label ">主章：</label>
+								<div class="col-sm-8">
+									<!--<input class="form-control" type="text" id="root" name="root" th:value="*{root}"/>-->
+									<select id="root" name="root" class="form-control valid" disabled="disabled" aria-invalid="false" th:value="*{root}">
+										<option value="1">是</option>
+										<option value="0">否</option>
+
+									</select>
+								</div>
+							</div>
+
+							<input type="hidden" th:value="*{root}" id="root2"/>
+
+								
+									<div class="form-group">
+										<label class="col-sm-3 control-label ">主序号：</label>
+										<div class="col-sm-8">
+											<input class="form-control" readonly="true" type="text" id="rootOrd" name="rootOrd" th:value="*{rootOrd}"/>
+										</div>
+									</div>
+
+									<div class="form-group">
+										<label class="col-sm-3 control-label ">分集编号：</label>
+										<div class="col-sm-8">
+											<input class="form-control" readonly="true" type="text" id="rootId" name="rootId" th:value="*{rootId}"/>
+										</div>
+									</div>
+
+								
+									<div class="form-group">
+										<label class="col-sm-3 control-label ">序号：</label>
+										<div class="col-sm-8">
+											<input class="form-control" readonly="true" type="text" id="ord" name="ord" th:value="*{ord}"/>
+										</div>
+									</div>
+
+								
+									<div class="form-group">
+										<label class="col-sm-3 control-label ">诗歌集编号：</label>
+										<div class="col-sm-8">
+											<input class="form-control" readonly="true" type="text" id="poetryId" name="poetryId" th:value="*{poetryId}"/>
+										</div>
+									</div>
+
+
+									<div class="form-group">
+										<label class="col-sm-3 control-label ">锁：</label>
+										<div class="col-sm-8">
+											<!--<input class="form-control" type="text" id="isLock" name="isLock"/>-->
+											<select id="isLock" name="isLock" class="form-control valid" aria-invalid="false">
+												<option value="0">否</option>
+												<option value="1"  selected="selected">是</option>
+
+											</select>
+										</div>
+									</div>
+								
+									<!--<div class="form-group">
+										<label class="col-sm-3 control-label ">完成：</label>
+										<div class="col-sm-8">
+											<input class="form-control" type="text" id="finish" name="finish" th:value="*{finish}"/>
+										</div>
+									</div>
+
+
+									<div class="form-group">
+										<label class="col-sm-3 control-label ">创建人Id：</label>
+										<div class="col-sm-8">
+											<input class="form-control" type="text" id="createBy" name="createBy" th:value="*{createBy}"/>
+										</div>
+									</div>
+
+
+									<div class="form-group">
+										<label class="col-sm-3 control-label ">创建时间：</label>
+										<div class="col-sm-8">
+											<input class="form-control MyDate" type="text" id="createDat" name="createDat" th:value="*{#dates.format(createDat,'yyyy-MM-dd HH:mm:ss')}"/>
+										</div>
+									</div>
+
+
+									<div class="form-group">
+										<label class="col-sm-3 control-label ">最后更新时间：</label>
+										<div class="col-sm-8">
+											<input class="form-control MyDate" type="text" id="lUpdateDat" name="lUpdateDat" th:value="*{#dates.format(lUpdateDat,'yyyy-MM-dd HH:mm:ss')}"/>
+										</div>
+									</div>
+
+
+									<div class="form-group">
+										<label class="col-sm-3 control-label ">删除：</label>
+										<div class="col-sm-8">
+											<input class="form-control" type="text" id="isDel" name="isDel" th:value="*{isDel}"/>
+										</div>
+									</div>-->
+
+			
+									<div class="form-group">
+										<div class="form-control-static col-sm-offset-9">
+											<button type="submit" class="btn btn-primary">提交</button>
+											<button onclick="$.modal.close()" class="btn btn-danger" type="button">关闭</button>
+										</div>
+									</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- 通用js -->
+<div th:include="admin/common/html/js :: onload_js">
+   
+</div>
+<!-- bootstarp 表格 -->
+<script th:src="@{/static/admin/assets/js/bootstrap/js/bootstrap-table/bootstrap-table.min.js}" type="text/javascript"></script>
+<script th:src="@{/static/admin/assets/js/bootstrap/js/bootstrap-table/locale/bootstrap-table-zh-CN.min.js}" type="text/javascript"></script>
+<script th:src="@{/static/admin/assets/js/bootstrap/js/base_list.js}" type="text/javascript"></script>
+
+
+<!-- 弹窗 -->
+<script th:src="@{/static/admin/assets/js/layer/layer.js}" type="text/javascript"></script>
+<!-- 遮罩层 -->
+<script th:src="@{/static/admin/assets/js/blockUI/jquery.blockUI.js}" type="text/javascript"></script>
+<!--- bootstrap插件  -->
+<script type="text/javascript" th:src="@{/static/admin/bootstarp/js/bootstrap.js}"></script>
+<script type="text/javascript" th:src="@{/static/admin/bootstarp/js/bootstrap.bundle.js}"></script>
+<!--- 文件上传插件  -->
+<script type="text/javascript"  th:src="@{/static/admin/bootstarp/js/fileinput.min.js}"></script>
+<script type="text/javascript"  th:src="@{/static/admin/bootstarp/js/locales/zh.js}"></script>
+<script type="text/javascript">
+var fileUrl=window.rootPath+"/FileController/uploadImage";
+$(function(){
+	 $(".MyDate").datetimepicker({
+		 	format: "yyyy-mm-dd hh:00:00",
+	        startDate: new Date(),
+	        autoclose: true,
+	        todayBtn: true,
+	        language: 'zh-CN',
+	        initialDate:new Date(),
+	        minView: 1      
+	    });
+	
+})
+
+$('#pic1').fileinput({
+    /* theme: 'fa',*/
+    language: 'zh',
+    uploadAsync: true,//异步上传
+    showUpload: true, //是否显示上传按钮
+    uploadUrl: fileUrl,
+    allowedFileExtensions: ['jpg', 'png'],
+    enctype: 'multipart/form-data',
+    maxFileSize:0,
+    maxFileCount:1
+}).on("filebatchselected", function(event, files) {
+    $("#pic2").attr('src',files);
+}).on("fileuploaded", function(event,data) { //异步上传成功结果处理
+    if(data.response.code==200){
+        $("#pic").val(data.response.data);
+    }
+})
+
+$("#form-edit").validate({
+	submitHandler : function(form) {
+		edit();
+	}
+});
+
+function edit() {
+    $("#root").val($("#root2").val());
+	var dataFormJson = $("#form-edit").serialize();
+	$.ajax({
+		cache : true,
+		type : "POST",
+		url : rootPath + "/ProPoemsetController/edit",
+		data : dataFormJson,
+		async : false,
+		error : function(request) {
+			$.modal.alertError("系统错误");
+		},
+		success : function(data) {
+			$.operate.saveSuccess(data);
+		}
+	});
+}
+</script>
+
+</body>
+
+
+</html>
